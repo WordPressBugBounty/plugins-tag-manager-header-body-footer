@@ -3,7 +3,7 @@ Contributors: YYDevelopment
 Tags: Tag Manager, Analytics, Pixel, Header, Footer, Body, Add Code, Insert Code, Code Injection
 Requires at least: 4
 Tested up to: 6.5
-Stable tag: 3.6.0
+Stable tag: 3.6.1
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -204,6 +204,10 @@ To add code  at the end of the document above end body tag insert your code unde
 
 = 3.6.0 =
 * Added the option to add notes and storage unwanted tags data
+
+= 3.6.1 =
+* Fixed warning on php 8.0
+
 
 == Upgrade Notice ==
 

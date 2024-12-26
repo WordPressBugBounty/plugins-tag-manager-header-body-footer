@@ -155,7 +155,6 @@ if( isset($_POST['yydev_tagmanager_nonce']) ) {
         $remove_custom_lazy_load_js_on_elementor = yydev_tagmanager_checkbox_isset('remove_custom_lazy_load_js_on_elementor');
 
         $no_lazy_load_wait_pages = sanitize_text_field( $_POST['no_lazy_load_wait_pages'] );
-        $lazy_load_exclude_ids = sanitize_text_field( $_POST['lazy_load_exclude_ids'] );
 
         $wp_body_open = yydev_tagmanager_checkbox_isset('wp_body_open');
         $add_plugin_to_settings = yydev_tagmanager_checkbox_isset('add_plugin_to_settings');
@@ -242,7 +241,6 @@ if( isset($_POST['yydev_tagmanager_nonce']) ) {
             'remove_custom_lazy_load_js_on_elementor' => $remove_custom_lazy_load_js_on_elementor,
 
             'no_lazy_load_wait_pages' => $no_lazy_load_wait_pages,
-            'lazy_load_exclude_ids' => $lazy_load_exclude_ids,
 
             'wp_body_open' => $wp_body_open,
             'add_plugin_to_settings' => $add_plugin_to_settings,
