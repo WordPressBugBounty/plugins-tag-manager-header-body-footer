@@ -14,7 +14,7 @@ $yydev_tagmanager_notice_info_array = array(
 	'company_plugins_page' => "https://www.yydevelopment.com/yydevelopment-wordpress-plugins/", // link to the main company plugins page
 	'icon_image_path' => plugins_url() . "/" .	basename( dirname( __FILE__ ) ) . "/images/icon.png", // link to the plugin icon
 	'save_database_time_stamp_name' => "yydev_tagmanager_timestamp",	// database input name to save data 
-	'send_mail_in_days' => (4 * 30 * 60 * 60 * 24) + strtotime("now"), // the amount of time after we show the notice (4 months)
+	'send_mail_in_days' => (30 * 60 * 60 * 24) + strtotime("now"), // the amount of time after we show the notice (4 months)
 );
 
 // ================================================
@@ -43,9 +43,19 @@ if( empty($plugin_db_timestamp) ) {
 // when the visitor want to stop getting the messages
 function yydev_tagmanager_stop_notice_forever() {
 
+	// Verify nonce for security
+	if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'yydev_tagmanager_nonce')) {
+		wp_die('Security check failed');
+	}
+	
+	// Check if user has proper capabilities
+	if (!current_user_can('manage_options')) {
+		wp_die('Insufficient permissions');
+	}
+
 	global $yydev_tagmanager_notice_info_array;
 	update_option($yydev_tagmanager_notice_info_array['save_database_time_stamp_name'], 'stop');
-	die(); // we have to end ajax functions with die();
+	wp_die(); // Use wp_die() instead of die() for WordPress AJAX
 	
 } // function yydev_tagmanager_stop_notice_forever() {
 
@@ -55,9 +65,19 @@ add_action( 'wp_ajax_yydev_tagmanager_stop_notice_forever', 'yydev_tagmanager_st
 // when the visitor ask to get the message in the future
 function yydev_tagmanager_stop_notice_for_now() {
 
+	// Verify nonce for security
+	if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'yydev_tagmanager_nonce')) {
+		wp_die('Security check failed');
+	}
+	
+	// Check if user has proper capabilities
+	if (!current_user_can('manage_options')) {
+		wp_die('Insufficient permissions');
+	}
+
 	global $yydev_tagmanager_notice_info_array;
 	update_option($yydev_tagmanager_notice_info_array['save_database_time_stamp_name'], $yydev_tagmanager_notice_info_array['send_mail_in_days']);
-	die(); // we have to end ajax functions with die();
+	wp_die(); // Use wp_die() instead of die() for WordPress AJAX
 	
 } // function yydev_tagmanager_stop_notice_for_now() {
 
@@ -94,7 +114,10 @@ function yydev_tagmanager_admin_notice($notice_info_array) {
 				$(this).css("display", "none");
 
 				// use the function and update value using ajax
-				var data = {'action': 'yydev_tagmanager_stop_notice_forever'}; // var data = {
+				var data = {
+					'action': 'yydev_tagmanager_stop_notice_forever',
+					'nonce': '<?php echo wp_create_nonce('yydev_tagmanager_nonce'); ?>'
+				};
 				jQuery.post(ajaxurl, data,  function(response) {});
 
 			}); // $( relatedPostBox ).animate({opacity: "0"}, 1000, function() {
@@ -108,7 +131,10 @@ function yydev_tagmanager_admin_notice($notice_info_array) {
 				$(this).css("display", "none");
 
 				// use the function and update value using ajax
-				var data = {'action': 'yydev_tagmanager_stop_notice_for_now'}; // var data = {
+				var data = {
+					'action': 'yydev_tagmanager_stop_notice_for_now',
+					'nonce': '<?php echo wp_create_nonce('yydev_tagmanager_nonce'); ?>'
+				};
 				jQuery.post(ajaxurl, data,  function(response) {});
 
 			}); // $( relatedPostBox ).animate({opacity: "0"}, 1000, function() {
@@ -123,7 +149,10 @@ function yydev_tagmanager_admin_notice($notice_info_array) {
 				$(this).css("display", "none");
 
 				// use the function and update value using ajax
-				var data = {'action': 'yydev_tagmanager_stop_notice_forever'}; // var data = {
+				var data = {
+					'action': 'yydev_tagmanager_stop_notice_forever',
+					'nonce': '<?php echo wp_create_nonce('yydev_tagmanager_nonce'); ?>'
+				};
 				jQuery.post(ajaxurl, data,  function(response) {});
 
 			}); // $( relatedPostBox ).animate({opacity: "0"}, 1000, function() {
@@ -213,22 +242,22 @@ function yydev_tagmanager_admin_notice($notice_info_array) {
 	<div class="yydev_tagmanager_notice_style notice notice-info">
 
 		<div class="yy-plugin-icon">
-		<img src="<?php echo $icon_image_path; ?>" alt="<?php echo $plugin_name; ?>" />
+		<img src="<?php echo esc_url($icon_image_path); ?>" alt="<?php echo esc_attr($plugin_name); ?>" />
 		</div><!--yy-plugin-icon-->
 
-		We are happy to see that you are using our <b><?php echo $plugin_name; ?></b> plugin for some time now. 
-		We at <a href="<?php echo $developer_website; ?>" target="_blank">YYDevelopment</a> share our plugin for free under GPLv2 license and the only thing we ask in return is that you give a <a href="<?php echo $plugin_review_page; ?>" target="_blank">positive review</a> if you liked it.
+		We are happy to see that you are using our <b><?php echo esc_html($plugin_name); ?></b> plugin for some time now. 
+		We at <a href="<?php echo esc_url($developer_website); ?>" target="_blank">YYDevelopment</a> share our plugin for free under GPLv2 license and the only thing we ask in return is that you give a <a href="<?php echo esc_url($plugin_review_page); ?>" target="_blank">positive review</a> if you liked it.
 
 		<div class="notice-buttons">
-			<a class="button button-primary yy-review-plugin" href="<?php echo $plugin_review_page; ?>" target="_blank">Yes!!! This plugin saved my life I love it and I will be happy to give it 5 stars review :)</a>
+			<a class="button button-primary yy-review-plugin" href="<?php echo esc_url($plugin_review_page); ?>" target="_blank">Yes!!! This plugin saved my life I love it and I will be happy to give it 5 stars review :)</a>
 			<a class="button yy-plugin-dismiss-for-now" href="#" target="_blank">I am busy dude ask me again later</a>
 			<a class="button button-secondary yy-plugin-dismiss-forever" href="#" target="_blank">Never show this message again :(</a>
 		</div><!--notice-buttons-->
 
-		If you have problems with the plugin you can submit a ticket at our <a href="<?php echo $plugin_support_link; ?>" target="_blank">plugin support page</a> and we will be happy to help. 
-		You are also welcome to check our other <a href="<?php echo $company_plugins_page; ?>" target="_blank">free wordpress plugins</a>. And if you want to help support this FREE plugins <a target="_blank" href="<?php echo $plugin_donate_link; ?>">buy us a coffee</a>.
+		If you have problems with the plugin you can submit a ticket at our <a href="<?php echo esc_url($plugin_support_link); ?>" target="_blank">plugin support page</a> and we will be happy to help. 
+		You are also welcome to check our other <a href="<?php echo esc_url($company_plugins_page); ?>" target="_blank">free wordpress plugins</a>. And if you want to help support this FREE plugins <a target="_blank" href="<?php echo esc_url($plugin_donate_link); ?>">buy us a coffee</a>.
 
-		<div class="yy-bottom-plugin-name "><?php echo $plugin_name; ?> Plugin</div>
+		<div class="yy-bottom-plugin-name "><?php echo esc_html($plugin_name); ?> Plugin</div>
 		
 	</div><!--yydev_tagmanager_notice_style-->
 
