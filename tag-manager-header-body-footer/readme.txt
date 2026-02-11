@@ -2,7 +2,7 @@
 Contributors: YYDevelopment
 Tags: Tag Manager, Google Analytics, Facebook Pixel, Add Codes, Insert Code
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.9
 Stable tag: 3.6.2
 Requires PHP: 5.2.4
 License: GPLv2 or later
