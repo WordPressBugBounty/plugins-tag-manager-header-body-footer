@@ -1,97 +1,93 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: English\n"
-"POT-Creation-Date: 2020-05-25 14:33+0300\n"
-"PO-Revision-Date: 2020-05-25 14:33+0300\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-09-14 08:57+0300\n"
+"PO-Revision-Date: 2026-09-14 08:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
-"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: include/admin-output.php:59
-msgid "The data was inserted successfully"
+#: essential/accessibility/default-values.php:27
+#: essential/accessibility/front-end/front-end.php:131
+msgid "Accessibility"
 msgstr ""
 
-#: include/admin-output.php:70
-msgid "The data was updated successfully"
+#: essential/accessibility/default-values.php:28
+msgid "Increase Font Size"
 msgstr ""
 
-#: include/admin-output.php:78
-msgid "Error: form nonce problem"
+#: essential/accessibility/default-values.php:29
+msgid "Decrease Font Size"
 msgstr ""
 
-#: include/admin-output.php:87
-msgid "Tag Manager - Add Header, Body and Footer Codes"
+#: essential/accessibility/default-values.php:30
+msgid "Light contrast"
 msgstr ""
 
-#: include/admin-output.php:88
+#: essential/accessibility/default-values.php:31
+msgid "High contrast"
+msgstr ""
+
+#: essential/accessibility/default-values.php:32
+msgid "Highlight Links"
+msgstr ""
+
+#: essential/accessibility/default-values.php:33
+msgid "Reset Settings"
+msgstr ""
+
+#: essential/accessibility/default-values.php:34
+msgid "Accessibility Statement"
+msgstr ""
+
+#: essential/back-to-top/front-end/front-end.php:156
+msgid "Back To Top"
+msgstr ""
+
+#: essential/mobile-contact-line/default-values.php:7
+msgid "Call Us Now"
+msgstr ""
+
+#: essential/mobile-contact-line/default-values.php:30
+msgid "Live Chat"
+msgstr ""
+
+#: essential/mobile-contact-line/front-end/front-end.php:258
+#: essential/phone-button/front-end/front-end.php:134
+msgid "Call Us"
+msgstr ""
+
+#: essential/mobile-contact-line/front-end/front-end.php:274
+msgid "Contact Us"
+msgstr ""
+
+#: essential/mobile-contact-line/front-end/front-end.php:289
+#: essential/whatsapp-button/front-end/front-end.php:107
+msgid "Whatsapp"
+msgstr ""
+
+#: essential/mobile-contact-line/front-end/front-end.php:300
+msgid "Chat"
+msgstr ""
+
+#: essential/privacy-policy/default-values.php:11
 msgid ""
-"Below you will be able to add header code, below the <body> code and footer "
-"code for tracking platforms like google analytics, facebook pixel and google "
-"tag manager."
+"This site uses cookies and other tools to provide you with a better browsing "
+"experience, as outlined in the {privacy-page-dont-edit}"
 msgstr ""
 
-#: include/admin-output.php:127
-msgid "Insert <head> tags code"
+#: essential/privacy-policy/default-values.php:12
+msgid "privacy policy"
 msgstr ""
 
-#: include/admin-output.php:128
-msgid ""
-"The code will be displayed between the opening <head> and the closing </"
-"head> tags"
-msgstr ""
-
-#: include/admin-output.php:133
-msgid "Insert tags after <body> opening tag"
-msgstr ""
-
-#: include/admin-output.php:134
-msgid "The code will be displayed below the opening <body> tag"
-msgstr ""
-
-#: include/admin-output.php:139
-msgid "Insert footer tags code"
-msgstr ""
-
-#: include/admin-output.php:140
-msgid "The code will be displayed right above the end </body> tag"
-msgstr ""
-
-#: include/admin-output.php:145
-msgid ""
-"Check this box if you want the plugin to show up under the settings menu "
-"instead of the main menu (require reopening the plugin page to see changes)"
-msgstr ""
-
-#: include/admin-output.php:150
-msgid ""
-"Check this if your theme supports <b>wp_body_open</b> action (make the way "
-"the body tag getting loaded faster)"
-msgstr ""
-
-#: include/admin-output.php:159
-msgid "Insert/Update Tags"
-msgstr ""
-
-#: include/admin-output.php:164
-msgid "This plugin was created by"
-msgstr ""
-
-#: include/admin-output.php:165
-msgid "If you liked it please give it a"
-msgstr ""
-
-#: include/admin-output.php:165
-msgid "5 stars review"
-msgstr ""
-
-#: index.php:61 index.php:71
-msgid "Tag Manager"
+#: essential/privacy-policy/default-values.php:13
+msgid "Accept"
 msgstr ""

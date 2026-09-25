@@ -1,0 +1,99 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2026-09-14 08:58+0300\n"
+"PO-Revision-Date: 2026-09-14 08:58+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: he_IL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"X-Generator: Poedit 3.9\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: essential/accessibility/default-values.php:27
+#: essential/accessibility/front-end/front-end.php:131
+msgid "Accessibility"
+msgstr "כלי נגישות"
+
+#: essential/accessibility/default-values.php:28
+msgid "Increase Font Size"
+msgstr "הגדלת גודל פונט"
+
+#: essential/accessibility/default-values.php:29
+msgid "Decrease Font Size"
+msgstr "הקטנת גודל פונט"
+
+#: essential/accessibility/default-values.php:30
+msgid "Light contrast"
+msgstr "ניגודיות נמוכה"
+
+#: essential/accessibility/default-values.php:31
+msgid "High contrast"
+msgstr "ניגודיות גבוהה"
+
+#: essential/accessibility/default-values.php:32
+msgid "Highlight Links"
+msgstr "הדגשת קישורים"
+
+#: essential/accessibility/default-values.php:33
+msgid "Reset Settings"
+msgstr "איפוס הגדרות"
+
+#: essential/accessibility/default-values.php:34
+msgid "Accessibility Statement"
+msgstr "הצהרת נגישות"
+
+#: essential/back-to-top/front-end/front-end.php:156
+msgid "Back To Top"
+msgstr "חזרה למעלה"
+
+#: essential/mobile-contact-line/default-values.php:7
+msgid "Call Us Now"
+msgstr "חיוג מהיר"
+
+#: essential/mobile-contact-line/default-values.php:30
+msgid "Live Chat"
+msgstr "צ'אט לייב"
+
+#: essential/mobile-contact-line/front-end/front-end.php:258
+#: essential/phone-button/front-end/front-end.php:134
+msgid "Call Us"
+msgstr "חיוג מהיר"
+
+#: essential/mobile-contact-line/front-end/front-end.php:274
+msgid "Contact Us"
+msgstr "יצירת קשר"
+
+#: essential/mobile-contact-line/front-end/front-end.php:289
+#: essential/whatsapp-button/front-end/front-end.php:107
+msgid "Whatsapp"
+msgstr "וואטסאפ"
+
+#: essential/mobile-contact-line/front-end/front-end.php:300
+msgid "Chat"
+msgstr "צ'אט"
+
+#: essential/privacy-policy/default-values.php:11
+msgid ""
+"This site uses cookies and other tools to provide you with a better browsing "
+"experience, as outlined in the {privacy-page-dont-edit}"
+msgstr ""
+"באתר זה נעשה שימוש בקבצי עוגיות ובכלים נוספים כדי לספק לך חווית גלישה טובה "
+"יותר כפי שמפורט בעמוד {privacy-page-dont-edit}"
+
+#: essential/privacy-policy/default-values.php:12
+msgid "privacy policy"
+msgstr "במדיניות הפרטיות"
+
+#: essential/privacy-policy/default-values.php:13
+msgid "Accept"
+msgstr "הבנתי"
+
+#~ msgid "as outlined in the"
+#~ msgstr "כפי שמפורט"

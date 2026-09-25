@@ -1,0 +1,4086 @@
+/* ======= Toggle Switch ========
+==================================*/
+
+/* --- toggle wrap --- */
+
+.infinity23-active-code {
+	margin: 0px 0px 40px 0px;
+}
+
+/* --- toggle item --- */
+
+.infinity23-active-code .toggle-item {
+	display: inline-block;
+	padding: 28px 44px;
+	background: #f0f0f0;
+	border-radius: 10px;
+	border: 2px solid #d0d0d0;
+	cursor: pointer;
+	vertical-align: middle;
+	min-width: 320px;
+	animation: infinity23-toggle-scale 1.6s ease-in-out infinite;
+}
+
+.infinity23-active-code .toggle-item.toggle-active {
+	animation: none;
+	background: #eaf4ff;
+	border: 3px solid #0a84ff;
+}
+
+@keyframes infinity23-toggle-scale {
+	0% { transform: scale(1); border-color: #d0d0d0; box-shadow: 0 0 0 0 rgba(10, 132, 255, 0); }
+	50% { transform: scale(1.06); border-color: #0a84ff; box-shadow: 0 0 0 10px rgba(10, 132, 255, 0.18); }
+	100% { transform: scale(1); border-color: #d0d0d0; box-shadow: 0 0 0 25px rgba(10, 132, 255, 0); }
+}
+
+/* --- toggle info --- */
+
+.infinity23-active-code .toggle-info {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px 0px 0px 0px;
+}
+
+.infinity23-active-code .toggle-title {
+	display: block;
+	font-size: 17px;
+	font-weight: 700;
+	color: #333;
+}
+
+/* --- toggle circle --- */
+
+.infinity23-active-code .toggle-circle {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	width: 54px;
+	height: 30px;
+	background: #c0c0c0;
+	border-radius: 15px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin: 0px 16px 0px 0px;
+}
+
+.infinity23-active-code .toggle-circle.active {
+	background: #0a84ff;
+}
+
+.infinity23-active-code .toggle-circle::after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 24px;
+	height: 24px;
+	background: #ffffff;
+	border-radius: 50%;
+	transition: transform 0.3s ease;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.infinity23-active-code .toggle-circle.active::after {
+	transform: translateX(24px);
+}
+
+/* --- locked form overlay --- */
+
+.infinity23-warp .infinity23-form-locked {
+	opacity: 0.4;
+	pointer-events: none;
+	user-select: none;
+}
+
+/* --- locked toggle item (ssl not detected) --- */
+
+.infinity23-active-code .toggle-item-locked {
+	display: inline-block;
+	padding: 28px 44px;
+	background: #f0f0f0;
+	border-radius: 10px;
+	border: 2px solid #d0d0d0;
+	vertical-align: middle;
+	min-width: 320px;
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 500px) {
+
+    .infinity23-active-code .toggle-item {
+        min-width: auto;
+    }
+    
+    .infinity23-active-code .toggle-circle {
+        margin: 0px 16px 10px 0px;
+    }
+    
+}
+
+/* ======= Error & Success Messages ========
+=====================================*/
+
+/* --- message wrap --- */
+
+.infinity23-warp .infinity23-message {
+	padding: 22px 20px;
+	margin: 20px 0px 40px 0px;
+	border-radius: 4px;
+	font-size: 17px;
+	font-weight: 600;
+}
+
+/* --- success --- */
+
+.infinity23-warp .infinity23-message-success {
+	background: #0a84ff;
+	border: 1px solid #0a84ff;
+	color: #ffffff;
+}
+
+/* --- error --- */
+
+.infinity23-warp .infinity23-message-error {
+	background: #e74c3c;
+	border: 1px solid #e74c3c;
+	color: #ffffff;
+}
+
+.infinity23-warp .infinity23-message-error-list {
+	margin: 12px 0px 0px 0px;
+	padding: 0px 20px;
+}
+
+.infinity23-warp .infinity23-message-error-list li {
+	list-style: disc;
+	margin: 4px 0px 0px 0px;
+    font-weight: normal;
+    padding: 3px 0px;
+    font-size: 15px;
+}
+
+/* ======= Notice Text (Global) ========
+==========================================*/
+
+.infinity23-warp .infinity23-notice-text {
+	background: #fff3cd;
+	border-left: 4px solid #ffb900;
+	color: #664d03;
+	font-weight: 600;
+	padding: 14px 14px;
+	margin: 4px 0px 25px 0px;
+	display: block;
+}
+
+
+/*================================
+=============== Main Page Warp
+==================================*/
+
+.infinity23-warp {
+    direction: ltr;
+    max-width: 99%;
+    padding: 30px 50px;
+    margin: 30px;
+    background: #fff;
+    position: relative;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.1);
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 700px) {
+
+    .infinity23-warp {
+        max-width: 100%;
+        padding: 30px 30px;
+        margin: 15px;
+    }
+    
+}
+
+/*================================
+=============== Additional Data Section
+==================================*/
+
+.infinity23-warp .additional-data-warp {
+    margin: 250px 0px 0px 0px;
+    padding: 55px 30px 35px 30px;
+    background: #fff5dc;
+}
+
+.infinity23-warp .additional-data-warp ul {
+    padding: 0px 15px;
+}
+
+.infinity23-warp .additional-data-warp ul li {
+    list-style: square;
+}
+
+.infinity23-warp .highlight-text {
+    color:#257bd2;
+    font-weight:bold;
+}
+
+/* --- item type badge --- */
+
+.infinity23-warp .additional-data-warp .infinity23-type-badge {
+    display: inline-block;
+    color: #fff;
+    font-size: 9px;
+    font-weight: normal;
+    margin: 0px 4px 0px 0px;
+    vertical-align: middle;
+    background: #2e435b;
+    padding: 3px 4px 3px 4px;
+    border-radius: 5px;
+}
+
+/* --- intro text --- */
+
+.infinity23-warp .additional-data-warp .additional-data-intro {
+    margin: 0px 0px 20px 0px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* --- group titles --- */
+
+.infinity23-warp .additional-data-warp h3 {
+    margin: 55px 0px 10px 0px;
+    padding: 0px;
+    font-size: 15px;
+    color: #3c434a;
+}
+
+.infinity23-warp .additional-data-warp h3:first-of-type {
+    margin: 20px 0px 10px 0px;
+}
+
+/* --- collapse toggle --- */
+
+.infinity23-warp .additional-data-warp h2 {
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px 0px 12px 0px;
+    font-size: 18px;
+    color: #3c434a;
+    max-width: 600px;
+}
+
+.infinity23-warp .additional-data-warp h2:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 400px;
+    background: #ddd;
+    margin: 10px 0px 0px 0px;
+}
+
+.infinity23-warp .additional-data-warp.card-collapsed h2:after {
+    display: none;
+}
+
+.infinity23-warp .additional-data-warp h2::before {
+    content: '\25BC';
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    font-size: 14px;
+    color: #3c434a;
+    vertical-align: middle;
+    margin: 0px 8px 0px 0px;
+    transition: transform 0.2s ease;
+}
+
+.infinity23-warp .additional-data-warp.card-collapsed h2::before {
+    transform: rotate(-90deg);
+}
+
+.infinity23-warp .additional-data-warp.card-collapsed {
+    cursor: pointer;
+}
+
+.infinity23-warp .additional-data-warp .card-body {
+    display: block;
+    margin: 40px 0px 0px 0px;
+}
+
+.infinity23-warp .additional-data-warp .card-body.collapsed {
+    display: none;
+}
+
+/* --- code example button --- */
+
+.infinity23-warp .infinity23-code-example-btn {
+    display: inline-block;
+    margin: 8px 0px 0px 0px;
+    padding: 4px 12px;
+    background: transparent;
+    color: #1466d0;
+    border: 1px solid #1466d0;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* --- code example block --- */
+
+.infinity23-warp .infinity23-code-example-block {
+    display: none;
+    margin: 10px 0px 0px 0px;
+    padding: 12px 16px;
+    background: #e7e7e7;
+    border: 1px solid #c7d7f9;
+    border-radius: 4px;
+}
+
+.infinity23-warp .infinity23-code-example-block.active {
+    display: block;
+    padding: 30px;
+}
+
+.infinity23-warp .infinity23-code-example-block pre {
+    margin: 0px;
+    padding: 0px;
+}
+
+.infinity23-warp .infinity23-code-example-block code {
+    display: block;
+    font-family: monospace;
+    font-size: 13px;
+    color: #2b2626;
+    white-space: pre-wrap;
+    background: none;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0px;
+}
+
+/* --- code example highlighted line --- */
+
+.infinity23-warp .infinity23-code-example-block code .infinity23-code-hl {
+    display: inline;
+    padding: 0px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #0027be;
+}
+
+/* --- code example comment line --- */
+
+.infinity23-warp .infinity23-code-example-block code .infinity23-code-comment {
+    display: inline;
+    padding: 0px;
+    color: #6d7a6d;
+    font-style: italic;
+}
+
+/*================================
+=============== Admin Output Forms Style
+==================================*/
+
+.infinity23-warp .page-header {
+    margin: 40px 0px 40px 0px;
+}
+
+.infinity23-warp .form-line {
+    margin: 10px 0px 10px 0px;
+}
+
+.infinity23-warp .form-line label {
+    vertical-align: middle;
+}
+
+.infinity23-warp .form-line textarea {
+    vertical-align: middle;
+}
+
+.infinity23-warp .form-line select,
+.infinity23-warp .form-line input[type="text"],
+.infinity23-warp .form-line .submit-btn-small {
+    vertical-align: middle;
+}
+
+.infinity23-warp .checkbox-line {
+    margin: 15px 0px 15px 0px;
+}
+
+.infinity23-warp .background-color-line {
+    margin: 20px 0px 10px 0px;
+}
+
+.infinity23-warp .wp-picker-container .wp-color-result {
+    margin: -5px 0px 10px 0px !important;
+    display: inline-block;
+}
+
+.infinity23-warp .default-img-url {
+    font-size: 10px;
+    color: #8f8f8f;
+    margin: 8px 0px 0px 0px;
+    display: block;
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 760px) {
+
+    .infinity23-warp .wp-picker-container .wp-color-result {
+        margin: 5px 0px 15px 0px !important;
+        display: block;
+    }
+    
+}
+
+/* ======= Form Input Group ========
+=====================================*/
+
+.infinity23-warp .very-short-input {
+    width: 80px;
+}
+
+.infinity23-warp .short-input {
+    width: 100px;
+}
+
+.infinity23-warp .medium-input {
+    width: 200px;
+}
+
+.infinity23-warp .long-input {
+    width: 300px;
+}
+
+.infinity23-warp .very-long-input {
+    width: 500px;
+}
+
+/* ======= Unit Select Field (Global) ========
+================================================*/
+
+.infinity23-warp .infinity23-unit-select {
+    width: 45px;
+    height: 30px;
+    padding: 0px 14px 0px 2px;
+    margin: 0px 0px 0px 4px;
+    background: #fafafa url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%238f8f8f' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E") no-repeat right 8px center;
+    background-size: 8px 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #cbcbcb;
+    border-radius: 3px;
+    color: #505050;
+    font-size: 11px;
+    text-align: center;
+    text-align-last: center;
+    vertical-align: middle;
+}
+
+.infinity23-warp input[type="checkbox"] {
+    margin: 0px 5px 0px 0px;
+}
+
+.infinity23-warp .submit-btn {
+    color: #fff;
+    background: #4c4c4c;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 45px 20px 45px;
+    cursor: pointer;
+    margin: 35px 10px 10px 0px;
+    border: none;
+    border-radius: 4px;
+    transition: background 0.2s ease, transform 0.3s ease;
+}
+
+.infinity23-warp .submit-btn:hover {
+    background: #2e2e2e;
+    transform: translateY(-6px);
+}
+
+/* --- small submit button (add alongside .submit-btn on pages with multiple forms) --- */
+
+.infinity23-warp .submit-btn.submit-btn-small {
+    font-size: 16px;
+    padding: 12px 25px 12px 25px;
+    margin: 20px 10px 10px 0px;
+}
+
+/* --- inline filter button (log tables) --- */
+
+.infinity23-warp .infinity23-inline-filter-btn {
+    color: #fff;
+    background: #4c4c4c;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 12px 15px;
+    cursor: pointer;
+    margin: 0px 10px 0px 0px;
+    border: none;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+/* --- last updated time --- */
+
+.infinity23-warp .infinity23-last-updated-time {
+    font-size: 11px;
+    color: #a9a9a9;
+    margin: 15px 0px 0px 0px;
+    margin: 0px 10px;
+}
+
+/* --- width x height labels --- */
+
+
+.infinity23-warp .sizes-line {
+    padding: 0px 0px 15px 0px;
+}
+
+.infinity23-warp .sizes-line .width-div,
+.infinity23-warp .sizes-line .height-div {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    top: 7px;
+}
+
+.infinity23-warp .sizes-line .width-div input,
+.infinity23-warp .sizes-line .height-div input {
+    display: block;
+    text-align: center;
+    width: 60px;
+}
+
+.infinity23-warp .sizes-line .size-label-width,
+.infinity23-warp .sizes-line .size-label-height {
+    display: block;
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+}
+
+/* --- Media Upload Button --- */
+
+.infinity23-warp .infinity23-upload-btn-style {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 16px;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-appearance: none;
+  border-radius: 2px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: #fff;
+  color: #2559a9;
+  border: 1px solid #2559a9;
+}
+
+.infinity23-warp .infinity23-upload-btn-style:hover {
+    background: #f6f7f7;
+    border-color: #2559a9;
+    color: #1d2327;
+}
+
+.infinity23-warp .infinity23-upload-preview {
+    cursor: pointer;
+}
+
+/* --- site identity logo/favicon preview --- */
+
+.infinity23-warp .infinity23-logo-preview-img {
+    display: block;
+    max-width: 320px;
+    max-height: 110px;
+    margin: 30px 0px 10px 0px;
+    border: 1px solid #ddd;
+    padding: 4px;
+    background: #fff;
+}
+
+.infinity23-warp .infinity23-favicon-preview-img {
+    display: inline-block;
+    max-width: 60px;
+    max-height: 30px;
+    vertical-align: middle;
+    margin: 0px 10px 0px 0px;
+    border: 1px solid #ddd;
+    padding: 4px;
+    background: #fff;
+}
+
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 500px) {
+
+    .infinity23-warp .very-long-input {
+        width: 99%;
+    }
+    
+    .infinity23-warp .long-input {
+        width: auto;
+    }
+    
+}
+
+/* ======= Button Preview Wrap ========
+==================================*/
+
+/* --- preview wrap --- */
+
+.infinity23-warp .infinity23-button-preview-wrap {
+    display: inline-block;
+    border: 1px dashed #aaa;
+    padding: 15px;
+    margin: 15px 0px 15px 0px;
+    text-align: center;
+}
+
+/* --- preview label --- */
+
+.infinity23-warp .infinity23-preview-label {
+    display: block;
+    margin: 18px 0px 0px 0px;
+    color: #888;
+    font-size: 11px;
+}
+
+/* --- storage notes card --- */
+
+.infinity23-warp .storage-notes-card {
+    border: 2px solid #828282 !important;
+    background: #f5f5f5 !important;
+    border-radius: 20px !important;
+    max-width: 90%
+}
+
+/* ======= Whatsapp Button ========
+====================================*/
+
+/* --- whatsapp wrap --- */
+
+.whatsapp-button-link,
+.whatsapp-exists-check {
+	margin: 15px 0px 25px 0px;
+}
+
+/* --- whatsapp button type select --- */
+
+.whatsapp-btn-type-select-wrap {
+	margin: 10px 0px 15px 0px;
+}
+
+.whatsapp-btn-type-select-wrap .whatsapp-btn-type-preview {
+	display: block;
+	margin: 10px 0px 0px 0px;
+}
+
+.whatsapp-btn-type-select-wrap .whatsapp-btn-type-preview img {
+	width: 60px;
+	height: 60px;
+	vertical-align: middle;
+	margin: 0px 6px 0px 0px;
+	border: 3px solid transparent;
+	border-radius: 6px;
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.whatsapp-btn-type-select-wrap .whatsapp-btn-type-preview img.active-preview {
+	border: 3px solid #0a84ff;
+	border-radius: 6px;
+	opacity: 1;
+	outline: 3px solid #cce4ff;
+}
+
+.whatsapp-btn-type-select-wrap .whatsapp-btn-type-preview .whatsapp-custom-upload-inline {
+	display: inline-block;
+	vertical-align: middle;
+    text-align: center;
+	margin: 0px 0px 0px 6px;
+    padding: 5px;
+}
+
+.whatsapp-btn-type-select-wrap .whatsapp-btn-type-preview .whatsapp-custom-upload-inline img {
+	display: inline-block;
+}
+
+.whatsapp-btn-type-select-wrap .whatsapp-btn-type-preview .whatsapp-custom-upload-inline .infinity23-upload-btn-style {
+	display: block;
+	margin: 6px 0px 0px 0px;
+	font-size: 11px;
+	min-height: 28px;
+	padding: 0px 10px;
+}
+
+/* --- custom url input (hidden, JS reads its value) --- */
+
+.infinity23-whatsapp-custom-url-hidden {
+	display: none;
+}
+
+/* ======= Section Cards ========
+==================================*/
+
+/* --- card wrap --- */
+
+.infinity23-warp .section-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 65px 30px 45px 30px;
+    margin: 0px 0px 20px 0px;
+    background: #fafafa;
+}
+
+.infinity23-warp .section-card:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* --- card toggle arrow --- */
+
+.infinity23-warp .section-card h2::before {
+    content: '\25BC';
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    font-size: 14px;
+    color: #3c434a;
+    vertical-align: middle;
+    margin: 0px 8px 0px 0px;
+    transition: transform 0.2s ease;
+}
+
+.infinity23-warp .section-card.card-collapsed h2::before {
+    transform: rotate(-90deg);
+}
+
+/* --- card title --- */
+
+.infinity23-warp .section-card h2 {
+    cursor: pointer;
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 12px 0px;
+    font-size: 18px;
+    color: #3c434a;
+    max-width: 600px;
+}
+
+.infinity23-warp .section-card h2:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 400px;
+    background: #ddd;
+    margin: 10px 0px 0px 0px;
+}
+
+.infinity23-warp .section-card h3 {
+    margin: 50px 0px 0px 0px;
+    padding: 0px 0px 12px 0px;
+    font-size: 15px;
+    color: #3c434a;
+}
+
+/* --- card body --- */
+
+.infinity23-warp .section-card .card-body {
+    display: block;
+}
+
+.infinity23-warp .section-card .card-body.collapsed {
+    display: none;
+}
+
+.infinity23-warp .section-card.card-collapsed {
+    padding: 65px 30px 30px 30px;
+    cursor: pointer;
+}
+
+.infinity23-warp .section-card.card-collapsed h2:after {
+    display: none;
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 500px) {
+
+    .infinity23-warp .section-card {
+        padding: 55px 20px 35px 20px;
+    }
+    
+    .infinity23-warp .section-card h2:after {
+        width: 90%;
+    }
+    
+}
+
+/* ======= Module Tabs (Global) ========
+==========================================*/
+
+/* --- tabs wrap --- */
+
+.infinity23-module-tabs-wrap {
+	margin: 0px 0px 25px 0px;
+}
+
+/* --- tab buttons --- */
+
+.infinity23-module-tabs {
+	display: inline-block;
+	margin: 20px 0px 0px 20px;
+	padding: 11px;
+	background: #f5f5f5;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.infinity23-module-tab-btn {
+	display: inline-block;
+	background: transparent;
+	color: #666;
+	border: none;
+	border-radius: 7px;
+	padding: 14px 26px;
+	margin: 0px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.infinity23-module-tab-btn.infinity23-module-tab-active {
+	background: #fff;
+	color: #111;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+/* --- external link tab (opens in a new tab, not a JS-switched tab) --- */
+
+.infinity23-module-tab-link {
+	display: inline-block;
+	background: transparent;
+	color: #666;
+	border: none;
+	border-radius: 7px;
+	padding: 14px 26px;
+	margin: 0px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+/* --- tab content --- */
+
+.infinity23-module-tab-hidden {
+	display: none;
+}
+
+.infinity23-module-tabs-wrap .infinity23-module-tab-content {
+	margin: 0px 0px 0px 0px;
+	padding: 35px 20px;
+	border: 1px solid #e3e3e3;
+	border-radius: 10px;
+	background: #fff;
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 600px) {
+
+	.infinity23-module-tabs {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		box-sizing: border-box;
+		margin: 20px 0px 0px 0px;
+		padding: 6px;
+		gap: 6px;
+	}
+
+	.infinity23-module-tab-btn {
+		flex: 1 1 120px;
+		text-align: center;
+		padding: 12px 10px;
+		margin: 0px;
+		font-size: 14px;
+	}
+
+	.infinity23-module-tabs-wrap .infinity23-module-tab-content {
+		padding: 25px 15px;
+	}
+
+}
+
+/* ======= Form Field Help Tooltips ========
+========================================*/
+
+.infinity23-warp .backtest-label-with-help {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.infinity23-warp .backtest-label-with-help label {
+    margin: 0;
+    line-height: 1;
+}
+
+.infinity23-warp .backtest-label-with-help .backtest-field-help-icon {
+    top: -5px;
+}
+
+.infinity23-warp .backtest-field-help-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: #a6aabd;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+    user-select: none;
+    position: relative;
+}
+
+.infinity23-warp .backtest-field-help-icon .data-help-content {
+    position: absolute;
+    background: white;
+    border: 2px solid #007bff;
+    border-radius: 6px;
+    padding: 15px 20px 15px 20px;
+    max-width: 400px;
+    min-width: 295px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    z-index: 10000;
+    display: none;
+    direction: ltr;
+    text-align: left;
+    line-height: 1.4;
+    font-size: 14px;
+    color: #333;
+    top: -40px;
+    left: 25px;
+    cursor: auto;
+    user-select: text !important;
+    font-weight: normal;
+}
+
+.infinity23-warp .backtest-field-help-icon .data-help-content.active {
+    display: block;
+}
+
+.infinity23-warp .backtest-field-help-icon .data-help-content strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.infinity23-warp .backtest-field-help-icon .data-help-content em {
+    font-style: italic;
+}
+
+.infinity23-warp .backtest-field-help-icon .data-help-content ul {
+    margin: 8px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    list-style: none;
+}
+
+.infinity23-warp .backtest-field-help-icon .data-help-content ul li {
+    padding: 3px 0px 3px 18px;
+    position: relative;
+    color: #444;
+}
+
+.infinity23-warp .backtest-field-help-icon .data-help-content ul li:last-child {
+    border-bottom: none;
+}
+
+.infinity23-warp .backtest-field-help-icon .data-help-content ul li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: #444;
+    border-radius: 50%;
+}
+
+/* --- code span --- */
+
+.infinity23-warp .backtest-field-help-icon .data-help-content .code {
+    display: inline-block;
+    background: #f0f4ff;
+    color: #1a56db;
+    font-family: monospace;
+    font-size: 13px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    border: 1px solid #c7d7f9;
+}
+
+.infinity23-warp .backtest-field-help-close {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 18px;
+    height: 18px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 18px;
+    text-align: center;
+    padding: 0;
+}
+
+/* ======= Line Numbered Textarea (Global) ========
+====================================================*/
+
+/* --- wrap --- */
+
+.infinity23-line-numbered-wrap {
+	position: relative;
+	border: 1px solid #ddd;
+}
+
+.infinity23-line-numbered-wrap:focus-within {
+	border: 1px solid #0a84ff;
+}
+
+/* --- numbers column --- */
+
+.infinity23-line-numbers {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	width: 26px;
+	overflow: hidden;
+	background: #f0f0f0;
+	border-right: 1px solid #ddd;
+	text-align: right;
+	font-family: monospace;
+	font-size: 12px;
+	line-height: 20px;
+	color: #999;
+	padding: 8px 4px 8px 0px;
+	box-sizing: border-box;
+}
+
+.infinity23-line-numbers span {
+	display: block;
+}
+
+/* --- textarea --- */
+
+.infinity23-line-numbered-textarea {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0px;
+	border: none;
+	outline: none;
+	padding: 8px 8px 8px 32px;
+	font-family: monospace;
+	font-size: 13px;
+	line-height: 20px;
+	resize: none;
+	white-space: pre;
+	overflow-x: auto;
+	overflow-y: auto;
+	min-height: 250px;
+}
+
+/* --- grows with content only when this class is present - see scripts.js --- */
+
+.infinity23-line-numbered-textarea.infinity23-textarea-adjustable {
+	overflow-y: hidden;
+}
+
+/* ======= Exclude IDs Rows ========
+=====================================*/
+
+/* --- rows visibility toggle --- */
+
+.infinity23-exclude-rows-wrap.infinity23-exclude-hidden {
+	display: none;
+}
+
+/* --- row wrap --- */
+
+.infinity23-exclude-ids-wrap {
+	margin: 10px 0px 0px 0px;
+}
+
+/* --- single row --- */
+
+.infinity23-exclude-id-row {
+	margin: 0px 0px 10px 0px;
+}
+
+.exclude-ids-lable {
+    margin: 20px 0px 0px 0px;
+}
+
+/* --- id input --- */
+
+.infinity23-exclude-id-row .infinity23-exclude-id-input {
+	vertical-align: middle;
+}
+
+.infinity23-exclude-id-row .infinity23-exclude-id-input::placeholder {
+	color: #a0a0a0;
+}
+
+/* --- page title label --- */
+
+.infinity23-exclude-id-row .infinity23-exclude-id-title {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px 10px 0px 10px;
+	font-size: 14px;
+	color: #333;
+	min-width: 200px;
+}
+
+.infinity23-exclude-id-row .infinity23-exclude-id-title.title-error {
+	color: #c0392b;
+}
+
+/* --- remove button --- */
+
+.infinity23-exclude-id-row .infinity23-exclude-id-remove {
+	vertical-align: middle;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0px 8px 0px 0px;
+	margin: 0px;
+}
+
+/* --- remove icon circle --- */
+
+.infinity23-exclude-id-row .infinity23-remove-icon {
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+	background: #e74c3c;
+	border-radius: 50%;
+	position: relative;
+}
+
+.infinity23-exclude-id-row .infinity23-remove-icon::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 9px;
+	height: 2px;
+	background: #fff;
+}
+
+/* --- add button --- */
+
+.infinity23-exclude-id-add {
+	background: transparent;
+	color: #1466d0;
+	border: 1px solid #1466d0;
+	border-radius: 3px;
+	padding: 13px 16px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: bold;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.infinity23-exclude-id-add:hover {
+	background: #f0f9ff;
+	color: #1153a9;
+    border: 1px solid #1153a9;
+}
+
+/* --- loading spinner --- */
+
+.infinity23-warp .infinity23-exclude-id-spinner {
+	display: inline-block;
+	vertical-align: middle;
+	width: 14px;
+	height: 14px;
+	border: 2px solid #d0d0d0;
+	border-top: 2px solid #1466d0;
+	border-radius: 50%;
+	animation: infinity23-exclude-id-spin 0.8s linear infinite;
+}
+
+@keyframes infinity23-exclude-id-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* ======= Menu Visibility Box ========
+========================================*/
+
+.infinity23-warp .infinity23-menu-visibility-box {
+	background: #ebfcff;
+	border: 1px solid #696969;
+	padding: 35px 20px;
+	margin: 20px 0px 20px 0px;
+}
+
+.infinity23-warp .infinity23-menu-visibility-box h3 {
+	margin: 0px 0px 10px 0px !important;
+}
+
+.infinity23-warp .infinity23-menu-visibility-box .form-line {
+	margin: 0px;
+}
+
+/* ======= Include Exclude Page ========
+=========================================*/
+
+/* --- card header --- */
+
+.include-exclude-warp .ie-card-header {
+	display: block;
+	position: relative;
+	margin: 0px 0px 0px 0px;
+}
+
+/* --- select all button --- */
+
+.include-exclude-warp .ie-select-all-btn {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background: transparent;
+	border: none;
+	padding: 0px;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: normal;
+	color: transparent;
+	text-decoration: none;
+}
+
+.include-exclude-warp .ie-select-all-btn .ie-btn-select,
+.include-exclude-warp .ie-select-all-btn .ie-btn-deselect {
+	color: #1466d0;
+	text-decoration: underline;
+    padding: 7px 2px 7px 2px;
+}
+
+.include-exclude-warp .ie-select-all-btn .ie-btn-sep {
+	color: #1466d0;
+	text-decoration: none;
+}
+
+.include-exclude-warp .ie-select-all-btn:hover {
+	color: #1153a9;
+}
+
+/* --- plugin row --- */
+
+.include-exclude-warp .section-card,
+.include-exclude-warp .section-card .card-body {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.include-exclude-warp .section-card > h2,
+.include-exclude-warp .section-card > h3,
+.include-exclude-warp .section-card > .ie-card-header,
+.include-exclude-warp .section-card > .infinity23-pro-notice,
+.include-exclude-warp .section-card .card-body > .infinity23-pro-notice,
+.include-exclude-warp .section-card .card-body > h3 {
+	width: 100%;
+	flex: 0 0 100%;
+}
+
+.include-exclude-warp .section-card h3 {
+	margin: 30px 0px 20px 0px;
+	padding: 0px;
+	font-size: 15px;
+	color: #3c434a;
+}
+
+.include-exclude-warp .section-card h3:first-of-type {
+	margin: 20px 0px 20px 0px;
+}
+
+.include-exclude-warp .ie-plugin-row {
+	margin: 0px 0px 20px 0px;
+	padding: 0px 10px;
+	box-sizing: border-box;
+	width: 33%;
+}
+
+/* --- toggle item --- */
+
+.include-exclude-warp .ie-toggle-item {
+	display: flex;
+	align-items: center;
+	padding: 20px 10px 20px 10px;
+	background: #f0f0f0;
+	border-radius: 10px;
+	border: 2px solid #d0d0d0;
+	cursor: pointer;
+	min-width: auto;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+}
+
+/* --- module icon --- */
+
+.include-exclude-warp .ie-module-icon {
+	display: block;
+	width: 66px;
+	height: 66px;
+	flex-shrink: 0;
+}
+
+.include-exclude-warp .ie-toggle-item.ie-toggle-active {
+	background: #eaf4ff;
+	border: 2px solid #0a84ff;
+}
+
+/* --- toggle circle --- */
+
+.include-exclude-warp .ie-toggle-circle {
+	display: block;
+	position: relative;
+	width: 54px;
+	height: 30px;
+	background: #c0c0c0;
+	border-radius: 15px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	flex-shrink: 0;
+	margin: 0px 5px 0px 5px;
+}
+
+.include-exclude-warp .ie-toggle-circle.active {
+	background: #0a84ff;
+}
+
+.include-exclude-warp .ie-toggle-circle::after {
+	content: '';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 24px;
+	height: 24px;
+	background: #ffffff;
+	border-radius: 50%;
+	transition: transform 0.3s ease;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.include-exclude-warp .ie-toggle-circle.active::after {
+	transform: translateX(24px);
+}
+
+/* --- toggle info --- */
+
+.include-exclude-warp .ie-toggle-info {
+	display: block;
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 0px 15px;
+}
+
+/* --- toggle title --- */
+
+.include-exclude-warp .ie-toggle-title {
+	display: block;
+	font-size: 16px;
+	font-weight: 700;
+	color: #333;
+	margin: 0px 0px 4px 0px;
+}
+
+/* --- toggle desc --- */
+
+.include-exclude-warp .ie-toggle-desc {
+	display: block;
+	font-size: 13px;
+	color: #666;
+	max-width: 340px;
+	line-height: 1.4;
+}
+
+/* --- module settings link --- */
+
+.include-exclude-warp .ie-toggle-title-wrap {
+	position: relative;
+	display: block;
+	vertical-align: middle;
+}
+
+.include-exclude-warp .ie-toggle-title-wrap .ie-toggle-title {
+	display: inline-block;
+}
+
+.include-exclude-warp .ie-module-settings-link {
+	display: none;
+	vertical-align: middle;
+	margin: -5px 0px 0px 0px;
+    padding: 2px 5px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #1466d0;
+	text-decoration: underline;
+}
+
+.include-exclude-warp .ie-toggle-item.ie-toggle-saved-on .ie-module-settings-link {
+	display: inline-block;
+}
+
+/* --- menu hidden badge --- */
+
+.include-exclude-warp .ie-menu-hidden-badge {
+	display: inline-block;
+	vertical-align: middle;
+	margin: -11px 0px 0px 6px;
+	padding: 2px 6px;
+	font-size: 10px;
+	font-weight: bold;
+	color: #8a6d00;
+	background: #fff3cd;
+	border: 1px solid #e6c800;
+	border-radius: 3px;
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 1600px) {
+
+	/* --- plugin row --- */
+
+	.include-exclude-warp .ie-plugin-row {
+		width: 49%;
+	}
+
+}
+
+@media only screen and (max-width: 1100px) {
+
+	/* --- plugin row --- */
+
+	.include-exclude-warp .ie-plugin-row {
+		width: 98%;
+	}
+
+	/* --- card header select all button --- */
+
+	.include-exclude-warp .ie-select-all-btn {
+		top: -35px;
+	}
+
+}
+
+@media only screen and (max-width: 550px) {
+
+	/* --- plugin row --- */
+
+	.include-exclude-warp .ie-plugin-row {
+		width: 100%;
+	}
+
+	/* --- toggle item stacked layout --- */
+
+	.include-exclude-warp .ie-toggle-item {
+		display: block;
+	}
+
+	/* --- toggle circle --- */
+
+	.include-exclude-warp .ie-toggle-circle {
+		margin: 0px auto 15px auto;
+	}
+
+	/* --- toggle info --- */
+
+	.include-exclude-warp .ie-toggle-info {
+		display: block;
+		padding: 0px;
+		text-align: center;
+	}
+
+	/* --- module icon --- */
+
+	.include-exclude-warp .ie-module-icon {
+		margin: 15px auto 0px auto;
+	}
+
+	/* --- settings link --- */
+
+	.include-exclude-warp .ie-module-settings-link {
+		display: block;
+		margin: 6px 0px 0px 0px;
+	}
+
+}
+
+/* ======= Floating Save Button ========
+========================================*/
+
+/* --- floating save button --- */
+
+#infinity23-floating-save-btn-wrap {
+	position: fixed;
+	bottom: 40px;
+	right: 50px;
+	background: #fff;
+	padding: 15px;
+	border: 1px solid #ccc;
+	display: none;
+}
+
+#infinity23-floating-save-btn-wrap.visible {
+	display: block;
+}
+
+#infinity23-floating-save-inner {
+	position: relative;
+}
+
+#infinity23-floating-save-close {
+	position: absolute;
+	top: -18px;
+	right: -18px;
+	width: 18px;
+	height: 18px;
+	background: #888;
+	color: #fff;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 18px;
+	text-align: center;
+	padding: 0;
+}
+
+#infinity23-floating-save-btn {
+	background: #4c4c4c;
+	color: #fff;
+	font-size: 13px;
+    letter-spacing: 0px;
+	font-weight: bold;
+	padding: 10px 18px 10px 18px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	display: block;
+}
+
+@media only screen and (max-width: 768px) {
+
+	#infinity23-floating-save-btn-wrap {
+		display: none !important;
+	}
+
+}
+
+/* ======= Reset Settings Button ========
+=========================================*/
+
+.infinity23-warp .infinity23-reset-wrap {
+	text-align: right;
+	margin: 120px 0px 0px 0px;
+	padding: 20px 0px 0px 0px;
+	border-top: 1px solid #ddd;
+}
+
+.infinity23-warp .infinity23-reset-btn {
+	color: #fff;
+	background: #c0392b;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 10px 20px;
+	cursor: pointer;
+	border: none;
+	border-radius: 4px;
+}
+
+/* ======= Pro Version Styles ========
+==================================*/
+
+/* --- pro title label --- */
+
+.infinity23-warp .pro-badge {
+	display: inline-block;
+	background: #ffcc4a;
+	color: #111;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 2px 7px;
+	border-radius: 3px;
+	vertical-align: middle;
+	margin-left: 8px;
+	letter-spacing: 0.5px;
+}
+
+/* --- pro title label - active (pro turned on) --- */
+
+.infinity23-warp .pro-badge.pro-badge-active {
+	background: #3fc95b;
+	color: #fff;
+}
+
+.pro-badge-free {
+	display: inline-block;
+	background: #00e14e;
+	color: #fff;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 2px 7px;
+	border-radius: 3px;
+	vertical-align: middle;
+	margin-left: 8px;
+	letter-spacing: 0.5px;
+}
+
+/* --- pro notice --- */
+
+.infinity23-warp .infinity23-pro-notice {
+	background: #fff8dc;
+	border: 1px solid #e6c800;
+	border-radius: 4px;
+	padding: 12px 16px;
+	margin: 10px 0px 40px 0px;
+	max-width: 100%;
+}
+
+.infinity23-warp .infinity23-pro-notice p {
+	margin: 0px;
+	padding: 0px;
+	color: #111;
+	font-size: 13px;
+    font-weight: normal;
+}
+
+/* --- pro locked fields (reduced opacity + hover tooltip) --- */
+
+.infinity23-warp .infinity23-pro-locked input:disabled,
+.infinity23-warp .infinity23-pro-locked select:disabled,
+.infinity23-warp .infinity23-pro-locked textarea:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.infinity23-warp .infinity23-pro-locked .infinity23-fb-checkbox:disabled + .infinity23-fb-toggle-circle {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.infinity23-pro-lock-tooltip {
+	display: none;
+	position: fixed;
+	z-index: 999999;
+	background: #111;
+	color: #fff;
+	font-size: 12px;
+	font-weight: normal;
+	padding: 6px 10px;
+	border-radius: 4px;
+	max-width: 170px;
+	direction: ltr;
+	text-align: left;
+	line-height: 1.4;
+}
+
+/* --- pro lock tooltip link --- */
+
+.infinity23-pro-lock-tooltip a {
+	color: #4db8ff;
+	text-decoration: underline;
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 900px) {
+
+	/* --- pro notice --- */
+
+	.infinity23-warp .infinity23-pro-notice {
+		background: #fff8dc;
+		border: 1px solid #e6c800;
+		border-radius: 4px;
+		padding: 12px 16px;
+		margin: 10px 0px 40px 0px;
+		max-width: 90%;
+	}
+
+}
+
+/* ======= Tag Manager ========
+==================================*/
+
+.tag-manager-warp h3 {
+	padding: 0px 0px 0px 0px !important;
+} 
+
+/* --- tag section title highlight --- */
+
+.infinity23-warp .infinity23-tagrow-title-mark {
+	background: #ffff00;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+/* --- reduce spacing between tag title and description --- */
+
+.infinity23-warp .infinity23-tagrow-desc {
+	margin: 4px 0px 10px 0px;
+}
+
+/* --- warning text --- */
+
+.infinity23-warp .infinity23-warning-text {
+	background: #ff0000;
+	color: #fff;
+	font-weight: bold;
+	padding: 8px 12px;
+	margin: 4px 0px 10px 0px;
+	display: inline-block;
+}
+
+/* --- repeating tag rows --- */
+
+.infinity23-warp .infinity23-tagrow-wrap {
+	margin: 15px 0px 10px 0px;
+}
+
+.infinity23-warp .infinity23-tagrow-item {
+	margin: 0px 0px 10px 0px;
+	position: relative;
+	padding: 0px 20px 0px 0px;
+	max-width: 97%;
+}
+
+.infinity23-warp .infinity23-tagrow-textarea {
+	width: 100% !important;
+	max-width: 100%  !important;
+	height: 250px;
+	display: block !important;
+	margin: 0px 0px 0px 0px;
+}
+
+.infinity23-warp .infinity23-tagrow-remove {
+	position: absolute;
+	top: 50%;
+	right: -10px;
+	margin: -15px 0px 0px 0px;
+	background: none;
+	border: none;
+	padding: 0px;
+	cursor: pointer;
+}
+
+.infinity23-warp .infinity23-tagrow-remove img {
+	display: block;
+	width: 20px;
+	height: auto;
+}
+
+.infinity23-warp .infinity23-tagrow-add {
+	background: transparent;
+	color: #1466d0;
+	border: 1px solid #1466d0;
+	border-radius: 3px;
+	padding: 10px 16px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: bold;
+	margin: 0px 0px 30px 0px;
+}
+
+/* --- two columns layout --- */
+
+.infinity23-warp .tag-manager-columns {
+	display: flex;
+	align-items: stretch;
+	margin: 0px 0px 20px 0px;
+}
+
+.infinity23-warp .tag-manager-columns {
+	gap: 1.5%;
+}
+
+.infinity23-warp .tag-manager-columns .tm-col-tags {
+	order: 2;
+	width: 64%;
+}
+
+.infinity23-warp .tag-manager-columns .tm-col-lazy {
+	order: 1;
+	width: 36%;
+}
+
+.infinity23-warp .tag-manager-columns .section-card {
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.infinity23-warp .tag-manager-columns .section-card {
+	margin: 0px 0px 0px 0px;
+}
+
+.infinity23-warp .tag-manager-columns .tm-col-lazy .very-long-input,
+.infinity23-warp .tag-manager-columns .tm-col-lazy .medium-input,
+.infinity23-warp .tag-manager-columns .tm-col-lazy .short-input,
+.infinity23-warp .tag-manager-columns .tm-col-lazy .infinity23-tagrow-textarea {
+	width: 100%;
+	max-width: 100%;
+}
+
+.infinity23-warp .tag-manager-columns .tm-col-lazy .section-card h2:after,
+.infinity23-warp .tag-manager-columns .tm-col-tags .section-card h2:after {
+	width: 90%;
+}
+
+.infinity23-warp .tag-manager-columns .tm-col-lazy .infinity23-exclude-id-title {
+	min-width: auto;
+}
+
+.infinity23-warp .tag-manager-columns .tm-col-lazy .infinity23-exclude-id-input {
+	width: 80px;
+	max-width: 80px;
+}
+
+/* --- lazy load option line --- */
+
+.infinity23-warp .infinity23-lazy-line {
+	padding: 20px 0px 10px 0px;
+	border-top: 1px solid #d3d3d3;
+}
+
+/* --- first lazy line has no line above it --- */
+
+.infinity23-warp .infinity23-lazy-line:first-of-type {
+	border-top: none;
+	padding-top: 0px;
+}
+
+/* --- storage notes textarea --- */
+
+.infinity23-warp .storage-notes-card .infinity23-tagrow-textarea {
+	height: 150px;
+}
+
+.infinity23-warp .infinity23-lazy-line label {
+	display: block;
+	font-size: 15px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 1100px) {
+
+	/* --- two columns layout --- */
+
+	.infinity23-warp .tag-manager-columns {
+		display: block;
+	}
+
+	.infinity23-warp .tag-manager-columns .tm-col-tags,
+	.infinity23-warp .tag-manager-columns .tm-col-lazy {
+		width: 100%;
+	}
+
+	.infinity23-warp .tag-manager-columns .section-card {
+		height: auto;
+		margin: 0px 0px 20px 0px;
+	}
+
+}
+
+/* ======= Modules Header Breadcrumb ========
+====================================*/
+
+.infinity23-modules-header {
+	direction: ltr;
+	text-align: left;
+	margin: 30px 30px 0px 30px;
+}
+
+.infinity23-breadcrumb {
+	font-size: 12px;
+	line-height: 1;
+	color: #888;
+}
+
+.infinity23-breadcrumb-root {
+	font-size: 12px;
+	line-height: 1;
+	color: #888;
+}
+
+.infinity23-breadcrumb-sep {
+	font-size: 12px;
+	line-height: 1;
+	margin: 0px 6px;
+	color: #b5b5b5;
+}
+
+.infinity23-breadcrumb-current {
+	font-size: 12px;
+	line-height: 1;
+	color: #555;
+}
+
+.infinity23-breadcrumb-link {
+	font-size: 12px;
+	line-height: 1;
+	vertical-align: baseline;
+	color: #888;
+    text-decoration: none;
+}
+
+.infinity23-breadcrumb-link:hover {
+	color: #555;
+    text-decoration: underline;
+}
+
+/* ======= Modules Footer ========
+====================================*/
+
+.infinity23-modules-footer {
+	direction: ltr;
+	background: #f7f7f7;
+	border: 1px solid #e5e5e5;
+	padding: 10px 15px;
+	margin: 15px 30px 30px 30px;
+	text-align: center;
+}
+
+.infinity23-modules-footer-heart {
+	color: #b5b5b5;
+	margin: 0px 6px 0px 0px;
+	font-size: 12px;
+}
+
+.infinity23-modules-footer-text {
+	color: #888;
+	font-size: 12px;
+	display: inline-block;
+	margin: 0px 10px 0px 0px;
+}
+
+.infinity23-modules-footer-btn {
+	display: inline-block;
+	color: #1466d0;
+	text-decoration: underline;
+	font-size: 12px;
+}
+
+/* ======= LLMs & Robots Editor ========
+==========================================*/
+
+/* --- file badge --- */
+
+.infinity23-warp .infinity23-txt-editor-badge {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	background: #0ea5e9;
+	color: #fff;
+	padding: 2px 8px;
+	border-radius: 20px;
+	vertical-align: middle;
+	margin: 0px 0px 0px 10px;
+}
+
+.infinity23-warp .infinity23-txt-editor-badge.exists {
+	background: #16a34a;
+}
+
+/* --- txt editor textarea --- */
+
+.infinity23-warp .infinity23-txt-editor-textarea {
+	width: 100%;
+	min-height: 500px;
+	font-size: 13px;
+	line-height: 1.65;
+	border: 1px solid #cbd5e1;
+	padding: 14px;
+	box-sizing: border-box;
+	color: #1e293b;
+	background: #fff;
+}
+
+.infinity23-warp .infinity23-txt-editor-textarea:focus {
+	outline: none;
+	border-color: #0073aa;
+	background: #fff;
+}
+
+/* --- filepath note --- */
+
+.infinity23-warp .infinity23-txt-editor-filepath-note {
+	font-size: 12px;
+	color: #94a3b8;
+	margin: 20px 0px 0px 0px;
+}
+
+/* --- delete button --- */
+
+.infinity23-warp .infinity23-txt-editor-delete-btn {
+	background: #dc2626;
+	color: #fff;
+	border: none;
+	padding: 6px 14px;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	margin: -20px 0px 0px 0px;
+	display: inline-block;
+	float: right;
+}
+
+/* ======= Plugins/Themes Downloader List ========
+======================================================*/
+
+/* --- items table --- */
+
+.plugins-and-themes-downloader-warp .infinity23-ptd-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 10px 0px 10px 0px;
+	font-size: 13px;
+}
+
+.plugins-and-themes-downloader-warp .infinity23-ptd-table th,
+.plugins-and-themes-downloader-warp .infinity23-ptd-table td {
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.plugins-and-themes-downloader-warp .infinity23-ptd-table thead tr {
+	background: #f0f0f0;
+}
+
+/* --- version and type columns --- */
+
+.plugins-and-themes-downloader-warp .infinity23-ptd-table .ptd-col-version {
+	width: 100px;
+}
+
+.update-manager-warp .infinity23-force-block-table .fb-col-version {
+	width: 160px;
+}
+
+/* --- download column --- */
+
+.plugins-and-themes-downloader-warp .infinity23-ptd-table .ptd-col-download {
+	width: 110px;
+	text-align: center;
+}
+
+.plugins-and-themes-downloader-warp .infinity23-ptd-download-btn {
+	display: inline-block;
+	background: transparent;
+	color: #1466d0;
+	border: 1px solid #1466d0;
+	border-radius: 3px;
+	padding: 6px 14px;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* --- icon column --- */
+
+.plugins-and-themes-downloader-warp .infinity23-ptd-table .ptd-col-icon {
+	width: 70px;
+	text-align: center;
+}
+
+.plugins-and-themes-downloader-warp .infinity23-ptd-table .ptd-col-icon img {
+	width: 60px;
+	height: 60px;
+	vertical-align: middle;
+}
+
+.plugins-and-themes-downloader-warp .infinity23-ptd-table .ptd-col-icon .infinity23-icon-placeholder {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	background: #f3f3f3;
+	border: 1px solid #d6d6d6;
+	vertical-align: middle;
+}
+
+/* ======= Cron Management ========
+====================================*/
+
+/* --- crons table --- */
+
+.cron-management-warp .infinity23-cron-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 10px 0px 10px 0px;
+	font-size: 13px;
+}
+
+.cron-management-warp .infinity23-cron-table th,
+.cron-management-warp .infinity23-cron-table td {
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.cron-management-warp .infinity23-cron-table thead tr {
+	background: #f0f0f0;
+}
+
+/* --- row states --- */
+
+.cron-management-warp .infinity23-cron-table tr.cron-row-overdue {
+	background: #fff5f5;
+}
+
+/* --- badges --- */
+
+.cron-management-warp .cron-badge {
+	display: inline-block;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 2px 7px;
+	border-radius: 3px;
+	margin: 0px 0px 0px 6px;
+	vertical-align: middle;
+}
+
+.cron-management-warp .cron-badge-overdue {
+	background: #e74c3c;
+	color: #fff;
+}
+
+.cron-management-warp .cron-badge-modified {
+	background: #6c5ce7;
+	color: #fff;
+}
+
+/* --- hook plugin name label --- */
+
+.cron-management-warp .cron-hook-plugin-name {
+	color: #999;
+}
+
+/* --- paused row --- */
+
+.cron-management-warp .infinity23-cron-table tr.cron-row-paused {
+	background: #ededed;
+}
+
+.cron-badge-paused {
+	background: #757575;
+	color: #fff;
+	font-size: 11px;
+	padding: 3px 9px;
+}
+
+/* --- next run column --- */
+
+.cron-management-warp .cron-next-run {
+	direction: ltr;
+	text-align: left;
+}
+
+/* --- actions column --- */
+
+.cron-management-warp .cron-action-btn {
+	display: inline-block;
+	background: transparent;
+	color: #1466d0;
+	border: 1px solid #1466d0;
+	border-radius: 3px;
+	padding: 5px 10px;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	margin: 0px 4px 4px 0px;
+}
+
+.cron-management-warp .cron-action-btn-run {
+	color: #1466d0;
+	border-color: #1466d0;
+}
+
+.cron-management-warp .cron-action-btn-disable {
+	color: #c0392b;
+	border-color: #c0392b;
+}
+
+.cron-management-warp .cron-action-btn-edit {
+	color: #1466d0;
+	border-color: #1466d0;
+}
+
+/* --- edit page --- */
+
+.cron-edit-page-warp .cron-edit-back-link {
+	display: inline-block;
+	margin: 0px 0px 20px 0px;
+	color: #1466d0;
+	text-decoration: none;
+	font-size: 13px;
+}
+
+.cron-edit-page-warp .cron-edit-details {
+	border: 1px solid #ddd;
+	background: #fafafa;
+	padding: 5px 20px;
+}
+
+.cron-edit-page-warp .cron-edit-row {
+	padding: 12px 0px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.cron-edit-page-warp .cron-edit-row:last-child {
+	border-bottom: none;
+}
+
+.cron-edit-page-warp .cron-edit-label {
+	display: inline-block;
+	width: 140px;
+	font-weight: bold;
+	color: #3c434a;
+	vertical-align: top;
+}
+
+.cron-edit-page-warp .cron-edit-value {
+	display: inline-block;
+	color: #3c434a;
+}
+
+.cron-edit-page-warp .cron-edit-more-actions-wrap {
+	margin-top: 140px;
+}
+
+/* --- empty state --- */
+
+.cron-management-warp .cron-table-empty {
+	padding: 20px;
+	text-align: center;
+	color: #888;
+	background: #f7f7f7;
+	border: 1px dashed #ddd;
+}
+
+/* --- log viewer tabs --- */
+
+.cron-management-warp .infinity23-cron-log-tabs {
+	margin: 0px 0px 20px 0px;
+}
+
+.cron-management-warp .infinity23-cron-log-tab {
+	display: inline-block;
+	padding: 6px 14px;
+	margin: 0px 6px 6px 0px;
+	background: #f0f0f0;
+	border: 1px solid #d0d0d0;
+	border-radius: 3px;
+	font-size: 12px;
+	color: #1466d0;
+	text-decoration: none;
+}
+
+.cron-management-warp .infinity23-cron-log-tab-active {
+	background: #0a84ff;
+	border: 1px solid #0a84ff;
+	color: #fff;
+}
+
+/* --- log content box --- */
+
+.cron-management-warp .infinity23-cron-log-content {
+	background: #1e1e1e;
+	color: #d4d4d4;
+	padding: 16px;
+	font-family: monospace;
+	font-size: 12px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	height: 70vh;
+	overflow: auto;
+	margin: 0px;
+}
+
+/* --- external cron url box --- */
+
+.cron-management-warp .cron-external-url-box {
+	direction: ltr;
+	text-align: left;
+	word-break: break-all;
+}
+
+/* ======= Redirect 301/302 ========
+====================================*/
+
+/* --- field example text --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-field-example {
+	font-size: 10px;
+	color: #8f8f8f;
+	margin: 0px 0px 0px 8px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* --- redirect folders / rows table --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 30px 0px 10px 0px;
+	font-size: 13px;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-table th,
+.redirect-301-and-302-warp .infinity23-redirect-table td {
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-table thead tr {
+	background: #f0f0f0;
+}
+
+/* --- action buttons --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-action-btn {
+	display: inline-block;
+	background: transparent;
+	color: #1466d0;
+	border: 1px solid #1466d0;
+	border-radius: 3px;
+	padding: 6px 12px;
+	font-size: 12px;
+	font-family: inherit;
+	line-height: normal;
+	box-sizing: border-box;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+	margin: 0px 4px 4px 0px;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-action-btn-danger {
+	color: #c0392b;
+	border-color: #c0392b;
+}
+
+/* --- remove folder inline form --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-remove-form {
+	display: inline-block;
+}
+
+/* --- row edit table inputs --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-row-table .input-260 {
+	width: 260px;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-row-table .input-160 {
+	width: 160px;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-row-table .short-input {
+	width: 70px;
+}
+
+/* --- table scroll wrap --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-table-wrap {
+	overflow: auto;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-row-table {
+	min-width: 1400px;
+}
+
+/* --- table column widths --- */
+
+.redirect-301-and-302-warp .redirect-th-id {
+	width: 80px;
+}
+
+.redirect-301-and-302-warp .redirect-th-count-folder {
+	width: 140px;
+}
+
+.redirect-301-and-302-warp .redirect-th-action {
+	width: 140px;
+	white-space: nowrap;
+}
+
+.redirect-301-and-302-warp .redirect-th-type {
+	width: 130px;
+}
+
+.redirect-301-and-302-warp .redirect-th-query {
+	width: 130px;
+}
+
+.redirect-301-and-302-warp .redirect-th-params {
+	width: 100px;
+}
+
+.redirect-301-and-302-warp .redirect-th-count-row {
+	width: 90px;
+}
+
+.redirect-301-and-302-warp .redirect-th-remove {
+	width: 80px;
+}
+
+/* --- hidden column --- */
+
+.redirect-301-and-302-warp .infinity23-col-hidden {
+	display: none;
+}
+
+/* --- redirects count analytics button --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-analytics-btn {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: normal;
+	padding: 4px 10px;
+	background: #f4f4f4;
+	color: #3c434a;
+	text-decoration: none;
+    margin: 0px 0px 1px 0px;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-analytics-label {
+	display: block;
+	margin: 4px 0px 0px 0px;
+	font-size: 11px;
+	color: #1466d0;
+	text-decoration: underline;
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 768px) {
+
+	/* --- table scroll wrap --- */
+
+	.redirect-301-and-302-warp .infinity23-redirect-table-wrap {
+		max-width: 100%;
+	}
+
+}
+
+/* --- reset wrap sits directly under the settings form on this page --- */
+
+.redirect-301-and-302-warp .infinity23-reset-wrap {
+	margin-top: 20px;
+}
+
+/* --- inline add folder button --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-inline-btn {
+	font-size: 15px;
+	padding: 10px 16px;
+	margin: -3px 0px 0px 5px;
+	vertical-align: middle;
+}
+
+/* --- pinned folder badge --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-favorite-badge {
+	vertical-align: middle;
+	margin: 0px 4px 0px -12px;
+	font-size: 13px;
+	color: #818181;
+    position: relative;
+    top: -3px;
+}
+
+/* --- view all redirects link --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-view-all-wrap {
+	margin: 25px 0px 0px 0px;
+	text-align: center;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-view-all-wrap .infinity23-redirect-action-btn {
+	display: inline-block;
+	background: transparent;
+	color: #1466d0;
+	border: 1px solid #1466d0;
+	border-radius: 3px;
+	padding: 13px 42px;
+	font-size: 13px;
+	font-family: inherit;
+	line-height: normal;
+	box-sizing: border-box;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+	margin: 21px 4px 4px 0px;
+}
+
+/* --- folder column width --- */
+
+.redirect-301-and-302-warp .redirect-th-folder {
+	width: 180px;
+}
+
+/* --- advance settings toggle --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-advance-btn {
+	display: block;
+	background: none;
+	color: #1466d0;
+	border: none;
+	padding: 0px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: normal;
+	text-decoration: underline;
+	margin: 20px 0px 15px 0px;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-advance-fields-wrap.infinity23-redirect-advance-hidden {
+	display: none;
+}
+
+/* --- add redirect tabs --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-add-tabs {
+	padding: 5px 0px 20px 0px;
+    display: block;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-add-tab-btn {
+	display: inline-block;
+	background: #fff;
+	color: #666;
+	border: 2px solid #d0d0d0;
+	border-radius: 4px;
+	padding: 12px 30px;
+	margin: 5px 10px 5px 0px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-add-tab-btn.infinity23-redirect-add-tab-active {
+	background: #0a84ff;
+	border: 2px solid #0a84ff;
+	color: #fff;
+}
+
+/* --- add redirect tab disabled (bulk redirect not active in settings) --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-add-tab-btn.infinity23-redirect-add-tab-disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-tab-hidden {
+	display: none;
+}
+
+/* --- bulk redirect columns --- */
+
+.redirect-301-and-302-warp .infinity23-redirect-bulk-columns {
+	margin: 10px 0px 20px 0px;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-bulk-columns:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-bulk-col {
+	float: left;
+	width: 41%;
+	margin: 0px 3% 0px 0px;
+	box-sizing: border-box;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-bulk-col-narrow {
+	width: 11%;
+	margin: 0px;
+}
+
+.redirect-301-and-302-warp .infinity23-redirect-bulk-col label {
+	display: block;
+	font-weight: bold;
+	margin: 0px 0px 8px 0px;
+}
+
+/* ======= Danger Zone ========
+================================*/
+
+.infinity23-danger-zone-warp {
+	direction: ltr;
+	max-width: 99%;
+	padding: 30px 50px;
+	margin: 400px 30px 30px 30px;
+	background: #fff0f0;
+	position: relative;
+	border: 4px solid #c0392b;
+}
+
+.infinity23-danger-zone-warp h2 {
+	cursor: pointer;
+	margin: 0px 0px 20px 0px;
+	padding: 0px 0px 12px 0px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #c0392b;
+	max-width: 600px;
+	border-bottom: 2px solid #e0b4b4;
+}
+
+.infinity23-danger-zone-warp h2::before {
+	content: '\25BC';
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	font-size: 14px;
+	color: #c0392b;
+	vertical-align: middle;
+	margin: 0px 8px 0px 0px;
+	transition: transform 0.2s ease;
+}
+
+.infinity23-danger-zone-warp.card-collapsed h2::before {
+	transform: rotate(-90deg);
+}
+
+.infinity23-danger-zone-warp.card-collapsed h2 {
+	margin: 0px;
+	padding: 0px;
+	border-bottom: none;
+}
+
+.infinity23-danger-zone-warp.card-collapsed {
+	cursor: pointer;
+}
+
+.infinity23-danger-zone-icon {
+	display: inline-block;
+	margin: 0px 6px 0px 0px;
+}
+
+.infinity23-danger-zone-warp .card-body {
+	display: block;
+}
+
+.infinity23-danger-zone-warp .card-body.collapsed {
+	display: none;
+}
+
+.infinity23-danger-zone-warp p {
+	color: #6b2020;
+}
+
+.infinity23-danger-zone-warp h3 {
+	margin: 25px 0px 10px 0px;
+	padding: 0px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #c0392b;
+}
+
+.infinity23-danger-zone-warp h3:first-of-type {
+	margin: 20px 0px 10px 0px;
+}
+
+.infinity23-danger-zone-warp ul {
+	padding: 0px 0px 0px 20px;
+	margin: 0px 0px 20px 0px;
+}
+
+.infinity23-danger-zone-warp ul li {
+	list-style: disc;
+	padding: 4px 0px;
+	color: #4a1616;
+}
+
+.infinity23-danger-zone-warp .highlight-text {
+	color: #c0392b;
+	font-weight: bold;
+}
+
+.infinity23-danger-zone-warp .infinity23-danger-zone-btn {
+	background: #c0392b;
+	font-size: 15px;
+	padding: 14px 26px;
+	margin: 10px 0px 0px 0px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 700px) {
+
+	.infinity23-danger-zone-warp {
+		max-width: 100%;
+		padding: 30px 30px;
+		margin: 0px 15px 15px 15px;
+	}
+
+}
+
+/* --- danger zone nested inside a log tab (smaller top margin) --- */
+
+.infinity23-warp .infinity23-log-danger-zone-warp {
+	margin: 260px 0px 0px 0px;
+}
+
+/* ======= Danger Zone ========
+================================*/
+
+/* --- card accent --- */
+
+.infinity23-warp .infinity23-danger-zone-card {
+	border: 1px solid #e0b4b4;
+	background: #fff7f7;
+}
+
+.infinity23-warp .infinity23-danger-zone-card h2 {
+	color: #c0392b;
+}
+
+.infinity23-warp .infinity23-danger-zone-card ul {
+	padding: 0px 0px 0px 20px;
+	margin: 10px 0px 20px 0px;
+}
+
+.infinity23-warp .infinity23-danger-zone-card ul li {
+	list-style: disc;
+	padding: 3px 0px;
+}
+
+/* ======= Advanced Border Field ========
+============================================*/
+
+/* --- hidden state - set by PHP on load, toggled by JS after that --- */
+
+.infinity23-warp .infinity23-border-hidden {
+	display: none;
+}
+
+/* --- details wrap --- */
+
+.infinity23-warp .infinity23-border-details-wrap {
+	margin: 8px 0px 15px 0px;
+	max-width: 400px;
+}
+
+/* --- color line - reuses the standard .background-color-line spacing --- */
+
+.infinity23-warp .infinity23-border-color-line {
+	margin: 18px 0px 18px 0px;
+}
+
+/* --- unit item, now last in the row - no right margin needed --- */
+
+.infinity23-warp .infinity23-border-unit-item-last {
+	margin: 0px 0px 0px 0px;
+}
+
+/* --- widths row: unit select, link button, top/right/bottom/left inputs all in one line --- */
+
+.infinity23-warp .infinity23-border-widths-wrap {
+	white-space: nowrap;
+    margin: 10px 0px 0px 0px;
+}
+
+/* --- shared box for the unit select and each width item so everything lines up --- */
+
+.infinity23-warp .infinity23-border-width-item {
+	display: inline-block;
+	vertical-align: top;
+	width: 56px;
+	margin: 0px 4px 0px 0px;
+	text-align: center;
+}
+
+.infinity23-warp .infinity23-border-width-item input,
+.infinity23-warp .infinity23-border-width-item select {
+	width: 100%;
+	height: 32px;
+	box-sizing: border-box;
+	text-align: center;
+	margin: 0px;
+	padding: 0px 2px;
+}
+
+.infinity23-warp .infinity23-border-width-item label {
+	display: block;
+	font-size: 10px;
+	color: #888;
+	margin: 4px 0px 0px 0px;
+}
+
+.infinity23-warp .infinity23-border-unit-item {
+	width: 45px;
+}
+
+.infinity23-warp .infinity23-border-unit-item select {
+	padding: 0px 14px 0px 2px;
+	text-align: center;
+	text-align-last: center;
+}
+
+/* --- link toggle button - same height as the inputs, sits right before Top --- */
+
+.infinity23-warp .infinity23-border-link-btn,
+.infinity23-warp .infinity23-radius-link-btn {
+	display: inline-block;
+	vertical-align: top;
+	width: 40px;
+	height: 40px;
+	margin: 0px 8px 0px 0px;
+	padding: 0px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	cursor: pointer;
+	text-align: center;
+	line-height: 30px;
+}
+
+.infinity23-warp .infinity23-border-link-btn.active,
+.infinity23-warp .infinity23-radius-link-btn.active {
+	background: #e7f3ff;
+	border: 1px solid #0a84ff;
+}
+
+.infinity23-warp .infinity23-border-link-icon:before {
+	content: '\1F517';
+	font-size: 13px;
+}
+
+/* ======= Button Position Field ========
+============================================*/
+
+/* --- tabs wrap --- */
+
+.infinity23-warp .infinity23-position-tabs-wrap {
+	margin: 8px 0px 15px 0px;
+	max-width: 500px;
+}
+
+/* --- tab buttons --- */
+
+.infinity23-warp .infinity23-position-tabs {
+	margin: 0px 0px 20px 0px;
+}
+
+.infinity23-warp .infinity23-position-tab-btn {
+	display: inline-block;
+	background: #fff;
+	color: #666;
+	border: 2px solid #d0d0d0;
+	border-radius: 4px;
+	padding: 10px 22px;
+	margin: 0px 10px 0px 0px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.infinity23-warp .infinity23-position-tab-btn.infinity23-position-tab-active {
+	background: #0a84ff;
+	border: 2px solid #0a84ff;
+	color: #fff;
+}
+
+/* --- tab icon --- */
+
+.infinity23-warp .infinity23-position-tab-icon {
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+	margin: 0px 4px 2px 0px;
+}
+
+/* --- tab content --- */
+
+.infinity23-warp .infinity23-position-tab-hidden {
+	display: none;
+}
+
+/* --- mobile custom position wrap --- */
+
+.infinity23-warp .infinity23-position-hidden {
+	display: none;
+}
+
+/* ======= Folders Organizer ========
+============================================*/
+
+/* --- add folder form --- */
+
+.infinity23-warp .fo-add-folder-form {
+	margin: 0px 0px 25px 0px;
+}
+
+/* --- sidebar wrap --- */
+
+.infinity23-warp .fo-sidebar-wrap {
+	max-width: 360px;
+	border: 1px solid #ddd;
+	background: #fafafa;
+	padding: 20px;
+}
+
+/* --- search input --- */
+
+.infinity23-warp .fo-search-input {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 8px 10px;
+	margin: 0px 0px 15px 0px;
+}
+
+/* --- all files row --- */
+
+.infinity23-warp .fo-all-files-row {
+	display: block;
+	background: #1466d0;
+	color: #fff;
+	padding: 10px 14px;
+	margin: 0px 0px 8px 0px;
+}
+
+.infinity23-warp .fo-all-files-row .fo-row-count {
+	float: right;
+}
+
+/* --- unassigned files row --- */
+
+.infinity23-warp .fo-unassigned-row {
+	display: block;
+	border: 1px solid #ddd;
+	background: #fff;
+	padding: 10px 14px;
+	margin: 0px 0px 20px 0px;
+}
+
+.infinity23-warp .fo-unassigned-row .fo-row-count {
+	float: right;
+	color: #888;
+}
+
+/* --- folder list --- */
+
+.infinity23-warp .fo-folder-list {
+	margin: 0px;
+}
+
+.infinity23-warp .fo-folder-empty {
+	color: #888;
+	font-size: 13px;
+}
+
+.infinity23-warp .fo-folder-row {
+	display: block;
+	border-bottom: 1px solid #eee;
+	padding: 8px 0px;
+}
+
+.infinity23-warp .fo-folder-rename-form {
+	display: block;
+	width: 100%;
+}
+
+.infinity23-warp .fo-folder-icon {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px 6px 0px 0px;
+}
+
+.infinity23-warp .fo-folder-name-input {
+	width: 55%;
+	vertical-align: middle;
+}
+
+.infinity23-warp .fo-folder-count {
+	float: right;
+	color: #888;
+	vertical-align: middle;
+}
+
+.infinity23-warp .fo-folder-save-btn {
+	margin: 0px 0px 0px 8px;
+	vertical-align: middle;
+}
+
+/* ======= Toggle Table (Global) ========
+==========================================*/
+
+/* --- table --- */
+
+.infinity23-warp .infinity23-force-block-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 10px 0px 10px 0px;
+	font-size: 13px;
+}
+
+.infinity23-warp .infinity23-force-block-table th,
+.infinity23-warp .infinity23-force-block-table td {
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.infinity23-warp .infinity23-force-block-table thead tr {
+	background: #f0f0f0;
+}
+
+/* --- block toggle column --- */
+
+.infinity23-warp .infinity23-force-block-table .fb-col-block {
+	width: 160px;
+	text-align: center;
+	font-size: 12px;
+}
+
+/* --- toggle switch --- */
+
+.infinity23-warp .infinity23-fb-toggle-label {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.infinity23-warp .infinity23-fb-toggle-label input[type="checkbox"] {
+	display: none;
+}
+
+.infinity23-warp .infinity23-fb-toggle-circle {
+	display: block;
+	position: relative;
+	width: 40px;
+	height: 22px;
+	background: #c0c0c0;
+	border-radius: 11px;
+	transition: background-color 0.3s ease;
+}
+
+.infinity23-warp .infinity23-fb-toggle-circle::after {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 18px;
+	height: 18px;
+	background: #ffffff;
+	border-radius: 50%;
+	transition: transform 0.3s ease;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.infinity23-warp .infinity23-fb-toggle-label input[type="checkbox"]:checked + .infinity23-fb-toggle-circle {
+	background: #0a84ff;
+}
+
+.infinity23-warp .infinity23-fb-toggle-label input[type="checkbox"]:checked + .infinity23-fb-toggle-circle::after {
+	transform: translateX(18px);
+}
+
+/* --- toggle switch (labeled On/Off variant) - add class infinity23-fb-toggle-labeled to the .infinity23-fb-toggle-label wrap to enable --- */
+
+.infinity23-warp .infinity23-fb-toggle-label.infinity23-fb-toggle-labeled .infinity23-fb-toggle-circle {
+	width: 50px;
+	height: 26px;
+	border-radius: 13px;
+}
+
+.infinity23-warp .infinity23-fb-toggle-label.infinity23-fb-toggle-labeled .infinity23-fb-toggle-circle::after {
+	content: 'Off';
+	top: 3px;
+	left: 3px;
+	width: 32px;
+	height: 20px;
+	padding: 0px;
+	color: #9e9292;
+	border-radius: 10px;
+	font-size: 9px;
+	font-weight: bold;
+	line-height: 20px;
+	white-space: nowrap;
+	text-align: center;
+	box-sizing: border-box;
+	transform: none;
+	transition: left 0.3s ease, width 0.3s ease;
+}
+
+.infinity23-warp .infinity23-fb-toggle-label.infinity23-fb-toggle-labeled input[type="checkbox"]:checked + .infinity23-fb-toggle-circle::after {
+	content: 'On';
+	left: 19px;
+	width: 28px;
+	color: #579ee9;
+	transform: none;
+}
+
+/* --- blocked row highlight --- */
+
+.infinity23-warp .infinity23-force-block-table tr.fb-row-blocked {
+	background: #fbe0e0;
+}
+
+.infinity23-warp .infinity23-force-block-table tr.fb-row-blocked td {
+	color: #8a1f1f;
+}
+
+/* --- icon column --- */
+
+.infinity23-warp .infinity23-force-block-table .fb-col-icon {
+	width: 40px;
+	text-align: center;
+}
+
+.infinity23-warp .infinity23-force-block-table .fb-col-icon img {
+	width: 60px;
+	height: 60px;
+	vertical-align: middle;
+}
+
+.infinity23-warp .infinity23-force-block-table .fb-col-icon .infinity23-icon-placeholder {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	background: #f3f3f3;
+	border: 1px solid #d6d6d6;
+	vertical-align: middle;
+}
+
+/* ======= Custom Post Types Toggle Table (Global) ========
+================================================================*/
+
+.infinity23-cpt-toggle-table {
+	max-width: 500px;
+}
+
+/* ======= Update Manager ========
+====================================*/
+
+/* --- centered subtitle --- */
+
+.update-manager-warp .infinity23-fb-centered-title {
+	margin: 50px auto 0px auto;
+}
+
+/* --- centered table wrap --- */
+
+.update-manager-warp .infinity23-fb-table-wrap {
+	margin: 0px auto 20px auto;
+}
+
+/* --- dimmed state when Ignore All Blocks is selected --- */
+
+.update-manager-warp .infinity23-fb-tables-wrap.infinity23-fb-tables-dimmed {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* ======= Email SMTP ========
+================================*/
+
+/* --- provider note hidden state - set by PHP on load, toggled by JS after that --- */
+
+.email-smtp-warp .infinity23-smtp-note-hidden {
+	display: none;
+}
+
+/* --- force from checkbox highlight --- */
+
+.email-smtp-warp .infinity23-force-from-highlight {
+	background: #e3e3e3;
+	border: 1px solid #aeaeae;
+	padding: 20px 15px;
+    display: inline-block;
+}
+
+.email-smtp-warp .infinity23-recommended-tag {
+	display: inline-block;
+	background: #0a84ff;
+	color: #fff;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 2px 7px;
+	border-radius: 3px;
+	vertical-align: middle;
+	margin: 0px 0px 0px 6px;
+}
+
+/* --- test connection button --- */
+
+.email-smtp-warp .infinity23-email-smtp-test-connection-btn {
+	background: transparent;
+	color: #1466d0;
+	border: 1px solid #1466d0;
+	border-radius: 3px;
+	padding: 10px 20px;
+	font-size: 13px;
+	font-weight: bold;
+	cursor: pointer;
+	margin: 20px 0px 10px 0px;
+}
+
+/* --- test connection result (smaller than the regular message box) --- */
+
+.email-smtp-warp .infinity23-connection-result {
+	padding: 10px 14px;
+	margin: 0px 0px 10px 0px;
+	border-radius: 4px;
+	font-size: 13px;
+	font-weight: 600;
+	white-space: pre-line;
+}
+
+.email-smtp-warp .infinity23-connection-result-success {
+	background: #0a84ff;
+	border: 1px solid #0a84ff;
+	color: #ffffff;
+}
+
+.email-smtp-warp .infinity23-connection-result-error {
+	background: #e74c3c;
+	border: 1px solid #e74c3c;
+	color: #ffffff;
+}
+
+/* --- larger headline for the test email success message (scoped to this
+module only - never touches the shared .infinity23-message font-size that
+every other module's success/error messages also use) --- */
+
+.email-smtp-warp .infinity23-test-result-headline {
+	display: block;
+	font-size: 20px;
+}
+
+/* --- advance settings toggle (test force sender settings) --- */
+
+.email-smtp-warp .infinity23-email-smtp-advance-btn {
+	display: block;
+	background: none;
+	color: #1466d0;
+	border: none;
+	padding: 0px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: normal;
+	text-decoration: underline;
+	margin: 20px 0px 15px 0px;
+}
+
+.email-smtp-warp .infinity23-email-smtp-advance-fields-wrap.infinity23-email-smtp-advance-hidden {
+	display: none;
+}
+
+/* --- small reasons list shown under a successful test email message --- */
+
+.email-smtp-warp .infinity23-test-result-reasons {
+	margin: 10px 0px 0px 0px;
+	padding: 0px 0px 0px 18px;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.email-smtp-warp .infinity23-test-result-reasons li {
+	list-style: disc;
+	padding: 2px 0px;
+}
+
+/* --- email log table --- */
+
+.email-smtp-warp .infinity23-email-log-table-wrap {
+	overflow: auto;
+}
+
+.email-smtp-warp .infinity23-email-log-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 30px 0px 10px 0px;
+	font-size: 13px;
+}
+
+.email-smtp-warp .infinity23-email-log-table th,
+.email-smtp-warp .infinity23-email-log-table td {
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.email-smtp-warp .infinity23-email-log-table thead tr {
+	background: #f0f0f0;
+}
+
+/* --- empty state --- */
+
+.email-smtp-warp .email-log-table-empty {
+	padding: 20px;
+	text-align: center;
+	color: #888;
+	background: #f7f7f7;
+	border: 1px dashed #ddd;
+	margin: 30px 0px 0px 0px;
+}
+
+/* --- row states --- */
+
+.email-smtp-warp .email-log-row-failed {
+	background: #fff5f5;
+}
+
+/* --- badges --- */
+
+.email-smtp-warp .email-log-badge {
+	display: inline-block;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 2px 7px;
+	border-radius: 3px;
+	vertical-align: middle;
+}
+
+.email-smtp-warp .email-log-badge-failed {
+	background: #e74c3c;
+	color: #fff;
+}
+
+.email-smtp-warp .email-log-badge-success {
+	background: #757575;
+	color: #fff;
+}
+
+/* --- action buttons --- */
+
+.email-smtp-warp .infinity23-email-log-action-btn {
+	display: inline-block;
+	background: transparent;
+	color: #1466d0;
+	border: 1px solid #1466d0;
+	border-radius: 3px;
+	padding: 5px 10px;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+	margin: 0px 4px 4px 0px;
+}
+
+.email-smtp-warp .infinity23-email-log-action-btn-danger {
+	color: #c0392b;
+	border-color: #c0392b;
+}
+
+/* --- log message view box --- */
+
+.email-smtp-warp .infinity23-email-log-message-content {
+	background: #f7f7f7;
+	border: 1px solid #ddd;
+	padding: 14px;
+	margin: 0px;
+	font-family: monospace;
+	font-size: 12px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	max-height: 400px;
+	overflow: auto;
+}
+
+/* --- html view frame --- */
+
+.email-smtp-warp .infinity23-email-log-html-frame {
+	width: 100%;
+	height: 400px;
+	border: 1px solid #ddd;
+	background: #fff;
+}
+
+/* ======= Button Type Field (Global) ========
+================================================*/
+
+/* --- inline field titles (tighter spacing than the default section-card h3) --- */
+
+.infinity23-warp .infinity23-inline-h3 {
+	margin: 20px 0px 10px 0px !important;
+	padding: 0px !important;
+}
+
+/* --- display type tabs --- */
+
+.infinity23-warp .infinity23-button-type-tabs {
+	padding: 5px 0px 40px 0px;
+	display: block;
+}
+
+.infinity23-warp .infinity23-button-type-tab-btn {
+	display: inline-block;
+	background: #fff;
+	color: #666;
+	border: 2px solid #d0d0d0;
+	border-radius: 4px;
+	padding: 12px 30px;
+	margin: 5px 10px 5px 0px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.infinity23-warp .infinity23-button-type-tab-btn.infinity23-button-type-tab-active {
+	background: #0a84ff;
+	border: 2px solid #0a84ff;
+	color: #fff;
+}
+
+/* ======= Page Notes - All Notes Table ========
+==================================*/
+
+/* --- group title --- */
+
+.notes-warp .infinity23-notes-all-group h3 {
+	font-size: 28px;
+	margin: 120px 0px 10px 0px;
+}
+
+/* --- table --- */
+
+.notes-warp .infinity23-notes-all-table {
+	max-width: 1000px;
+	table-layout: fixed;
+	border-collapse: collapse;
+	margin: 10px 0px 20px 0px;
+	font-size: 13px;
+}
+
+.notes-warp .infinity23-notes-all-table th,
+.notes-warp .infinity23-notes-all-table td {
+	padding: 10px 12px;
+	border: 1px solid #ddd;
+	text-align: left;
+	vertical-align: top;
+}
+
+.notes-warp .infinity23-notes-all-row td {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.notes-warp .infinity23-notes-all-row-removing td {
+	background: #fbe0e0;
+	transition: background 0.3s ease;
+}
+
+.notes-warp .infinity23-notes-all-table thead tr {
+	background: #f0f0f0;
+}
+
+/* --- column widths --- */
+
+.notes-warp .infinity23-notes-all-table .notes-col-title-head,
+.notes-warp .infinity23-notes-all-table .notes-col-title {
+	width: 300px;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+.notes-warp .infinity23-notes-all-view-wrap {
+	width: 80%;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-notes-head,
+.notes-warp .infinity23-notes-all-table .notes-col-preview {
+	width: 500px;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-actions-head,
+.notes-warp .infinity23-notes-all-table .notes-col-actions {
+	width: 120px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-actions .infinity23-notes-all-action-btn {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0px 0px 16px 0px;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-actions .infinity23-notes-all-action-btn:last-child {
+	margin: 0px;
+}
+
+/* --- note preview cell - matches the dashboard widget width, and forces the
+reused note widget's own Save button to always show here since there is no
+outer post form to trigger the normal save_post save path --- */
+
+.notes-warp .infinity23-notes-all-table .notes-col-preview {
+	white-space: normal;
+	max-width: 500px;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-preview .infinity23-notes-save-btn {
+	display: inline-block;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-preview .infinity23-notes-add-btn {
+	display: none;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-preview .infinity23-notes-save-btn {
+	margin: 5px 0px 10px 0px;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-preview .infinity23-notes-all-cancel-edit-btn {
+	display: block;
+	width: 70%;
+	box-sizing: border-box;
+	text-align: center;
+	margin: 0px auto 0px auto;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-preview .infinity23-note-remove {
+	display: none;
+}
+
+.notes-warp .infinity23-notes-all-table .notes-col-preview .infinity23-notes-wrap.infinity23-notes-all-multiple .infinity23-note-remove {
+	display: block;
+}
+
+/* --- collapsed view - each note gets its own bordered box, similar to the
+textarea style, plus an Edit button that reveals the full widget --- */
+
+.notes-warp .infinity23-notes-all-view-text {
+	white-space: pre-wrap;
+	line-height: 1.9;
+	background: #f4f4f4;
+	border: 1px solid #ddd;
+	padding: 16px 18px;
+	margin: 15px 0px 15px 0px;
+}
+
+.notes-warp .infinity23-notes-all-action-btn {
+	display: inline-block;
+	background: transparent;
+	color: #1466d0;
+	border: 1px solid #1466d0;
+	border-radius: 3px;
+	padding: 6px 12px;
+	font-size: 12px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+/* --- danger action button (Remove Note / Remove X Notes) - same red outline style used across every other module --- */
+
+.notes-warp .infinity23-notes-all-action-btn-danger {
+	color: #c0392b;
+	border: 1px solid #c0392b;
+}
+
+
+/* ======= Show All Pages Table ========
+==========================================*/
+
+.infinity23-all-pages-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 10px 0px 20px 0px;
+	font-size: 13px;
+	table-layout: fixed;
+}
+
+.infinity23-all-pages-table .sap-col-num   { width: 20px; }
+.infinity23-all-pages-table .sap-col-date  { width: 70px; }
+.infinity23-all-pages-table .sap-col-id    { width: 60px; }
+.infinity23-all-pages-table .sap-col-title { width: 220px; }
+.infinity23-all-pages-table .sap-col-url   { width: auto; }
+.infinity23-all-pages-table .sap-col-seo   { width: auto; }
+.infinity23-all-pages-table .sap-col-edit  { width: 70px; }
+
+.infinity23-all-pages-table thead tr {
+	background: #f0f0f0;
+}
+
+.infinity23-all-pages-table th,
+.infinity23-all-pages-table td {
+	padding: 12px 14px;
+	border: 1px solid #ddd;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.infinity23-all-pages-table th {
+	font-weight: 700;
+	color: #3c434a;
+}
+
+.infinity23-all-pages-table tr:nth-child(even) {
+	background: #f9f9f9;
+}
+
+.infinity23-all-pages-table .sap-col-date {
+	white-space: nowrap;
+}
+
+.infinity23-all-pages-table .sap-col-url {
+	word-break: break-all;
+}
+
+.infinity23-all-pages-table .sap-col-edit {
+	white-space: nowrap;
+}
+
+.show-all-pages-warp .section-card h3 {
+	margin: 200px 0px 10px 0px;
+}
+
+.show-all-pages-warp .section-card h3:first-of-type {
+	margin: 30px 0px 10px 0px;
+}
+
+/* --- column toggles --- */
+
+.sap-col-toggles {
+	margin: 0px 0px 20px 0px;
+	padding: 10px 14px;
+	background: #f7f7f7;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.sap-col-toggles label {
+	display: inline-block;
+	margin: 4px 14px 4px 0px;
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.sap-col-toggles input[type="checkbox"] {
+	margin: 0px 5px 0px 0px;
+	cursor: pointer;
+}
+
+/* --- seo column --- */
+
+.infinity23-all-pages-table .sap-col-seo {
+	min-width: 180px;
+	max-width: 360px;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.infinity23-all-pages-table .sap-col-seo .seo-nofollow,
+.infinity23-all-pages-table .sap-col-seo .seo-noindex {
+	color: #9e9e9e;
+	font-weight: normal;
+	padding: 2px 5px;
+	border: 1px solid #d2d2d2;
+	border-radius: 5px;
+	margin: 7px 3px 7px 0px;
+	font-size: 10px;
+	display: inline-block;
+	user-select: none;
+}
+
+/* --- display filter title --- */
+
+.sap-filters-wrap .sap-filters-title {
+	display: block;
+	margin: 0px 0px 6px 2px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #666;
+}
+
+/* --- edit column --- */
+
+.infinity23-all-pages-table .sap-col-edit a {
+	display: block;
+	padding: 2px 0px;
+}
+
+.infinity23-all-pages-table .sap-col-edit a::before {
+	content: '- ';
+}
+
+/* --- hide row button --- */
+
+.infinity23-all-pages-table .sap-col-hide-btn {
+	width: 26px;
+	padding: 0px 4px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.infinity23-all-pages-table .sap-hide-row {
+	cursor: pointer;
+	opacity: 0.35;
+	font-size: 14px;
+	line-height: 1;
+	background: none;
+	border: none;
+	padding: 0px;
+	user-select: none;
+}
+
+/* --- column & row visibility (CSS-based toggle) --- */
+
+.show-all-pages-warp.hide-sap-col-num .sap-col-num { display: none; }
+.show-all-pages-warp.hide-sap-col-date .sap-col-date { display: none; }
+.show-all-pages-warp.hide-sap-col-id .sap-col-id { display: none; }
+.show-all-pages-warp.hide-sap-col-title .sap-col-title { display: none; }
+.show-all-pages-warp.hide-sap-col-url .sap-col-url { display: none; }
+.show-all-pages-warp.hide-sap-col-seo .sap-col-seo { display: none; }
+.show-all-pages-warp.hide-sap-col-edit .sap-col-edit { display: none; }
+.show-all-pages-warp.hide-sap-col-hide-btn .sap-col-hide-btn { display: none; }
+
+/* --- seo filter form --- */
+
+.sap-col-toggles .sap-seo-filter-form {
+	display: inline-block;
+	margin: 0px;
+}
+
+/* --- pagination --- */
+
+.sap-pagination {
+	margin: 10px 0px 10px 0px;
+	padding: 8px 0px 8px 0px;
+}
+
+.sap-pagination .sap-pagination-info {
+	display: inline-block;
+	margin: 0px 12px 0px 0px;
+	font-size: 12px;
+	color: #666;
+}
+
+.sap-pagination .sap-page-link {
+	display: inline-block;
+	margin: 0px 4px 0px 0px;
+	padding: 4px 9px 4px 9px;
+	border: 1px solid #c3c4c7;
+	background: #fff;
+	color: #1466d0;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+.sap-pagination .sap-page-current {
+	display: inline-block;
+	margin: 0px 4px 0px 0px;
+	padding: 4px 9px 4px 9px;
+	border: 1px solid #0078c4;
+	background: #0078c4;
+	color: #fff;
+	font-size: 12px;
+}
+
+/* --- filter rows --- */
+
+.sap-col-toggles {
+	padding: 14px 14px 14px 14px;
+}
+
+.sap-col-toggles .sap-filter-row {
+	padding: 8px 0px 8px 0px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.sap-col-toggles .sap-filter-row:last-child {
+	border-bottom: none;
+	padding: 8px 0px 0px 0px;
+}
+
+.sap-col-toggles .sap-filter-row:first-child {
+	padding: 0px 0px 8px 0px;
+}
+
+.sap-col-toggles .sap-row-label {
+	display: inline-block;
+	width: 130px;
+	vertical-align: middle;
+	font-size: 12px;
+	font-weight: bold;
+	color: #666;
+}
+
+.sap-col-toggles .sap-row-items {
+	display: inline-block;
+	vertical-align: middle;
+	width: calc(100% - 140px);
+}
+
+/* --- entries per page --- */
+
+.sap-col-toggles .sap-per-page-form {
+	display: inline-block;
+	margin: 0px;
+}
+
+.sap-col-toggles .sap-per-page-form select {
+	vertical-align: middle;
+	margin: 0px;
+}
+
+/* --- ajax section loading state --- */
+
+.sap-section-wrap.sap-loading {
+	opacity: 0.4;
+}
+
+/* --- open / collapse all buttons --- */
+
+.sap-filters-wrap {
+	margin: 50px 0px 50px 0px;
+}
+
+.sap-cards-buttons {
+	margin: 0px 0px 10px 0px;
+	text-align: right;
+}
+
+.sap-cards-buttons .sap-per-page-form {
+	display: inline-block;
+	margin: 0px 14px 0px 0px;
+}
+
+.sap-cards-buttons .sap-per-page-form label {
+	font-size: 12px;
+	color: #666;
+	margin: 0px 4px 0px 0px;
+	vertical-align: middle;
+}
+
+.sap-cards-buttons .sap-per-page-form select {
+	vertical-align: middle;
+	margin: 0px;
+	font-size: 12px;
+}
+
+.sap-cards-buttons button {
+	background: none;
+	color: #1466d0;
+	border: none;
+	padding: 0px;
+	cursor: pointer;
+	font-size: 12px;
+	text-decoration: underline;
+	margin: 0px;
+}
+
+.sap-cards-buttons .sap-buttons-sep {
+	color: #b5b5b5;
+	font-size: 12px;
+	margin: 0px 6px;
+}
+
+/* --- search submit button --- */
+
+.sap-search-form .sap-search-submit {
+	font-size: 15px;
+	padding: 8px 16px;
+	margin: 0px 0px 0px 10px;
+}
+
+/* --- totals box --- */
+
+.show-all-pages-warp .sap-totals-box {
+	margin: 0px 0px 20px 0px;
+	padding: 15px 20px;
+	background: #0078c4;
+	color: #fff;
+	border-radius: 4px;
+}
+
+.show-all-pages-warp .sap-totals-box h2 {
+	color: #fff;
+	margin: 0px 0px 6px 0px;
+	font-size: 20px;
+}
+
+.show-all-pages-warp .sap-totals-box .sap-totals-number {
+	color: #f6ff00;
+}
+
+.show-all-pages-warp .sap-totals-box .sap-totals-line {
+	display: block;
+	color: #fff;
+	margin: 4px 0px 0px 0px;
+}
+
+.show-all-pages-warp .sap-totals-box .sap-totals-line-first {
+	margin: 0px 0px 0px 0px;
+}
+
+.show-all-pages-warp .sap-totals-box .sap-totals-cpt {
+	direction: ltr;
+	text-align: left;
+}
+
+.show-all-pages-warp .sap-totals-box .sap-cpt-item {
+	display: inline-block;
+	direction: ltr;
+}
+
+.show-all-pages-warp .sap-totals-box .sap-cpt-sep {
+	display: inline-block;
+	margin: 0px 4px;
+}
+
+/* ======= Mobile Contact Line - Title Icons ========
+========================================================*/
+
+.mobile-contact-line-warp .infinity23-mcl-title-icon {
+	display: inline-block;
+	vertical-align: middle;
+	width: 37px;
+	height: 32px;
+	background-color: #4c4c4c;
+	margin: 0px 0px 0px 10px;
+	overflow: hidden;
+	text-align: center;
+}
+
+.mobile-contact-line-warp .infinity23-mcl-title-icon-inner {
+	display: inline-block;
+	width: 45px;
+	height: 47px;
+	margin: 2px 0px 0px 4px;
+	background-repeat: no-repeat;
+	transform: scale(0.6);
+	transform-origin: top left;
+}
+
+.mobile-contact-line-warp .infinity23-mcl-title-icon-phone {
+	background-image: url(../../../images/mobile-contact-line/mobile-line.svg);
+	background-position: 5px 6px;
+	background-size: 410px 38px;
+}
+
+.mobile-contact-line-warp .infinity23-mcl-title-icon-email {
+	background-image: url(../../../images/mobile-contact-line/mobile-line.svg);
+	background-position: -65px 7px;
+	background-size: 410px 38px;
+}
+
+.mobile-contact-line-warp .infinity23-mcl-title-icon-whatsapp {
+	background-image: url(../../../images/mobile-contact-line/mobile-line.svg);
+	background-position: -148px 4px;
+	background-size: 410px 38px;
+}
+
+.mobile-contact-line-warp .infinity23-mcl-title-icon-chat {
+	background-image: url(../../../images/mobile-contact-line/mobile-line.svg);
+	background-position: -226px 5px;
+	background-size: 410px 38px;
+}
+
+/* ======= Page Notes - All Notes Table Direction ========
+=============================================================*/
+
+.notes-warp .infinity23-notes-all-table-direction-wrap[dir="rtl"] .infinity23-notes-all-table th,
+.notes-warp .infinity23-notes-all-table-direction-wrap[dir="rtl"] .infinity23-notes-all-table td {
+	text-align: right;
+}
+
+.notes-warp .infinity23-notes-all-table-direction-wrap[dir="ltr"] .infinity23-notes-all-table th,
+.notes-warp .infinity23-notes-all-table-direction-wrap[dir="ltr"] .infinity23-notes-all-table td {
+	text-align: left;
+}
+

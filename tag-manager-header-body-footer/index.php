@@ -1,141 +1,156 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 <?php
 /*
-Plugin Name: YYDevelopment - Tag Manager - Header, Body And Footer
-Plugin URI:  https://www.yydevelopment.com/yydevelopment-wordpress-plugins/
-Description: Simple plugin that allow you add head, body and footer codes for google tag manager, analytics & facebook pixel codes.
-Version:     3.6.2
+Plugin Name: Infinity23 (Formerly Tag Manager) - One Plugin That Replaces All The Rest
+Plugin URI:  https://infinity23.com/
+Description: All in one that replace all the rest. Infinity23 combines accessibility, page & post notes, tag manager, floating contact buttons, back to top, phone button, WhatsApp button, mobile contact line, privacy policy cookie bar, show all pages and more into a single plugin.
+Version:     4.0.0
+Requires at least: 5.3
+Requires PHP: 7.1
 Author:      YYDevelopment
 Author URI:  https://www.yydevelopment.com/
+License:     GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tag-manager-header-body-footer
 Domain Path: /languages
 */
 
-include_once( dirname(__FILE__) . '/include/settings.php' );
-require_once( dirname(__FILE__) . '/include/functions.php' );
+// ===================================================================================================
+// Infinity23 - All In One plugin main file
+// ===================================================================================================
 
-// ================================================
-// Adding lanagues support to the plugin
-// ================================================
+	// ==================================================
+	// Plugin version - read dynamically from the plugin header above
+	// ==================================================
 
-function tag_manager_header_body_footer_languages() {
-    load_plugin_textdomain( 'tag-manager-header-body-footer', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
-}
+	if( !defined( 'INFINITY23_VERSION' ) ) {
+		$infinity23_plugin_header = get_file_data( __FILE__, array( 'Version' => 'Version' ) );
+		define( 'INFINITY23_VERSION', $infinity23_plugin_header['Version'] );
+	} // if( !defined( 'INFINITY23_VERSION' ) ) {
 
-add_action( 'plugins_loaded', 'tag_manager_header_body_footer_languages' );
+	// ==================================================
+	// Include main settings and functions
+	// ==================================================
 
-// ================================================
-// update the database on plugin update
-// ================================================
+	require( dirname(__FILE__) . "/include/settings.php" );
+	require( dirname(__FILE__) . "/include/functions/main-functions.php" );
+	require( dirname(__FILE__) . "/include/reset-plugin-data.php" );
 
-$yydev_tag_manager_data_plugin_version = '3.5.0'; // plugin version
-$yydev_tag_manager_data_slug_name = 'yydev_tag_manager_version'; // the name we save on the wp_options database
-$db_plugin_version = get_option($yydev_tag_manager_data_slug_name);
+	// ==================================================
+	// install the plugin database when plugin activated via infinity23_install_database() function
+	// if the user remove the database we will also install if from infinity23_load_all_options() function
+	// ==================================================
 
-// checking if the plugin version exists on the dabase
-// and checking if the database version equal to the plugin version $yydev_tag_manager_data_plugin_version
-// if( empty($db_plugin_version) || ($yydev_tag_manager_data_plugin_version != $db_plugin_version) ) {
+	register_activation_hook( __FILE__, 'infinity23_install_database' );
 
-    // update the plugin database if it's required
-    $yydev_tag_manager_database_update = 1;
-    require_once( dirname(__FILE__) . '/include/install.php' );
+	// ==================================================
+	// Load all options into global cache once
+	// ==================================================
 
-    // update the plugin version in the database
-    update_option($yydev_tag_manager_data_slug_name, $yydev_tag_manager_data_plugin_version);
+	// loading the main settings data from the database
+	infinity23_load_all_options();
 
-// } // if( empty($db_plugin_version) || ($yydev_tag_manager_data_plugin_version != $db_plugin_version) ) {
+	// set a value to globally get all the data
+	global $infinity23_options_cache;
 
-// ================================================
-// Get all the data and ouput it into the page
-// ================================================
+	// ==================================================
+	// Checking plugin version, and update it if needed
+	// ==================================================
 
-$yydev_tagmanager_settings = yydev_tagmanager_get_plugin_settings($wp_options_name);
+	$infinity23_plugin_version = infinity23_get_option('plugin_version');
 
-// ================================================
-// Creating Database when the plugin is activated
-// ================================================
+	if( $infinity23_plugin_version !== INFINITY23_VERSION ) {
+		infinity23_update_option( 'plugin_version', INFINITY23_VERSION );
+	} // if( $infinity23_plugin_version !== INFINITY23_VERSION ) {
 
-function yydev_tagmanager_create_database() {
-    
-    require_once( dirname(__FILE__) . '/include/install.php' );
-        
-} // function yydev_tagmanager_create_database() {
+	// ==================================================
+	// Register the Essential main menu
+	// ==================================================
 
-register_activation_hook(__FILE__, 'yydev_tagmanager_create_database');
+	add_action( 'admin_menu', function() {
 
-// ================================================
-// display the plugin we have create on the wordpress post blog and pages
-// ================================================
+		add_menu_page(
+			'Essential',
+			'Essential',
+			'manage_options',
+			'essential-include-exclude',
+			function() {},
+			// infinity23_plugin_url( 'images/favicon.png' ),
+			file_exists( dirname(__FILE__) . '/images/favicon.svg' ) ? 'data:image/svg+xml;base64,' . base64_encode( file_get_contents( dirname(__FILE__) . '/images/favicon.svg' ) ) : 'dashicons-admin-generic',
+			59
+		);
 
-// function that will output the code to the page
-function output_yydev_tagmanager() {
+	} ); // add_action( 'admin_menu'
 
-    include( dirname(__FILE__) . '/include/style.php' );
-    include( dirname(__FILE__) . '/include/script.php' );
-    include( dirname(__FILE__) . '/include/admin-output.php' );
+	// ==================================================
+	// Add a "Settings" link on the Plugins page that redirects to the Include / Exclude page
+	// ==================================================
 
-} // function output_yydev_tagmanager() {
+	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function( $links ) {
 
-// ================================================
-// choosing if the load from the main page or under the settings
-// ================================================
+		$settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=essential-include-exclude' ) ) . '">Settings</a>';
+		array_unshift( $links, $settings_link );
 
-if( intval($yydev_tagmanager_settings['add_plugin_to_settings']) == 1 ) {
+		return $links;
 
-    // in case of settings menu loading
-    function register_yydev_tagmanager_page() {
-        add_options_page( __('Tag Manager', 'tag-manager-header-body-footer'), __('Tag Manager', 'tag-manager-header-body-footer'), 'manage_options', 'yydev-tag-manager', 'output_yydev_tagmanager');
-    } // function register_yydev_tagmanager_page() {
+	} ); // add_filter( 'plugin_action_links_'
 
-    add_action('admin_menu', 'register_yydev_tagmanager_page');
+	// ==================================================
+	// Load the Essential loader file
+	// ==================================================
 
-} else { // if( intval($yydev_tagmanager_settings['add_plugin_to_settings']) == 1 ) {
+	add_action( 'init', function() {
+		require_once( dirname(__FILE__) . "/essential/loader.php" );
+	} );
 
-    // in case of main menu loading
-    function register_yydev_tagmanager_page() {
-        $wordpress_icon_path = plugins_url( 'images/favicon.png', __FILE__ );
-        add_menu_page( __('Tag Manager', 'tag-manager-header-body-footer'), __('Tag Manager', 'tag-manager-header-body-footer'), 'manage_options', 'yydev-tag-manager', 'output_yydev_tagmanager',  $wordpress_icon_path, 500);
-    } // function register_yydev_tagmanager_page() {
+	// ==================================================
+	// Load the Notices system (admin only)
+	// ==================================================
 
-    add_action('admin_menu', 'register_yydev_tagmanager_page');
+	if( is_admin() ) {
+		add_action( 'init', function() {
+			require( dirname(__FILE__) . "/notices/loader.php" );
+		} );
+	} // if( is_admin() ) {
 
-} // if( intval($yydev_tagmanager_settings['add_plugin_to_settings']) == 1 ) {
+	// ==================================================
+	// Load the Dashboard Global Assets - CSS/JS loaded on every wp-admin
+	// screen, not just the plugin's own settings pages
+	// ==================================================
 
-// ================================================
-// Add settings page to the plugin menu info
-// ================================================
+	if( is_admin() ) {
+		add_action( 'admin_enqueue_scripts', function() {
 
-function yydev_tagmanager_add_settings_link( $actions, $plugin_file ) {
+			wp_register_style( 'infinity23_dashboard_style', infinity23_plugin_url( 'css-and-js/back-end/wp-dashboard-global/infinity23-dashboard-style.css' ), array(), INFINITY23_VERSION );
+			wp_enqueue_style( 'infinity23_dashboard_style' );
 
-	static $plugin;
+			wp_register_script( 'infinity23_dashboard_js', infinity23_plugin_url( 'css-and-js/back-end/wp-dashboard-global/infinity23-dashboard-js.js' ), array( 'jquery' ), INFINITY23_VERSION, true );
+			wp_enqueue_script( 'infinity23_dashboard_js' );
 
-    if (!isset($plugin)) { $plugin = plugin_basename(__FILE__); }
-    if ($plugin == $plugin_file) {
-        $admin_page_url = esc_url( menu_page_url( 'yydev-tag-manager', false ) );
-        $settings = array('settings' => '<a href="' . $admin_page_url . '">Settings</a>');
-        $donate = array('donate' => '<a target="_blank" href="https://www.yydevelopment.com/coffee-break/?plugin=tag-manager-header-body-footer">Donate</a>');
-        $actions = array_merge($settings, $donate, $actions);
-    } // if ($plugin == $plugin_file) {
+			// hide each module's own sidebar link when that module's hide_menu
+			// setting is on - one combined rule instead of a separate
+			// admin_head echo per module
+			global $infinity23_hidden_menu_slugs;
 
-    return $actions;
+			if( !empty( $infinity23_hidden_menu_slugs ) ) {
 
-} //function yydev_tagmanager_add_settings_link( $actions, $plugin_file ) {
+				$infinity23_hide_menu_css = '';
 
-add_filter( 'plugin_action_links', 'yydev_tagmanager_add_settings_link', 10, 5 );
+				foreach( $infinity23_hidden_menu_slugs as $infinity23_hidden_slug ) {
+					$infinity23_hide_menu_css .= '#adminmenu a[href*="page=' . esc_attr( $infinity23_hidden_slug ) . '"] { display: none; } ';
+				} // foreach( $infinity23_hidden_menu_slugs as $infinity23_hidden_slug ) {
 
-// ================================================
-// output the data into the page front end
-// we are loading the page after init to get user role
-// ================================================
+				wp_add_inline_style( 'infinity23_dashboard_style', $infinity23_hide_menu_css );
 
-if( !is_admin() ) {
-    include( dirname(__FILE__) . '/include/front-end-output.php' );
-} // if( !is_admin() ) {
+			} // if( !empty( $infinity23_hidden_menu_slugs ) ) {
 
-// ================================================
-// including admin notices flie
-// ================================================
+		} ); // add_action( 'admin_enqueue_scripts'
+	} // if( is_admin() ) {
 
-if( is_admin() ) {
-	include_once( dirname(__FILE__) . '/notices.php' );
-} // if( is_admin() ) {
+	// ==================================================
+	// Load the Cron system
+	// ==================================================
+
+	require( dirname(__FILE__) . "/cron/loader.php" );
+
+?>

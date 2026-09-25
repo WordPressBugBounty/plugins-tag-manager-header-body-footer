@@ -1,0 +1,720 @@
+/* ======= Go Pro Menu Link (Global) ========
+================================================*/
+
+/* --- go pro sidebar button --- */
+
+#adminmenu .infinity23-menu-go-pro {
+	display: inline-block;
+	background: #edd50f;
+	color: #000;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 6px 12px;
+    margin: 3px 0px;
+	border-radius: 5px;
+	letter-spacing: 0.5px;
+}
+
+/* ======= Notices (Global) ========
+=====================================*/
+
+.infinity23-notice-style {
+	direction: ltr;
+	text-align: left;
+	position: relative;
+	padding: 15px 20px 15px 20px;
+	margin: 15px 15px 35px 15px !important;
+	min-height: 70px;
+	border: none;
+}
+
+.infinity23-notice-style .infinity23-notice-close-x {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	width: 25px;
+	height: 25px;
+	background: #f00;
+	color: #fff !important;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 25px;
+	font-size: 15px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.infinity23-notice-style .infinity23-notice-icon {
+	max-width: 70px;
+	float: left;
+	margin: 0px 15px 10px 0px;
+}
+
+.infinity23-notice-style .infinity23-notice-icon img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+.infinity23-notice-style .infinity23-notice-message {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #3c434a;
+}
+
+/* --- notice main heading --- */
+
+.infinity23-notice-style .infinity23-notice-message p.infinity23-notice-title {
+	font-size: 19px;
+	font-weight: bold;
+	line-height: 1.4;
+	color: #1d2327;
+	margin: 0px 0px 10px 0px;
+}
+
+.infinity23-notice-style .infinity23-notice-message p.infinity23-notice-title mark {
+	background: #ffe600;
+	color: #1d2327;
+	padding: 0px 5px 0px 5px;
+}
+
+/* --- notice bolder inline text --- */
+
+.infinity23-notice-style .infinity23-notice-message .infinity23-notice-strong-text {
+	font-size: 16px;
+	font-weight: bold;
+	color: #000;
+}
+
+.infinity23-notice-style .infinity23-notice-buttons {
+	margin: 10px 0px 10px 0px;
+}
+
+.infinity23-notice-style .infinity23-notice-buttons a.infinity23-notice-btn {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 4px 6px 4px 0px;
+	padding: 8px 14px;
+	background: #fff;
+	color: #0c4fa5;
+	border: 1px solid #0c4fa5;
+	border-radius: 3px;
+	font-size: 13px;
+	font-weight: normal;
+	text-decoration: none;
+	white-space: normal;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.infinity23-notice-style .infinity23-notice-buttons a.infinity23-notice-btn-danger {
+	background: #fff;
+	color: #d60000;
+	border-color: #d60000;
+}
+
+.infinity23-notice-style .infinity23-notice-buttons a.infinity23-notice-btn-primary {
+	background: #0c4fa5;
+	color: #fff;
+	border-color: #0c4fa5;
+}
+
+/* the one button on a notice that has to stand out more than the primary one */
+.infinity23-notice-style .infinity23-notice-buttons a.infinity23-notice-btn-strong {
+	font-weight: bold;
+	font-size: 14px;
+	padding: 10px 18px;
+}
+
+/* ---------------------------------
+----------------- Mobile
+--------------------------------- */
+
+@media only screen and (max-width: 600px) {
+
+	.infinity23-notice-style .infinity23-notice-buttons a.infinity23-notice-btn {
+		display: block;
+		width: 100%;
+		margin: 6px 0px 6px 0px;
+		text-align: center;
+		font-size: 15px;
+		line-height: 24px;
+		padding: 9px 10px;
+	}
+
+}
+
+.infinity23-notice-style .infinity23-notice-bottom-name {
+	color: #fff;
+	background: #8f8f8f;
+	padding: 3px 10px 3px 10px;
+	position: absolute;
+	bottom: -20px;
+	right: 10px;
+	font-size: 12px;
+	font-weight: bold;
+	border-radius: 0px 0px 3px 3px;
+}
+
+/* ======= RTL/LTR Admin Bar Button (Global) ========
+========================================================*/
+
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr.infinity23-rtl-ltr-non-default > .ab-item {
+	background: #707070;
+	color: #fff;
+}
+
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr > .ab-item:focus,
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr > .ab-item:active {
+	background: transparent;
+	color: #eee;
+	box-shadow: none;
+	outline: none;
+}
+
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr.infinity23-rtl-ltr-non-default > .ab-item:focus,
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr.infinity23-rtl-ltr-non-default > .ab-item:active {
+	background: #707070;
+	color: #fff;
+}
+
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr > .ab-item:hover .ab-icon:before,
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr > .ab-item:focus .ab-icon:before,
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr > .ab-item:active .ab-icon:before,
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr.hover > .ab-item .ab-icon:before {
+	color: #eee !important;
+}
+
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr .infinity23-rtl-ltr-title-wrap {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center;
+	direction: ltr;
+}
+
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr .infinity23-rtl-ltr-icon {
+	order: 1 !important;
+	position: relative;
+	top: 0px;
+	margin: 0px 6px 0px 0px !important;
+	float: none !important;
+}
+
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr .infinity23-rtl-ltr-label {
+	order: 2 !important;
+	display: inline-block;
+}
+
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr .infinity23-rtl-ltr-icon-only .infinity23-rtl-ltr-icon {
+	margin: 0px !important;
+	top: 2px;
+}
+
+#wpadminbar #wp-admin-bar-infinity23-rtl-ltr.infinity23-rtl-ltr-icon-only-item > .ab-item {
+	padding: 0px 8px !important;
+}
+
+
+/* ======= Show Pages IDs Column Width (Global) ========
+============================================================*/
+
+th#show_id_num {
+	width: 55px;
+}
+
+/* ======= Plugins/Themes Downloader - Theme Download Badge ========
+========================================================================*/
+
+.theme-actions .infinity23-ptd-theme-badge {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 6px 10px;
+	background: #fff;
+	border: 1px solid #1466d0;
+	color: #1466d0;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 3px;
+}
+
+/* ======= Page Notes - Meta Box / Dashboard Widget ========
+================================================================*/
+
+.infinity23-notes-wrap {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+.infinity23-notes-wrap .infinity23-note-item {
+	max-width: 90%;
+	position: relative;
+	margin: 5px auto;
+}
+
+.infinity23-notes-wrap .infinity23-note-item textarea {
+	width: 99%;
+	max-width: 99%;
+	margin: 10px 0px 0px 0px;
+	height: 200px;
+}
+
+.infinity23-notes-wrap .infinity23-note-item textarea.direction-ltr {
+	direction: ltr;
+}
+
+.infinity23-notes-wrap .infinity23-note-item textarea.direction-rtl {
+	direction: rtl;
+}
+
+.infinity23-notes-wrap .infinity23-note-item textarea.infinity23-textarea-adjustable {
+	overflow-y: hidden;
+}
+
+.infinity23-notes-wrap .infinity23-note-item.infinity23-note-not-active {
+	display: none;
+}
+
+.infinity23-notes-wrap .infinity23-note-created {
+	display: block;
+	font-size: 11px;
+	color: #999;
+	margin: 0px 0px 4px 0px;
+}
+
+.infinity23-notes-wrap .infinity23-note-remove {
+	position: absolute;
+	right: -21px;
+	top: 50%;
+	width: 18px;
+	cursor: pointer;
+	display: block;
+}
+
+.infinity23-notes-wrap .infinity23-note-direction {
+	position: absolute;
+	left: -21px;
+	top: 57%;
+	width: 18px;
+	cursor: pointer;
+	display: block;
+}
+
+.infinity23-notes-wrap .infinity23-note-separator {
+	position: absolute;
+	left: -21px;
+	top: 43%;
+	width: 18px;
+	cursor: pointer;
+	display: block;
+}
+
+.infinity23-notes-wrap .infinity23-notes-add-btn {
+	display: inline-block;
+	width: 70%;
+	text-align: center;
+	padding: 8px 20px 8px 20px;
+	margin: 15px auto 15px;
+	background: transparent;
+	border: 1px solid #d5d5d5;
+	color: #0073aa;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+.infinity23-notes-wrap .direction-ltr {
+	direction: ltr;
+}
+
+.infinity23-notes-wrap .infinity23-notes-save-btn {
+	display: none;
+	width: 70%;
+	text-align: center;
+	padding: 8px 20px 8px 20px;
+	margin: 0px auto 15px;
+	background: #0073aa;
+	border: 1px solid #d5d5d5;
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+.infinity23-notes-wrap .infinity23-notes-save-btn.infinity23-notes-dashboard-save {
+	display: inline-block;
+}
+
+.infinity23-notes-wrap .infinity23-notes-save-btn.infinity23-saving {
+	background: #a1a1a1;
+	border-color: #a1a1a1;
+	cursor: default;
+}
+
+.infinity23-notes-wrap .infinity23-notes-ajax-msg {
+	display: none;
+	text-align: center;
+	padding: 5px 0px;
+	font-size: 12px;
+	color: #0073aa;
+}
+
+/* ======= Update Manager - Ignore Mode Notice (Global) ========
+====================================================================*/
+
+.infinity23-um-ignore-notice {
+	direction: ltr;
+	text-align: left;
+	padding: 16px 20px;
+	margin: 15px 15px 15px 15px !important;
+	border-left: 6px solid #d63638;
+	background: #fff5f5;
+}
+
+.infinity23-um-ignore-notice .infinity23-um-ignore-notice-title {
+	display: block;
+	margin: 0px 0px 8px 0px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #d63638;
+}
+
+.infinity23-um-ignore-notice p {
+	margin: 0px 0px 6px 0px;
+	font-size: 13px;
+	color: #3c434a;
+}
+
+.infinity23-um-ignore-notice p:last-child {
+	margin: 0px;
+}
+
+.infinity23-um-ignore-notice a {
+	font-weight: bold;
+	color: #1466d0;
+	text-decoration: underline;
+}
+
+/* ======= Folders Organizer - Shared Sidebar ========
+=========================================================*/
+
+/* --- flex wrap - flexbox is required here: a fluid list-table column next to a fixed-width sticky sidebar cannot be built with float, since float and position:sticky do not combine reliably --- */
+
+body.infinity23-fo-has-sidebar .infinity23-fo-media-flex-wrap {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+	direction: ltr;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* --- restore the native WordPress content column's own reading direction - the wrap above is forced to ltr only to control the sidebar's left/right ordering --- */
+
+body.rtl.infinity23-fo-has-sidebar .infinity23-fo-media-flex-wrap #posts-filter {
+	direction: rtl;
+}
+
+/* --- sidebar wrap - fixed width flex item, sticky so it stays in view while scrolling. width/flex-basis is dynamic (saved sidebar width setting), attached separately via wp_add_inline_style() --- */
+
+body.infinity23-fo-has-sidebar .infinity23-fo-media-sidebar {
+	direction: ltr;
+	text-align: left;
+	background: #fafafa;
+	border: 1px solid #ddd;
+	padding: 15px;
+	box-sizing: border-box;
+	margin-top: 12px;
+	position: sticky;
+	top: calc(var(--wp-admin--admin-bar--height, 32px) + 10px);
+	height: calc(100vh - var(--wp-admin--admin-bar--height, 32px) - 20px);
+	overflow-y: auto;
+	z-index: 9;
+}
+
+/* --- list table column - the other flex item, takes the remaining width --- */
+
+body.infinity23-fo-has-sidebar .infinity23-fo-media-flex-wrap #posts-filter {
+	flex: 1 1 auto;
+	min-width: 0;
+	margin: 0 !important;
+}
+
+/* --- row --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row {
+	display: block;
+	position: relative;
+	padding: 8px 36px 8px 10px;
+	margin: 0px 0px 6px 0px;
+	background: #fff;
+	border: 1px solid #ddd;
+	color: #333;
+	text-decoration: none;
+	font-size: 13px;
+	box-sizing: border-box;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-active {
+	background: #1466d0;
+	border-color: #1466d0;
+	color: #fff;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-icon {
+	display: inline;
+	margin: 0px 4px 0px 0px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-label {
+	display: inline;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-count {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	color: #888;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-active .infinity23-fo-media-row-count {
+	color: #e0ecff;
+}
+
+/* --- row wrap (row link + edit button) --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-wrap {
+	position: relative;
+	margin: 0px 0px 6px 0px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-wrap .infinity23-fo-media-row {
+	margin: 0px;
+	padding-right: 60px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-wrap .infinity23-fo-media-row-count {
+	right: 30px;
+}
+
+/* --- edit button --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-edit-btn {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	color: #888;
+	padding: 0px;
+	z-index: 2;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-wrap-editing .infinity23-fo-media-row-edit-btn {
+	display: none;
+}
+
+/* --- rename form --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-rename-form {
+	display: none;
+	padding: 8px 10px;
+	background: #fff;
+	border: 1px solid #1466d0;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-wrap-editing .infinity23-fo-media-row {
+	display: none;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-row-wrap-editing .infinity23-fo-rename-form {
+	display: block;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-rename-input {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0px 0px 6px 0px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-rename-save-btn,
+.infinity23-fo-media-sidebar .infinity23-fo-rename-cancel-btn {
+	display: inline-block;
+	box-sizing: border-box;
+	height: 26px !important;
+	min-height: 26px !important;
+	line-height: 24px !important;
+	font-size: 11px !important;
+	padding: 0px 8px !important;
+	margin: 0px 4px 0px 0px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-rename-status {
+	font-size: 11px;
+	color: #888;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-rename-divider {
+	height: 1px;
+	background: #ddd;
+	margin: 10px 0px 10px 0px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-rename-delete-btn {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 11px;
+	padding: 6px 8px;
+	background: #fff;
+	color: #c0392b;
+	border: 1px solid #c0392b;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+/* --- folder list --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-folder-list {
+	margin: 0px 0px 0px 0px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-folder-empty {
+	font-size: 12px;
+	color: #888;
+}
+
+/* --- add folder form --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-add-folder {
+	margin: 0px 0px 15px 0px;
+}
+
+/* --- status message + spinner - self contained on this screen, does not depend on the global style.css --- */
+
+body.infinity23-fo-has-sidebar .infinity23-fo-add-folder-status {
+	display: block;
+	margin: 8px 0px 0px 0px;
+	font-size: 11px;
+	color: #888;
+}
+
+body.infinity23-fo-has-sidebar .infinity23-fo-add-folder-status .infinity23-fo-add-folder-spinner,
+body.infinity23-fo-has-sidebar .infinity23-fo-rename-status .infinity23-fo-add-folder-spinner,
+body.infinity23-fo-has-sidebar .infinity23-fo-move-status .infinity23-fo-add-folder-spinner {
+	display: inline-block;
+	vertical-align: middle;
+	width: 14px;
+	height: 14px;
+	border: 2px solid #d0d0d0;
+	border-top: 2px solid #1466d0;
+	border-radius: 50%;
+	animation: infinity23-fo-add-folder-spin 0.8s linear infinite;
+	margin: 0px 4px 0px 0px;
+}
+
+@keyframes infinity23-fo-add-folder-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-add-folder-title {
+	display: block;
+	font-size: 11px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: #888;
+	margin: 0px 0px 8px 0px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-add-folder-row {
+	white-space: nowrap;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-add-folder-row input[type="text"] {
+	display: inline-block;
+	width: calc(100% - 40px);
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-add-folder-btn {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	margin-left: 6px;
+	box-sizing: border-box;
+	vertical-align: middle;
+	background: #1466d0;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	font-size: 18px;
+	line-height: 32px;
+	text-align: center;
+	padding: 0px;
+	cursor: pointer;
+}
+
+/* --- section separator --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-media-sidebar-sep {
+	height: 1px;
+	background: #ddd;
+	margin: 15px 0px;
+}
+
+/* --- move / remove selected controls --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-move-selected {
+	margin: 20px 0px 0px 0px;
+	padding: 15px 0px 0px 0px;
+	border-top: 1px solid #ddd;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-move-selected label {
+	display: block;
+	font-size: 12px;
+	margin: 0px 0px 6px 0px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-move-selected select {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0px 0px 6px 0px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-move-selected button {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0px 0px 6px 0px;
+	font-size: 12px;
+	white-space: normal;
+	line-height: 1.4;
+	padding: 8px 6px;
+}
+
+.infinity23-fo-media-sidebar .infinity23-fo-move-status {
+	display: block;
+	font-size: 11px;
+	color: #888;
+}
