@@ -648,6 +648,22 @@ body.infinity23-fo-has-sidebar .infinity23-fo-move-status .infinity23-fo-add-fol
 	white-space: nowrap;
 }
 
+/* --- folders count in the title --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-add-folder-title .infinity23-fo-folder-count-wrap {
+	font-weight: normal;
+}
+
+/* --- free folders limit notice --- */
+
+.infinity23-fo-media-sidebar .infinity23-fo-folder-limit-notice {
+	display: block;
+	margin: 8px 0px 0px 0px;
+	font-size: 11px;
+	line-height: 1.5;
+	color: #888;
+}
+
 .infinity23-fo-media-sidebar .infinity23-fo-add-folder-row input[type="text"] {
 	display: inline-block;
 	width: calc(100% - 40px);

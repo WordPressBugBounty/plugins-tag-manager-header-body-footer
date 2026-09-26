@@ -663,7 +663,7 @@
 		$infinity23_cron_mgmt_active_tab = 'settings';
 	} // if( !in_array( $infinity23_cron_mgmt_active_tab, array( 'settings', 'logs' ), true ) ) {
 
-	$infinity23_cron_mgmt_tab_settings_url = esc_url( add_query_arg( 'cron_tab', 'settings' ) );
+	$infinity23_cron_mgmt_tab_settings_url = esc_url( add_query_arg( 'cron_tab', 'settings', remove_query_arg( array( 'cron_log_view', 'infinity23_cron_log_nonce' ) ) ) );
 	$infinity23_cron_mgmt_tab_logs_url = esc_url( add_query_arg( 'cron_tab', 'logs' ) );
 
 ?>
@@ -759,6 +759,8 @@
 					?
 				</div><!--backtest-field-help-icon-->
 			</div><!--form-line-->
+
+			<p class="infinity23-notice-text">Note: we do not recommend keeping cron logs for more than a few weeks, since the log files can grow large and take up space on your server.</p>
 
 		</div><!--section-card-->
 
@@ -958,6 +960,13 @@
 							<?php } // foreach( $infinity23_cron_mgmt_log_files_list as $infinity23_cron_mgmt_log_file_item ) { ?>
 
 						</tbody>
+						<tfoot>
+							<tr>
+								<td><strong>Total</strong></td>
+								<td><strong><?php echo esc_html( infinity23_cron_mgmt_format_log_size( array_sum( wp_list_pluck( $infinity23_cron_mgmt_log_files_list, 'size' ) ) ) ); ?></strong></td>
+								<td></td>
+							</tr>
+						</tfoot>
 					</table>
 
 				<?php } // if( $infinity23_cron_log_view_content !== null ) { ?>

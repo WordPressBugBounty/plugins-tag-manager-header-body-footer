@@ -478,6 +478,20 @@ jQuery(document).ready(function($) {
 	}); // $('#infinity23-fo-new-folder-name').on('keydown'
 
 	// --------------------------------------
+	// update the folders count in the Add New Folder title
+	// --------------------------------------
+
+	function infinity23FoUpdateFolderCount() {
+
+		var $count = $('.infinity23-fo-folder-count');
+
+		if( !$count.length ) { return; }
+
+		$count.text( $('.infinity23-fo-media-folder-list .infinity23-fo-media-row-wrap').not('.infinity23-fo-media-row-template').length );
+
+	} // function infinity23FoUpdateFolderCount() {
+
+	// --------------------------------------
 	// add new folder via ajax
 	// --------------------------------------
 
@@ -514,6 +528,8 @@ jQuery(document).ready(function($) {
 
 				var $newOption = $('<option></option>').attr('value', response.data.folder_id).text(response.data.folder_name);
 				$('#infinity23-fo-move-select').append($newOption);
+
+				infinity23FoUpdateFolderCount();
 
 			} else {
 				$('#infinity23-fo-add-folder-status').text('');
@@ -715,6 +731,8 @@ jQuery(document).ready(function($) {
 
 				$wrap.remove();
 				$('#infinity23-fo-move-select option[value="' + folderId + '"]').remove();
+
+				infinity23FoUpdateFolderCount();
 
 				if( $('.infinity23-fo-media-folder-list .infinity23-fo-media-row-wrap').not('.infinity23-fo-media-row-template').length === 0 ) {
 					$('.infinity23-fo-media-folder-list').append('<p class="infinity23-fo-media-folder-empty">No folders yet.</p>');

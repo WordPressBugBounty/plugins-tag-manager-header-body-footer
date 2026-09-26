@@ -1011,8 +1011,6 @@
 
 	<?php } // if( class_exists( 'woocommerce' ) ) { ?>
 
-<!-- remove this code from the page -->
-
 </div><!--infinity23-warp-->
 
 <?php infinity23_modules_footer(); ?>

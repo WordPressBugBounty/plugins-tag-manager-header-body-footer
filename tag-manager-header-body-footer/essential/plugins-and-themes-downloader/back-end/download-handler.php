@@ -5,6 +5,8 @@
     // Plugins/Themes Downloader - download links, ZIP creation and secure streaming
     // ===========================================================================
 
+    global $infinity23_ptd_enable_plugins, $infinity23_ptd_enable_themes;
+
     include( dirname(__FILE__) . "/../default-values.php" );
     $infinity23_ptd_settings_raw = infinity23_get_option( $infinity23_settings_array_db_name );
     $infinity23_ptd_settings = infinity23_convert_json_to_array( $infinity23_ptd_settings_raw );
@@ -152,9 +154,15 @@
                 wp_die( 'Invalid request.' );
             } // if( $slug === '.' || $slug === '..' ) {
 
-            if( empty( $type ) || empty( $slug ) || !wp_verify_nonce( $nonce, 'infinity23_ptd_download_' . $type . '_' . $slug ) ) {
+            $infinity23_ptd_from_list = false;
+
+            if( !empty( $type ) && !empty( $slug ) && wp_verify_nonce( $nonce, 'infinity23_ptd_download_list_' . $type . '_' . $slug ) ) {
+                $infinity23_ptd_from_list = true;
+            } // if( !empty( $type ) && !empty( $slug ) && wp_verify_nonce(
+
+            if( empty( $type ) || empty( $slug ) || ( !$infinity23_ptd_from_list && !wp_verify_nonce( $nonce, 'infinity23_ptd_download_' . $type . '_' . $slug ) ) ) {
                 wp_die( 'Link expired.' );
-            } // if( empty( $type ) || empty( $slug ) || !wp_verify_nonce(
+            } // if( empty( $type ) || empty( $slug ) || ( !$infinity23_ptd_from_list && !wp_verify_nonce(
 
             global $infinity23_ptd_enable_plugins, $infinity23_ptd_enable_themes;
 
@@ -166,9 +174,9 @@
 
                 // turning the feature off only hid the links before - an old link
                 // with a still-valid nonce kept working against the handler
-                if( intval( $infinity23_ptd_enable_plugins ) !== 1 ) {
+                if( !$infinity23_ptd_from_list && intval( $infinity23_ptd_enable_plugins ) !== 1 ) {
                     wp_die( 'Plugin downloads are disabled in the Plugins & Themes Downloader settings.' );
-                } // if( intval( $infinity23_ptd_enable_plugins ) !== 1 ) {
+                } // if( !$infinity23_ptd_from_list && intval( $infinity23_ptd_enable_plugins ) !== 1 ) {
 
                 $source_dir = WP_PLUGIN_DIR;
 
@@ -178,9 +186,9 @@
                     wp_die( 'Permission denied.' );
                 } // if( !current_user_can( 'switch_themes' ) ) {
 
-                if( intval( $infinity23_ptd_enable_themes ) !== 1 ) {
+                if( !$infinity23_ptd_from_list && intval( $infinity23_ptd_enable_themes ) !== 1 ) {
                     wp_die( 'Theme downloads are disabled in the Plugins & Themes Downloader settings.' );
-                } // if( intval( $infinity23_ptd_enable_themes ) !== 1 ) {
+                } // if( !$infinity23_ptd_from_list && intval( $infinity23_ptd_enable_themes ) !== 1 ) {
 
                 $source_dir = get_theme_root();
 

@@ -106,7 +106,7 @@
 					'destination_url' => $infinity23_redirect_log_destination_url,
 					'redirect_type' => $matched_row->redirect_type,
 					'ip_address' => infinity23_redirect_log_get_visitor_ip(),
-					'country' => infinity23_redirect_log_get_visitor_country(),
+					'country' => '',
 					'user_agent' => $infinity23_redirect_log_user_agent,
 					'browser' => $infinity23_redirect_log_ua_parsed['browser'],
 					'platform' => $infinity23_redirect_log_ua_parsed['platform'],

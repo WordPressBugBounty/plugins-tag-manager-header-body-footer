@@ -30,7 +30,7 @@
 				),
 				array(
 					'label'               => '&#9658; Watch Video Tutorial',
-					'url'                 => 'https://www.yydevelopment.com/yydevelopment-wordpress-plugins/',
+					'url'                 => 'https://infinity23.com/plugin-intro',
 					'extra_class'         => 'infinity23-notice-btn-primary',
 					'open_in_new_tab'     => 1,
 					'button_click_action' => 'no_dismiss',

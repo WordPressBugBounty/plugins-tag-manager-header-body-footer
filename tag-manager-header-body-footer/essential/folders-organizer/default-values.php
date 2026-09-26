@@ -47,6 +47,13 @@
 			'type'   => 'intval',
 			'access' => 'free',
 		),
+		'folders_limit_per_type' => array(
+			'name'      => 'folders_limit_per_type',
+			'value'     => array( 'pro' => 'unlimited', 'free' => '3' ),
+			'type'      => 'text',
+			'access'    => 'pro',
+			'downgrade' => 'reset',
+		),
 	);
 
 ?>

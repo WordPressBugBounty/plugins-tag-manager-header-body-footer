@@ -46,6 +46,64 @@
 
 	} // if( !function_exists( 'infinity23_folders_organizer_get_folders' ) ) {
 
+	// ---------------------------------------
+	// the values the folders limit select box can have
+	// ---------------------------------------
+
+	if( !function_exists( 'infinity23_folders_organizer_get_limit_options' ) ) {
+
+		function infinity23_folders_organizer_get_limit_options() {
+
+			return array( '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'unlimited' );
+
+		} // function infinity23_folders_organizer_get_limit_options() {
+
+	} // if( !function_exists( 'infinity23_folders_organizer_get_limit_options' ) ) {
+
+	// ---------------------------------------
+	// how many folders one section may have - returns -1 for unlimited, the
+	// free limit is set in default-values.php
+	// ---------------------------------------
+
+	if( !function_exists( 'infinity23_folders_organizer_get_folder_limit' ) ) {
+
+		function infinity23_folders_organizer_get_folder_limit() {
+
+			include( dirname(__FILE__) . "/../default-values.php" );
+
+			$folder_settings = infinity23_convert_json_to_array( infinity23_get_option( 'folders_organizer_settings' ) );
+			$folder_limit = strval( infinity23_pro_get_data( 'folders_limit_per_type', $folder_settings, $infinity23_defaults ) );
+
+			if( !in_array( $folder_limit, infinity23_folders_organizer_get_limit_options(), true ) || $folder_limit === 'unlimited' ) {
+				return -1;
+			} // if( !in_array( $folder_limit, infinity23_folders_organizer_get_limit_options(), true ) || $folder_limit === 'unlimited' ) {
+
+			return intval( $folder_limit );
+
+		} // function infinity23_folders_organizer_get_folder_limit() {
+
+	} // if( !function_exists( 'infinity23_folders_organizer_get_folder_limit' ) ) {
+
+	// ---------------------------------------
+	// can one more folder be created in this section
+	// ---------------------------------------
+
+	if( !function_exists( 'infinity23_folders_organizer_can_add_folder' ) ) {
+
+		function infinity23_folders_organizer_can_add_folder( $content_type ) {
+
+			$folder_limit = infinity23_folders_organizer_get_folder_limit();
+
+			if( $folder_limit < 0 ) {
+				return true;
+			} // if( $folder_limit < 0 ) {
+
+			return ( count( infinity23_folders_organizer_get_folders( $content_type ) ) < $folder_limit );
+
+		} // function infinity23_folders_organizer_can_add_folder( $content_type ) {
+
+	} // if( !function_exists( 'infinity23_folders_organizer_can_add_folder' ) ) {
+
 	if( !function_exists( 'infinity23_folders_organizer_get_folder' ) ) {
 
 		function infinity23_folders_organizer_get_folder( $folder_id ) {

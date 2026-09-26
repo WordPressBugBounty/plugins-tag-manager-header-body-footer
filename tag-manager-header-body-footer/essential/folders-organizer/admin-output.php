@@ -109,6 +109,11 @@
 
 			$infinity23_data_array['sidebar_width'] = infinity23_css_sanitize( $infinity23_sidebar_width_value . $infinity23_sidebar_width_unit, 'size', '200px' );
 			$infinity23_data_array['folders_organizer_hide_menu'] = infinity23_pro_field_sanitize( 'folders_organizer_hide_menu', $infinity23_existing_data_array, $infinity23_defaults );
+			$infinity23_data_array['folders_limit_per_type'] = infinity23_pro_field_sanitize( 'folders_limit_per_type', $infinity23_existing_data_array, $infinity23_defaults );
+
+			if( !in_array( $infinity23_data_array['folders_limit_per_type'], infinity23_folders_organizer_get_limit_options(), true ) ) {
+				$infinity23_data_array['folders_limit_per_type'] = infinity23_get_data( 'folders_limit_per_type', array(), $infinity23_defaults );
+			} // if( !in_array( $infinity23_data_array['folders_limit_per_type'], infinity23_folders_organizer_get_limit_options(), true ) ) {
 
 			infinity23_update_option( $infinity23_settings_array_db_name, infinity23_convert_array_to_json($infinity23_data_array) );
 			$infinity23_redirect_url = add_query_arg( array( 'page' => 'essential-folders-organizer', 'saved' => '1' ), admin_url('admin.php') );
@@ -133,6 +138,7 @@
 	$infinity23_custom_post_types_active = intval( infinity23_pro_get_data( 'custom_post_types_active', $infinity23_data_array, $infinity23_defaults ) );
 	$infinity23_disabled_custom_post_types = infinity23_pro_get_data( 'disabled_custom_post_types', $infinity23_data_array, $infinity23_defaults );
 	$infinity23_folders_organizer_hide_menu = intval( infinity23_pro_get_data( 'folders_organizer_hide_menu', $infinity23_data_array, $infinity23_defaults ) );
+	$infinity23_folders_limit_per_type = strval( infinity23_pro_get_data( 'folders_limit_per_type', $infinity23_data_array, $infinity23_defaults ) );
 	$infinity23_sidebar_position = infinity23_pro_get_data( 'sidebar_position', $infinity23_data_array, $infinity23_defaults );
 	$infinity23_sidebar_width = infinity23_pro_get_data( 'sidebar_width', $infinity23_data_array, $infinity23_defaults );
 
@@ -263,6 +269,34 @@
 									<li>Fixed width - <span class="code">200</span> px</li>
 									<li>Wider sidebar - <span class="code">280</span> px</li>
 								</ul>
+							</div>
+							?
+						</div><!--backtest-field-help-icon-->
+					</div><!--form-line-->
+
+				</div><!--section-card-->
+
+				<div class="section-card <?php echo esc_attr( infinity23_pro_locked_class() ); ?>" data-card-default="open">
+
+					<h2>Advanced Settings: <?php echo wp_kses_post( infinity23_section_card_title_pro_label() ); ?></h2>
+
+					<?php echo wp_kses_post( infinity23_pro_notice() ); ?>
+
+					<div class="form-line">
+						<label for="folders_limit_per_type">Maximum folders in each section: </label>
+						<select name="folders_limit_per_type" id="folders_limit_per_type" <?php echo esc_attr( infinity23_pro_disabled_attr() ); ?>>
+							<?php foreach( infinity23_folders_organizer_get_limit_options() as $infinity23_limit_option ) { ?>
+								<option value="<?php echo esc_attr( $infinity23_limit_option ); ?>" <?php if( $infinity23_folders_limit_per_type === $infinity23_limit_option ) { echo 'selected'; } ?>><?php echo esc_html( $infinity23_limit_option === 'unlimited' ? 'Unlimited' : $infinity23_limit_option ); ?></option>
+							<?php } // foreach( infinity23_folders_organizer_get_limit_options() as $infinity23_limit_option ) { ?>
+						</select>
+
+						<div class="backtest-field-help-icon">
+							<div class="data-help-content">
+								Controls how many folders can be created in each section (Images, Pages, Posts and each custom post type).
+								<br /><br />
+								The free version is limited to 3 folders in each section. Choose Unlimited for no limit.
+								<br /><br />
+								Folders that already exist are never removed when the limit is lowered - only creating new folders is blocked.
 							</div>
 							?
 						</div><!--backtest-field-help-icon-->

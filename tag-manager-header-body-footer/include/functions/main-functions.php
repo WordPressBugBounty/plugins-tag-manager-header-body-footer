@@ -1668,7 +1668,7 @@
                 wp_safe_redirect( $infinity23_redirect_url );
             } else {
                 echo '<meta http-equiv="refresh" content="0;url=' . esc_url( $infinity23_redirect_url ) . '" />';
-                echo '<script>window.location.href = "' . esc_url( $infinity23_redirect_url ) . '";</script>';
+                echo '<script>window.location.href = "' . esc_url_raw( $infinity23_redirect_url ) . '";</script>';
             } // if( !headers_sent() ) {
 
             exit;
@@ -1824,9 +1824,13 @@
 
         function infinity23_modules_footer() { ?>
             <div class="infinity23-modules-footer">
-                <span class="infinity23-modules-footer-heart">♥</span>
-                <span class="infinity23-modules-footer-text">Like this plugin? A short review would mean a lot to us.</span>
-                <a href="https://wordpress.org/support/plugin/tag-manager-header-body-footer/reviews/#new-post" target="_blank" class="infinity23-modules-footer-btn">Leave a Review</a>
+                <div class="infinity23-modules-footer-review">
+                    <span class="infinity23-modules-footer-review-heart">♥</span>
+                    <span class="infinity23-modules-footer-review-text">Like this plugin? A <a href="https://wordpress.org/support/plugin/tag-manager-header-body-footer/reviews/#new-post" target="_blank" rel="noopener" class="infinity23-modules-footer-review-link">short positive review</a> would mean a lot to us.</span>
+                </div><!--infinity23-modules-footer-review-->
+                <div class="infinity23-modules-footer-support">
+                    <span class="infinity23-modules-footer-support-text">Found a bug or a problem? <a href="https://wordpress.org/support/plugin/tag-manager-header-body-footer/" target="_blank" rel="noopener" class="infinity23-modules-footer-support-link">Open a Support Ticket</a> in WordPress and we will be happy to help.</span>
+                </div><!--infinity23-modules-footer-support-->
             </div><!--infinity23-modules-footer-->
         <?php } // function infinity23_modules_footer() {
 
@@ -2093,9 +2097,14 @@
 // loading more functions pages
 // ======================================================================================================================================================
 
-include_once( dirname(__FILE__) . "/pro-functions.php" );
 include_once( dirname(__FILE__) . "/form-output-functions.php" );
 include_once( dirname(__FILE__) . "/encryption-functions.php" );
+
+// everything to do with the pro version and its license lives in its own
+// folder - see include/functions/pro-functions/
+include_once( dirname(__FILE__) . "/pro-functions/license-status-codes.php" );
+include_once( dirname(__FILE__) . "/pro-functions/license-functions.php" );
+include_once( dirname(__FILE__) . "/pro-functions/pro-functions.php" );
 
 
 ?>

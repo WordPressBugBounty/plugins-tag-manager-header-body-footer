@@ -271,12 +271,17 @@
 			<div class="infinity23-fo-media-sidebar">
 
 				<div class="infinity23-fo-add-folder">
-					<span class="infinity23-fo-add-folder-title">Add New Folder</span>
+					<?php $infinity23_fo_folder_limit = infinity23_folders_organizer_get_folder_limit(); ?>
+					<span class="infinity23-fo-add-folder-title">Add New Folder<?php if( $infinity23_fo_folder_limit >= 0 ) { ?> <span class="infinity23-fo-folder-count-wrap">(<span class="infinity23-fo-folder-count"><?php echo esc_html( count( $folders ) ); ?></span>/<?php echo esc_html( $infinity23_fo_folder_limit ); ?>)</span><?php } // if( $infinity23_fo_folder_limit >= 0 ) { ?></span>
 					<div class="infinity23-fo-add-folder-row">
 						<input type="text" id="infinity23-fo-new-folder-name" placeholder="Folder Name" />
 						<button type="button" id="infinity23-fo-new-folder-btn" class="infinity23-fo-add-folder-btn" title="Add Folder">+</button>
 					</div><!--infinity23-fo-add-folder-row-->
 					<span class="infinity23-fo-add-folder-status" id="infinity23-fo-add-folder-status"></span>
+
+					<?php if( !infinity23_is_pro() ) { ?>
+						<span class="infinity23-fo-folder-limit-notice">Free version get up to <?php echo esc_html( $infinity23_fo_folder_limit ); ?> folders, <a href="<?php echo esc_url( infinity23_pro_version_link() ); ?>" target="_blank" rel="noopener">Upgrade to Pro</a> for unlimited.</span>
+					<?php } // if( !infinity23_is_pro() ) { ?>
 				</div><!--infinity23-fo-add-folder-->
 
 				<div class="infinity23-fo-media-sidebar-sep"></div>
@@ -543,6 +548,16 @@
 		if( infinity23_folders_organizer_slug_exists( $content_type, $folder_slug ) ) {
 			wp_send_json_error( array( 'message' => 'A folder with this name already exists' ) );
 		} // if( infinity23_folders_organizer_slug_exists(
+
+		if( !infinity23_folders_organizer_can_add_folder( $content_type ) ) {
+
+			if( infinity23_is_pro() ) {
+				wp_send_json_error( array( 'message' => 'You have reached the limit of ' . infinity23_folders_organizer_get_folder_limit() . ' folders in this section. You can change this limit in the Folders Organizer settings.' ) );
+			} // if( infinity23_is_pro() ) {
+
+			wp_send_json_error( array( 'message' => 'You have reached the free version limit of ' . infinity23_folders_organizer_get_folder_limit() . ' folders in this section. Upgrade to Pro to create more folders.' ) );
+
+		} // if( !infinity23_folders_organizer_can_add_folder( $content_type ) ) {
 
 		$new_folder_id = infinity23_folders_organizer_add_folder( $content_type, $folder_name, $folder_slug );
 

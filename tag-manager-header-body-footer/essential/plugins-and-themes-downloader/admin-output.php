@@ -176,7 +176,7 @@
 							'action' => 'infinity23_ptd_download',
 							'infinity23_ptd_type' => 'plugin',
 							'infinity23_ptd_slug' => $plugin_slug,
-							'infinity23_ptd_nonce' => wp_create_nonce( 'infinity23_ptd_download_plugin_' . $plugin_slug ),
+							'infinity23_ptd_nonce' => wp_create_nonce( 'infinity23_ptd_download_list_plugin_' . $plugin_slug ),
 						),
 						admin_url( 'admin-post.php' )
 					);
@@ -251,7 +251,7 @@
 							'action' => 'infinity23_ptd_download',
 							'infinity23_ptd_type' => 'theme',
 							'infinity23_ptd_slug' => $theme_slug,
-							'infinity23_ptd_nonce' => wp_create_nonce( 'infinity23_ptd_download_theme_' . $theme_slug ),
+							'infinity23_ptd_nonce' => wp_create_nonce( 'infinity23_ptd_download_list_theme_' . $theme_slug ),
 						),
 						admin_url( 'admin-post.php' )
 					);
@@ -277,8 +277,8 @@
 
 	} // if( !function_exists( 'infinity23_ptd_build_themes_table' ) ) {
 
-	$infinity23_ptd_plugins_table = infinity23_ptd_build_plugins_table( $infinity23_enable_plugins_download );
-	$infinity23_ptd_themes_table = infinity23_ptd_build_themes_table( $infinity23_enable_themes_download );
+	$infinity23_ptd_plugins_table = infinity23_ptd_build_plugins_table( 1 );
+	$infinity23_ptd_themes_table = infinity23_ptd_build_themes_table( 1 );
 
 ?>
 

@@ -1366,6 +1366,15 @@
 	width: 33%;
 }
 
+/* --- global settings and license cards --- */
+
+.include-exclude-warp .section-card.ie-global-card,
+.include-exclude-warp .section-card.ie-global-card .card-body,
+.include-exclude-warp .section-card.ie-license-card,
+.include-exclude-warp .section-card.ie-license-card .card-body {
+	display: block;
+}
+
 /* --- toggle item --- */
 
 .include-exclude-warp .ie-toggle-item {
@@ -2012,26 +2021,54 @@
 	direction: ltr;
 	background: #f7f7f7;
 	border: 1px solid #e5e5e5;
-	padding: 10px 15px;
+	padding: 20px 15px;
 	margin: 15px 30px 30px 30px;
 	text-align: center;
 }
 
-.infinity23-modules-footer-heart {
-	color: #b5b5b5;
-	margin: 0px 6px 0px 0px;
-	font-size: 12px;
+/* --- footer review line --- */
+
+.infinity23-modules-footer-review {
+	margin: 0px 0px 0px 0px;
 }
 
-.infinity23-modules-footer-text {
+.infinity23-modules-footer-review-heart {
+	color: #afafaf;
+	margin: 0px 8px 0px 0px;
+	font-size: 23px;
+	line-height: 1;
+	vertical-align: middle;
+    position: relative;
+    top: -2px;
+}
+
+.infinity23-modules-footer-review-text {
+	color: #646161;
+	font-size: 16px;
+	display: inline-block;
+	vertical-align: middle;
+    font-weight: bold;
+}
+
+.infinity23-modules-footer-review-link {
+	color: #1466d0;
+	text-decoration: underline;
+	font-size: 16px;
+}
+
+/* --- footer support line --- */
+
+.infinity23-modules-footer-support {
+	margin: 8px 0px 0px 0px;
+}
+
+.infinity23-modules-footer-support-text {
 	color: #888;
 	font-size: 12px;
 	display: inline-block;
-	margin: 0px 10px 0px 0px;
 }
 
-.infinity23-modules-footer-btn {
-	display: inline-block;
+.infinity23-modules-footer-support-link {
 	color: #1466d0;
 	text-decoration: underline;
 	font-size: 12px;
@@ -4082,5 +4119,50 @@ textarea style, plus an Edit button that reveals the full widget --- */
 .notes-warp .infinity23-notes-all-table-direction-wrap[dir="ltr"] .infinity23-notes-all-table th,
 .notes-warp .infinity23-notes-all-table-direction-wrap[dir="ltr"] .infinity23-notes-all-table td {
 	text-align: left;
+}
+
+/* ======= Log Pagination (Global) ========
+=============================================*/
+
+/* --- pagination wrap --- */
+
+.infinity23-warp .infinity23-pagination {
+	margin: 20px 0px 10px 0px;
+}
+
+.infinity23-warp .infinity23-pagination .infinity23-pagination-info {
+	display: block;
+	margin: 0px 0px 14px 0px;
+}
+
+/* --- pagination buttons --- */
+
+.infinity23-warp .infinity23-pagination .infinity23-pagination-links a,
+.infinity23-warp .infinity23-pagination .infinity23-pagination-links span {
+	margin: 0px 6px 8px 0px;
+}
+
+.infinity23-warp .infinity23-pagination .infinity23-pagination-links .infinity23-pagination-number {
+	background: #fff;
+	color: #555;
+	border-color: #ccc;
+}
+
+/* --- pagination total --- */
+
+.infinity23-warp .infinity23-pagination .infinity23-pagination-info .infinity23-pagination-total {
+	margin: 0px 0px 0px 8px;
+	font-size: 11px;
+	color: #777;
+}
+
+.infinity23-warp .infinity23-pagination .infinity23-pagination-links .infinity23-pagination-current {
+	background: #1466d0;
+	color: #fff;
+}
+
+.infinity23-warp .infinity23-pagination .infinity23-pagination-links .infinity23-pagination-gap {
+	display: inline-block;
+	padding: 6px 4px;
 }
 

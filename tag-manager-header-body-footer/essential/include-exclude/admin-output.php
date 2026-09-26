@@ -30,6 +30,17 @@
 		$infinity23_success_message = "All plugin database tables and stored files were removed successfully";
 	} // if( isset( $_GET['data_removed'] ) ) {
 
+	// the license handler further down redirects with its status code in the url -
+	// the wording for that code comes from the plugin, never from the server.
+	// Shown inside the License tab rather than through infinity23_show_message(),
+	// whose error block is headed "The form was not submitted" - true for a failed
+	// save, wrong for a license the server refused
+	$infinity23_license_notice = array();
+
+	if( isset( $_GET['license_status'] ) ) {
+		$infinity23_license_notice = infinity23_license_status_message( intval( $_GET['license_status'] ) );
+	} // if( isset( $_GET['license_status'] ) ) {
+
 	// =================================================================================================================
 	// Update the data if the form was submitted
 	// =================================================================================================================
@@ -111,6 +122,61 @@
 
 	} // if( isset( $_POST['infinity23_include_exclude_nonce'] ) ) {
 
+	// --------------------------------------------
+	// save the Global Settings tab form
+	// --------------------------------------------
+
+	if( isset( $_POST['infinity23_include_exclude_global_nonce'] ) ) {
+
+		if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['infinity23_include_exclude_global_nonce'] ) ), 'infinity23_include_exclude_global_action' ) && current_user_can( 'manage_options' ) ) {
+
+			$infinity23_global_data_array = array();
+			$infinity23_global_data_array['hide_license'] = infinity23_post_sanitize( 'hide_license', 'intval' );
+
+			infinity23_update_option( $infinity23_global_settings_array_db_name, infinity23_convert_array_to_json( $infinity23_global_data_array ) );
+
+			$infinity23_redirect_url = add_query_arg( array( 'page' => 'essential-include-exclude', 'tab' => 'global', 'saved' => '1' ), admin_url('admin.php') );
+			infinity23_safe_redirect( $infinity23_redirect_url );
+
+		} else {
+			$infinity23_error_message = array( "Form nonce was incorrect" );
+		} // if( wp_verify_nonce(
+
+	} // if( isset( $_POST['infinity23_include_exclude_global_nonce'] ) ) {
+
+	// --------------------------------------------
+	// activate / deactivate the license. Redirects with the status code in the
+	// url rather than showing the message inline, for the same reason the two
+	// handlers above redirect: admin_menu has already run by the time this
+	// processes, so the sidebar (the Upgrade To Pro item) only reflects the new
+	// pro state after a reload. The code is turned into wording by
+	// infinity23_license_status_message() on the next load - the license server
+	// never sends any text of its own.
+	// --------------------------------------------
+
+	if( isset( $_POST['infinity23_license_nonce'] ) ) {
+
+		if( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['infinity23_license_nonce'] ) ), 'infinity23_license_action' ) && current_user_can( 'manage_options' ) ) {
+
+			if( isset( $_POST['infinity23_license_deactivate'] ) ) {
+
+				$infinity23_license_result = infinity23_license_deactivate();
+
+			} else {
+
+				$infinity23_license_result = infinity23_license_activate( infinity23_post_sanitize( 'license_key', 'text' ) );
+
+			} // if( isset( $_POST['infinity23_license_deactivate'] ) ) {
+
+			$infinity23_redirect_url = add_query_arg( array( 'page' => 'essential-include-exclude', 'tab' => 'license', 'license_status' => intval( $infinity23_license_result ) ), admin_url('admin.php') );
+			infinity23_safe_redirect( $infinity23_redirect_url );
+
+		} else {
+			$infinity23_error_message = array( "Form nonce was incorrect" );
+		} // if( wp_verify_nonce(
+
+	} // if( isset( $_POST['infinity23_license_nonce'] ) ) {
+
 	// =================================================================================================================
 	// load saved values when page load
 	// =================================================================================================================
@@ -120,6 +186,53 @@
 	}
 
 	include( dirname(__FILE__) . "/default-values.php" );
+
+	$infinity23_global_data_array = infinity23_convert_json_to_array( infinity23_get_option( $infinity23_global_settings_array_db_name ) );
+	$infinity23_hide_license = intval( infinity23_get_data( 'hide_license', $infinity23_global_data_array, $infinity23_global_defaults ) );
+
+	// --------------------------------------------
+	// license dates worked out here rather than in the markup, so the License
+	// tab prints finished text on the first render
+	// --------------------------------------------
+
+	$infinity23_license_data = infinity23_license_get_data();
+	$infinity23_license_state = infinity23_license_local_state();
+	$infinity23_license_active = ( $infinity23_license_state === 1 );
+
+	// a key is saved but the site is answering from a different domain than the
+	// one it was activated for - the site was copied or moved. Shown as its own
+	// state so the message explains it instead of looking like no license
+	$infinity23_license_wrong_domain = ( $infinity23_license_state === -2 );
+	$infinity23_license_saved_domain = isset( $infinity23_license_data['domain'] ) ? $infinity23_license_data['domain'] : '';
+
+	// any other reason a saved license is not working right now (the key will
+	// not decrypt, this host cannot encrypt, outgoing requests are blocked).
+	// State 0 is the ordinary "no license here yet" and needs no explaining
+	$infinity23_license_problem = array();
+
+	if( $infinity23_license_state !== 1 && $infinity23_license_state !== 0 && !$infinity23_license_wrong_domain ) {
+		$infinity23_license_problem = infinity23_license_status_message( $infinity23_license_state );
+	} // if( $infinity23_license_state !== 1 && $infinity23_license_state !== 0 && !$infinity23_license_wrong_domain ) {
+
+	$infinity23_license_expires_stamp = isset( $infinity23_license_data['expires'] ) ? intval( $infinity23_license_data['expires'] ) : 0;
+	$infinity23_license_checked_stamp = isset( $infinity23_license_data['checked'] ) ? intval( $infinity23_license_data['checked'] ) : 0;
+
+	$infinity23_license_expires_text = $infinity23_license_expires_stamp < 1 ? 'Not recorded - activate the key again' : infinity23_format_timestamp( $infinity23_license_expires_stamp, 'd/m/Y' );
+	$infinity23_license_checked_text = $infinity23_license_checked_stamp === 0 ? 'Not checked yet' : infinity23_format_timestamp( $infinity23_license_checked_stamp );
+
+	// --------------------------------------------
+	// active tab - resolved in PHP from the tab GET param
+	// --------------------------------------------
+
+	$infinity23_ie_active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'modules';
+
+	if( !in_array( $infinity23_ie_active_tab, array( 'modules', 'global', 'license' ), true ) ) {
+		$infinity23_ie_active_tab = 'modules';
+	} // if( !in_array( $infinity23_ie_active_tab, array( 'modules', 'global', 'license' ), true ) ) {
+
+	$infinity23_ie_tab_modules_url = esc_url( add_query_arg( 'tab', 'modules', remove_query_arg( array( 'saved', 'reset', 'module_off', 'module_name', 'data_removed', 'license_status' ) ) ) );
+	$infinity23_ie_tab_global_url = esc_url( add_query_arg( 'tab', 'global', remove_query_arg( array( 'saved', 'reset', 'module_off', 'module_name', 'data_removed', 'license_status' ) ) ) );
+	$infinity23_ie_tab_license_url = esc_url( add_query_arg( 'tab', 'license', remove_query_arg( array( 'saved', 'reset', 'module_off', 'module_name', 'data_removed', 'license_status' ) ) ) );
 
 	global $infinity23_essential_modules_array;
 
@@ -174,7 +287,7 @@
 
 			?>
 			<div class="ie-plugin-row <?php echo esc_attr( $row_class ); ?>">
-				<div class="ie-toggle-item <?php if( $include_value == 1 ) { echo 'ie-toggle-active'; } ?>" data-input="<?php echo esc_attr( $module['include_exclude_data_key'] ); ?>" data-group="free">
+				<div class="ie-toggle-item <?php if( $include_value == 1 ) { echo 'ie-toggle-active ie-toggle-saved-on'; } ?>" data-input="<?php echo esc_attr( $module['include_exclude_data_key'] ); ?>" data-group="free">
 					<div class="ie-toggle-circle <?php if( $include_value == 1 ) { echo 'active'; } ?>"></div>
 					<div class="ie-toggle-info">
 						<span class="ie-toggle-title-wrap">
@@ -216,6 +329,16 @@
 		<h1>Include / Exclude</h1>
 		<p>Choose which plugin modules to include or exclude. Disabled modules will not be loaded by the system.</p>
 	</div><!--page-header-->
+
+	<div class="infinity23-module-tabs-wrap">
+
+		<div class="infinity23-module-tabs">
+			<a href="<?php echo esc_url( $infinity23_ie_tab_modules_url ); ?>" class="infinity23-module-tab-btn <?php if( $infinity23_ie_active_tab === 'modules' ) { echo 'infinity23-module-tab-active'; } ?>">Modules</a>
+			<a href="<?php echo esc_url( $infinity23_ie_tab_global_url ); ?>" class="infinity23-module-tab-btn <?php if( $infinity23_ie_active_tab === 'global' ) { echo 'infinity23-module-tab-active'; } ?>">Global Settings</a>
+			<a href="<?php echo esc_url( $infinity23_ie_tab_license_url ); ?>" class="infinity23-module-tab-btn <?php if( $infinity23_ie_active_tab === 'license' ) { echo 'infinity23-module-tab-active'; } ?>">License</a>
+		</div><!--infinity23-module-tabs-->
+
+		<div class="infinity23-module-tab-content <?php if( $infinity23_ie_active_tab !== 'modules' ) { echo 'infinity23-module-tab-hidden'; } ?>" id="include-exclude-tab-modules">
 
 	<form class="infinity23-form" method="POST" action="">
 
@@ -320,6 +443,123 @@
 			<button type="button" class="infinity23-reset-btn" data-confirm="Are you sure you want to reset all include/exclude settings?">Reset All <?php echo esc_html( $infinity23_module_display_name ); ?> Settings <small>(Only resets whether modules are active or inactive)</small></button>
 		</form>
 	</div><!--infinity23-reset-wrap-->
+
+		</div><!--infinity23-module-tab-content-->
+
+		<div class="infinity23-module-tab-content <?php if( $infinity23_ie_active_tab !== 'global' ) { echo 'infinity23-module-tab-hidden'; } ?>" id="include-exclude-tab-global">
+
+	<form class="infinity23-form" method="POST" action="">
+
+		<?php wp_nonce_field( 'infinity23_include_exclude_global_action', 'infinity23_include_exclude_global_nonce' ); ?>
+
+		<div class="section-card ie-global-card" data-card-default="open">
+
+			<h2>Global Settings:</h2>
+
+			<div class="form-line checkbox-line">
+				<input type="checkbox" id="hide_license" name="hide_license" value="1" <?php if( $infinity23_hide_license == 1 ) { echo 'checked'; } ?> />
+				<label for="hide_license">Hide the "License" page from the sidebar menu (it stays visible on the include/exclude top menu bar)</label>
+
+				<div class="backtest-field-help-icon">
+					<div class="data-help-content">
+						When enabled, the "License" item is removed from the plugin's sidebar menu.
+						<br /><br />
+						The License tab inside Include / Exclude stays available.
+					</div>
+					?
+				</div><!--backtest-field-help-icon-->
+
+			</div><!--form-line-->
+
+		</div><!--section-card-->
+
+		<input type="submit" name="submit_include_exclude_global" class="submit-btn" value="Save Settings" />
+
+	</form>
+
+		</div><!--infinity23-module-tab-content-->
+
+		<div class="infinity23-module-tab-content <?php if( $infinity23_ie_active_tab !== 'license' ) { echo 'infinity23-module-tab-hidden'; } ?>" id="include-exclude-tab-license">
+
+		<?php if( !empty( $infinity23_license_notice ) ) { ?>
+			<div class="infinity23-message infinity23-message-<?php echo esc_attr( $infinity23_license_notice['type'] ); ?>"><?php echo esc_html( $infinity23_license_notice['message'] ); ?></div>
+		<?php } // if( !empty( $infinity23_license_notice ) ) { ?>
+
+	<form class="infinity23-form no-floating-save" method="POST" action="">
+
+		<?php wp_nonce_field( 'infinity23_license_action', 'infinity23_license_nonce' ); ?>
+
+		<div class="section-card ie-license-card" data-card-default="open">
+
+			<h2>License:</h2>
+
+			<?php if( $infinity23_license_active ) { ?>
+
+				<p>The Pro version is active on <span class="highlight-text"><?php echo esc_html( infinity23_license_get_site_identity() ); ?></span> - every Pro feature is unlocked.</p>
+
+				<?php if( infinity23_license_is_local_site() ) { ?>
+					<p>This is a development copy, so it does not use up one of the sites on your license. The license covers it because this folder is named after a site the key already includes.</p>
+				<?php } // if( infinity23_license_is_local_site() ) { ?>
+
+				<div class="form-line">
+					<label>License Key: </label>
+					<span class="highlight-text"><?php echo esc_html( infinity23_license_mask_key( infinity23_license_get_key() ) ); ?></span>
+				</div><!--form-line-->
+
+				<div class="form-line">
+					<label>Valid Until: </label>
+					<span class="highlight-text"><?php echo esc_html( $infinity23_license_expires_text ); ?></span>
+				</div><!--form-line-->
+
+				<div class="form-line">
+					<label>Last Checked: </label>
+					<span class="highlight-text"><?php echo esc_html( $infinity23_license_checked_text ); ?></span>
+				</div><!--form-line-->
+
+			<?php } else { ?>
+
+				<?php if( $infinity23_license_wrong_domain ) { ?>
+
+					<p>This license was activated for <span class="highlight-text"><?php echo esc_html( $infinity23_license_saved_domain ); ?></span>, but this site is now <span class="highlight-text"><?php echo esc_html( infinity23_license_get_site_identity() ); ?></span>, so the Pro features are switched off here.</p>
+
+					<p>That is normal after copying a site to a local computer, to a staging subdomain, or to a new domain. Activate the key again below to switch Pro back on, as long as this domain is covered by the license.</p>
+
+				<?php } elseif( !empty( $infinity23_license_problem ) ) { ?>
+
+					<p><?php echo esc_html( $infinity23_license_problem['message'] ); ?></p>
+
+				<?php } else { ?>
+
+					<p>Activate the Pro version of Infinity23 and unlock all Pro features.
+					<br />Don't have a license key yet? <a href="<?php echo esc_url( infinity23_pro_version_link() ); ?>" target="_blank" rel="noopener">Get the Pro version</a>.</p>
+
+				<?php } // if( $infinity23_license_wrong_domain ) { ?>
+
+				<div class="form-line">
+					<label for="license_key">Enter License Key: </label>
+					<input type="text" id="license_key" name="license_key" class="long-input" value="" autocomplete="off" />
+					<div class="backtest-field-help-icon">
+						<div class="data-help-content">The key is tied to the domains you bought it for. This site reports itself as <?php echo esc_html( infinity23_license_get_site_identity() ); ?>, so that has to be covered by the key. A local development copy is covered automatically when its folder is named after a site the key already includes.<br /><br />Activating sends only the key, this domain and the plugin version - no site content and no visitor data ever leaves your site.</div>
+						?
+					</div><!--backtest-field-help-icon-->
+				</div><!--form-line-->
+
+			<?php } // if( $infinity23_license_active ) { ?>
+
+		</div><!--section-card-->
+
+		<?php if( $infinity23_license_active ) { ?>
+			<input type="hidden" name="infinity23_license_deactivate" value="1" />
+			<button type="button" class="infinity23-reset-btn" data-confirm="Remove the license from this site? Every Pro feature switches off until a license is activated again.">Remove License From This Site</button>
+		<?php } else { ?>
+			<input type="submit" class="submit-btn" value="Activate License" />
+		<?php } // if( $infinity23_license_active ) { ?>
+
+	</form>
+
+		</div><!--infinity23-module-tab-content-->
+
+	</div><!--infinity23-module-tabs-wrap-->
 
 </div><!--infinity23-warp-->
 

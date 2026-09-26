@@ -39,6 +39,22 @@
     $infinity23_include_exclude_defaults = $infinity23_defaults;
 
     // --------------------------------------
+    // after a Danger Zone reset no module may load, not even the ones that are
+    // on by default, until Include / Exclude is saved once (that save clears
+    // the pending flag) - the same rule the Include / Exclude page displays
+    // --------------------------------------
+
+    if( intval( infinity23_get_option( INFINITY23_RESET_PENDING_OPTION, 0 ) ) == 1 ) {
+
+        $infinity23_ie_data = array();
+
+        foreach( $infinity23_include_exclude_defaults as $infinity23_reset_module_key => $infinity23_reset_module_default ) {
+            $infinity23_include_exclude_defaults[ $infinity23_reset_module_key ] = 0;
+        } // foreach( $infinity23_include_exclude_defaults as $infinity23_reset_module_key => $infinity23_reset_module_default ) {
+
+    } // if( intval( infinity23_get_option( INFINITY23_RESET_PENDING_OPTION, 0 ) ) == 1 ) {
+
+    // --------------------------------------
     // WordPress Settings - self-registering module (registry entry + conditional
     // loader live in this one block). To fully remove this module: comment
     // out this whole block and delete the wordpress-settings/ folder.
@@ -350,11 +366,44 @@
     } // if( $infinity23_load_rtl_ltr_direction_change == 1 ) {
 
     // --------------------------------------
+    // License - sidebar link that redirects to the License tab of Include / Exclude.
+    // Registered right before Go Pro so it always sits just above it. Not a real
+    // settings page, so it is not a module and has no registry entry.
+    // The redirect runs on the load-{hook} action, before any admin output starts.
+    // --------------------------------------
+
+    $infinity23_hide_license = intval( infinity23_get_data( 'hide_license', infinity23_convert_json_to_array( infinity23_get_option( 'include_exclude_global_settings' ) ), $infinity23_global_defaults ) );
+
+    add_action( 'admin_menu', function() use ( $infinity23_hide_license ) {
+
+        if( $infinity23_hide_license == 1 ) { return; }
+
+        $infinity23_license_hook = add_submenu_page(
+            'essential-include-exclude',
+            'License',
+            'License',
+            'manage_options',
+            'infinity23-essential-license',
+            function() {
+            }
+        );
+
+        add_action( 'load-' . $infinity23_license_hook, function() {
+
+            wp_safe_redirect( admin_url( 'admin.php?page=essential-include-exclude&tab=license' ) );
+            exit;
+
+        } ); // add_action( 'load-' . $infinity23_license_hook
+
+    } ); // add_action( 'admin_menu'
+
+    // --------------------------------------
     // Go Pro - external link submenu item, always the last item in the
     // Essential sidebar regardless of module include/exclude toggles. Not a
     // real settings page (menu_slug is the raw Pro version url, so WordPress
     // links straight to it there), so it is not a module and has no registry entry.
-    // Only shown when the site is not Pro - hidden once infinity23_is_pro() is true.
+    // Only shown when the site is not Pro - hidden once infinity23_is_pro() is true,
+    // and there is no setting to hide it any other way.
     // --------------------------------------
 
     if( !infinity23_is_pro() ) {

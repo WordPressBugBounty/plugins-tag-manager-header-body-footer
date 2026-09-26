@@ -166,14 +166,6 @@ jQuery(document).ready(function($) {
     // ===========================================================================================================================================
 
     // --------------------------------------
-    // mark which modules are saved-active on page load, so the Settings
-    // link only shows for modules that are actually saved and active -
-    // never for a toggle the user just clicked but has not saved yet
-    // --------------------------------
-
-    $('.include-exclude-warp .ie-toggle-item.ie-toggle-active').addClass('ie-toggle-saved-on');
-
-    // --------------------------------------
     // toggle on click
     // --------------------------------------
 
@@ -396,8 +388,23 @@ jQuery(document).ready(function($) {
         }); // $(window).on('resize'
     } // if( $infinity23_main_warp.length && !$infinity23_main_warp.hasClass('no-floating-save') ) {
 
+    // --------------------------------------
+    // a single form can opt out of the floating button by carrying
+    // no-floating-save itself, the same class the whole warp uses. For a page
+    // where one tab is a normal settings form and another is a one off action
+    // (the License tab), putting the class on the warp would remove the button
+    // from the tabs that do want it - this keeps it per form
+    // --------------------------------------
+
+    function infinity23_field_wants_floating_save( $field ) {
+
+        return ( $field.closest('.infinity23-form').hasClass('no-floating-save') === false );
+
+    } // function infinity23_field_wants_floating_save( $field ) {
+
     // mark form as changed on any input change
     $(document).on('change input', '.infinity23-warp .infinity23-form input, .infinity23-warp .infinity23-form select, .infinity23-warp .infinity23-form textarea', function() {
+        if( !infinity23_field_wants_floating_save( $(this) ) ) { return; }
         infinity23_form_changed = true;
         if( !infinity23_floating_btn_closed ) {
             $('#infinity23-floating-save-btn-wrap').addClass('visible');
@@ -406,6 +413,7 @@ jQuery(document).ready(function($) {
 
     // mark form as changed on color picker change
     $(document).on('infinity23-color-changed', '.infinity23-warp .infinity23-form .infinity23-color-picker', function() {
+        if( !infinity23_field_wants_floating_save( $(this) ) ) { return; }
         infinity23_form_changed = true;
         if( !infinity23_floating_btn_closed ) {
             $('#infinity23-floating-save-btn-wrap').addClass('visible');
@@ -430,7 +438,18 @@ jQuery(document).ready(function($) {
     }); // $(document).on('click', '#infinity23-floating-save-close'
 
     $(document).on('click', '#infinity23-floating-save-btn-wrap #infinity23-floating-save-btn', function() {
-        $('.infinity23-warp .infinity23-form').first().submit();
+
+        // a form carrying no-floating-save is never submitted by this button,
+        // so it can never fire a one off action (activating a license) that
+        // the person only meant to trigger from that form's own button
+        var $infinity23_form_to_submit = $('.infinity23-warp .infinity23-form:visible').not('.no-floating-save').first();
+
+        if( !$infinity23_form_to_submit.length ) {
+            $infinity23_form_to_submit = $('.infinity23-warp .infinity23-form').not('.no-floating-save').first();
+        } // if( !$infinity23_form_to_submit.length ) {
+
+        $infinity23_form_to_submit.submit();
+
     }); // $(document).on('click', '#infinity23-floating-save-btn'
 
     // force Enter key to submit the main form

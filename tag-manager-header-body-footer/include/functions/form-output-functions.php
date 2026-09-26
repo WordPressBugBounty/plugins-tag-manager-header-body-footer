@@ -1043,4 +1043,80 @@
 
     } // if( !function_exists( 'infinity23_menu_visibility_field' ) ) {
 
+    // --------------------------------------------
+    // output the shared log pagination - page info, Newer / Older links and
+    // numbered page links (first, last and 2 pages around the current one).
+    // Used by every module log table, $infinity23_button_class is that
+    // module's own action button class so the buttons match its style
+    // --------------------------------------------
+
+    if( !function_exists( 'infinity23_log_pagination' ) ) {
+
+        function infinity23_log_pagination( $infinity23_current_page, $infinity23_total_pages, $infinity23_button_class, $infinity23_total_rows = 0 ) {
+
+            $infinity23_current_page = intval( $infinity23_current_page );
+            $infinity23_total_pages = intval( $infinity23_total_pages );
+            $infinity23_total_rows = intval( $infinity23_total_rows );
+
+            if( $infinity23_total_pages < 2 ) { return; }
+
+            // always 7 slots (page numbers plus gaps) so the bar keeps the same
+            // width on every page
+            if( $infinity23_total_pages <= 7 ) {
+                $infinity23_pages_to_show = range( 1, $infinity23_total_pages );
+            } elseif( $infinity23_current_page <= 4 ) {
+                $infinity23_pages_to_show = array( 1, 2, 3, 4, 5, $infinity23_total_pages );
+            } elseif( $infinity23_current_page >= $infinity23_total_pages - 3 ) {
+                $infinity23_pages_to_show = array( 1, $infinity23_total_pages - 4, $infinity23_total_pages - 3, $infinity23_total_pages - 2, $infinity23_total_pages - 1, $infinity23_total_pages );
+            } else {
+                $infinity23_pages_to_show = array( 1, $infinity23_current_page - 1, $infinity23_current_page, $infinity23_current_page + 1, $infinity23_total_pages );
+            } // if( $infinity23_total_pages <= 7 ) {
+
+            $infinity23_previous_page_number = 0;
+
+            ?>
+            <div class="infinity23-pagination">
+
+                <span class="infinity23-pagination-info">
+                    Page <?php echo esc_html( $infinity23_current_page ); ?> of <?php echo esc_html( $infinity23_total_pages ); ?>
+                    <?php if( $infinity23_total_rows > 0 ) { ?>
+                        <span class="infinity23-pagination-total">(<?php echo esc_html( $infinity23_total_rows ); ?> entries)</span>
+                    <?php } // if( $infinity23_total_rows > 0 ) { ?>
+                </span>
+
+                <div class="infinity23-pagination-links">
+
+                    <?php if( $infinity23_current_page > 1 ) { ?>
+                        <a class="<?php echo esc_attr( $infinity23_button_class ); ?>" href="<?php echo esc_url( add_query_arg( 'log_page', $infinity23_current_page - 1 ) ); ?>">&larr; Newer</a>
+                    <?php } // if( $infinity23_current_page > 1 ) { ?>
+
+                    <?php foreach( $infinity23_pages_to_show as $infinity23_page_number ) { ?>
+
+                        <?php if( $infinity23_page_number - $infinity23_previous_page_number > 1 ) { ?>
+                            <span class="infinity23-pagination-gap">&hellip;</span>
+                        <?php } // if( $infinity23_page_number - $infinity23_previous_page_number > 1 ) { ?>
+
+                        <?php if( $infinity23_page_number == $infinity23_current_page ) { ?>
+                            <span class="<?php echo esc_attr( $infinity23_button_class ); ?> infinity23-pagination-current"><?php echo esc_html( $infinity23_page_number ); ?></span>
+                        <?php } else { ?>
+                            <a class="<?php echo esc_attr( $infinity23_button_class ); ?> infinity23-pagination-number" href="<?php echo esc_url( add_query_arg( 'log_page', $infinity23_page_number ) ); ?>"><?php echo esc_html( $infinity23_page_number ); ?></a>
+                        <?php } // if( $infinity23_page_number == $infinity23_current_page ) { ?>
+
+                        <?php $infinity23_previous_page_number = $infinity23_page_number; ?>
+
+                    <?php } // foreach( $infinity23_pages_to_show as $infinity23_page_number ) { ?>
+
+                    <?php if( $infinity23_current_page < $infinity23_total_pages ) { ?>
+                        <a class="<?php echo esc_attr( $infinity23_button_class ); ?>" href="<?php echo esc_url( add_query_arg( 'log_page', $infinity23_current_page + 1 ) ); ?>">Older &rarr;</a>
+                    <?php } // if( $infinity23_current_page < $infinity23_total_pages ) { ?>
+
+                </div><!--infinity23-pagination-links-->
+
+            </div><!--infinity23-pagination-->
+            <?php
+
+        } // function infinity23_log_pagination( $infinity23_current_page, $infinity23_total_pages, $infinity23_button_class, $infinity23_total_rows = 0 ) {
+
+    } // if( !function_exists( 'infinity23_log_pagination' ) ) {
+
 ?>

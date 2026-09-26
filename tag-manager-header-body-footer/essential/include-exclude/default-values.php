@@ -26,4 +26,8 @@
 		'rtl_ltr_direction_change' => ( is_rtl() ? 1 : 0 ),
 	);
 
+	$infinity23_global_defaults = array(
+		'hide_license' => 0,
+	);
+
 ?>

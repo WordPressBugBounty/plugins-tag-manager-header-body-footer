@@ -3,7 +3,7 @@ Contributors: YYDevelopment
 Tags: accessibility, tag manager, whatsapp button, cookie consent, back to top
 Requires at least: 5.3
 Tested up to: 7.1
-Stable tag: 4.0.0
+Stable tag: 4.1.2
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -356,27 +356,25 @@ Yes. The plugin ships with a Hebrew translation and all front end output adjusts
 == Screenshots ==
 
 1. The Include / Exclude screen where you choose which modules to load
-2. The Accessibility settings
-3. The Tag Manager settings
-4. The WhatsApp Button settings
-5. The Phone Button settings
-6. The Back To Top settings
+2. The WordPress Settings settings
+3. The Update Manager settings
+4. The Email SMTP settings
+5. The Force SSL & HTTPS settings
+6. The Accessibility settings
 7. The Privacy Policy / Cookie Consent settings
-8. The Mobile Contact Line settings
-9. The Page and Post Notes panel
-10. The Show All Pages screen
-
-== External services ==
-
-Google Analytics / Tag Manager: loads when the Tag Manager module has an Analytics/GTM ID set, sends page URL on each page load. [Terms](https://policies.google.com/terms), [Privacy](https://policies.google.com/privacy).
-
-Facebook Pixel: loads when the Tag Manager module has a Pixel ID set, sends page URL on each page load. [Terms](https://www.facebook.com/legal/terms), [Privacy](https://www.facebook.com/policy.php).
-
-Yandex Metrika: loads when the Tag Manager module has a Metrika ID set, sends page URL on each page load. [Terms](https://yandex.com/legal/metrica_termsofuse), [Privacy](https://yandex.com/legal/confidential).
-
-Elastic Email: sends the email's recipient, subject and body when the Email SMTP module sends a transactional email via Elastic Email's API. [Terms](https://elasticemail.com/resources/usage-policies/terms-of-use/), [Privacy](https://elasticemail.com/resources/usage-policies/privacy-policy/).
-
-WhatsApp: the WhatsApp Button / Mobile Contact Line modules send the configured phone number and message to WhatsApp only when a visitor clicks the button. [Terms](https://www.whatsapp.com/legal/terms-of-service), [Privacy](https://www.whatsapp.com/legal/privacy-policy).
+8. The Back To Top settings
+9. The WhatsApp Button settings
+10. The Phone Button settings
+11. The Mobile Contact Line settings
+12. The Page and Post Notes panel
+13. The Tag Manager settings
+14. The Duplicate Pages settings
+15. The Sticky Sidebar settings
+16. The LLMs.txt & Robots.txt Editor settings
+17. The Plugins/Themes Downloader settings
+18. The Cron Management settings
+19. The Redirect 301/302 settings
+20. The Folders Organizer settings
 
 == Changelog ==
 
@@ -487,6 +485,13 @@ WhatsApp: the WhatsApp Button / Mobile Contact Line modules send the configured 
 
 = 4.0.0 =
 Tag Manager - Header, Body And Footer is now Infinity23. Everything that was free before stays free, all of your existing tags and settings move over automatically, and every new module stays off until you choose it.
+
+= 4.1.2 =
+* Fixing plugins/themes downloader module not working properly  
+* Remove country from redirect 301 logs (the log returned the wrong country) + improved pagination style  
+* Fixing folder organizer limits in free versions  
+* Added insert license page  
+* Added option to remove Go Pro from right sidebar
 
 == About ==
 

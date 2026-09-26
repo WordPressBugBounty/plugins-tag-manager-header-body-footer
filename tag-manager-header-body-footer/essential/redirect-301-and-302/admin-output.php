@@ -230,8 +230,8 @@
 		$infinity23_redirect_active_tab = $infinity23_redirect_logs_tab_is_default ? 'logs' : 'folders';
 	} // if( !in_array( $infinity23_redirect_active_tab, array( 'folders', 'settings', 'logs' ), true ) ) {
 
-	$infinity23_redirect_tab_folders_url = esc_url( add_query_arg( 'redirect_tab', 'folders' ) );
-	$infinity23_redirect_tab_settings_url = esc_url( add_query_arg( 'redirect_tab', 'settings' ) );
+	$infinity23_redirect_tab_folders_url = esc_url( add_query_arg( 'redirect_tab', 'folders', remove_query_arg( array( 'log_page', 'log_search', 'log_per_page', 'redirect_log_row_id' ) ) ) );
+	$infinity23_redirect_tab_settings_url = esc_url( add_query_arg( 'redirect_tab', 'settings', remove_query_arg( array( 'log_page', 'log_search', 'log_per_page', 'redirect_log_row_id' ) ) ) );
 	$infinity23_redirect_tab_logs_url = esc_url( add_query_arg( 'redirect_tab', 'logs' ) );
 
 	$infinity23_redirect_folders_list = $infinity23_activate_code == 1 ? infinity23_redirect_get_folders() : array();
@@ -507,7 +507,7 @@
 
 				<div class="backtest-field-help-icon">
 					<div class="data-help-content">
-						When enabled, every time a visitor's URL matches a saved redirect and they are sent to the destination, a log entry is saved with the request URL, destination URL, redirect type, visitor IP, country (when available), user agent and referrer.
+						When enabled, every time a visitor's URL matches a saved redirect and they are sent to the destination, a log entry is saved with the request URL, destination URL, redirect type, visitor IP, user agent and referrer.
 						<br /><br />
 						This only logs redirects that actually fire - visiting a normal page that has no redirect never creates a log entry.
 					</div>
@@ -655,7 +655,6 @@
 							<th>Destination URL</th>
 							<th>Type</th>
 							<th>IP Address</th>
-							<th>Country</th>
 							<th>Browser</th>
 							<th>Platform</th>
 							<th>Device</th>
@@ -667,7 +666,7 @@
 
 						<?php if( empty( $infinity23_redirect_log_rows ) ) { ?>
 
-							<tr><td colspan="12">No log entries were found</td></tr>
+							<tr><td colspan="11">No log entries were found</td></tr>
 
 						<?php } else { ?>
 
@@ -680,7 +679,6 @@
 									<td><?php echo esc_html( $infinity23_redirect_log_row->destination_url ); ?></td>
 									<td><?php echo esc_html( $infinity23_redirect_log_row->redirect_type ); ?></td>
 									<td><?php echo esc_html( $infinity23_redirect_log_row->ip_address ); ?></td>
-									<td><?php echo esc_html( $infinity23_redirect_log_row->country ); ?></td>
 									<td><?php echo esc_html( $infinity23_redirect_log_row->browser ); ?></td>
 									<td><?php echo esc_html( $infinity23_redirect_log_row->platform ); ?></td>
 									<td><?php echo esc_html( $infinity23_redirect_log_row->device_type ); ?></td>
@@ -696,17 +694,7 @@
 				</table>
 				</div><!--infinity23-redirect-table-wrap-->
 
-				<?php if( $infinity23_redirect_log_total_pages > 1 ) { ?>
-					<p>
-						<?php if( $infinity23_redirect_log_page > 1 ) { ?>
-							<a class="infinity23-redirect-action-btn" href="<?php echo esc_url( add_query_arg( 'log_page', $infinity23_redirect_log_page - 1 ) ); ?>">&larr; Newer</a>
-						<?php } // if( $infinity23_redirect_log_page > 1 ) { ?>
-						Page <?php echo esc_html( $infinity23_redirect_log_page ); ?> of <?php echo esc_html( $infinity23_redirect_log_total_pages ); ?>
-						<?php if( $infinity23_redirect_log_page < $infinity23_redirect_log_total_pages ) { ?>
-							<a class="infinity23-redirect-action-btn" href="<?php echo esc_url( add_query_arg( 'log_page', $infinity23_redirect_log_page + 1 ) ); ?>">Older &rarr;</a>
-						<?php } // if( $infinity23_redirect_log_page < $infinity23_redirect_log_total_pages ) { ?>
-					</p>
-				<?php } // if( $infinity23_redirect_log_total_pages > 1 ) { ?>
+				<?php infinity23_log_pagination( $infinity23_redirect_log_page, $infinity23_redirect_log_total_pages, 'infinity23-redirect-action-btn', $infinity23_redirect_log_total ); ?>
 
 			</div><!--section-card-->
 

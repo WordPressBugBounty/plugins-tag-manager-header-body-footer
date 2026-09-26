@@ -300,8 +300,8 @@
 		$infinity23_email_smtp_active_tab = 'settings';
 	} // if( !in_array( $infinity23_email_smtp_active_tab, array( 'settings', 'test', 'logs' ), true ) ) {
 
-	$infinity23_email_smtp_tab_settings_url = esc_url( add_query_arg( 'tab', 'settings' ) );
-	$infinity23_email_smtp_tab_test_url = esc_url( add_query_arg( 'tab', 'test' ) );
+	$infinity23_email_smtp_tab_settings_url = esc_url( add_query_arg( 'tab', 'settings', remove_query_arg( array( 'log_page', 'log_status', 'log_per_page' ) ) ) );
+	$infinity23_email_smtp_tab_test_url = esc_url( add_query_arg( 'tab', 'test', remove_query_arg( array( 'log_page', 'log_status', 'log_per_page' ) ) ) );
 	$infinity23_email_smtp_tab_logs_url = esc_url( add_query_arg( 'tab', 'logs' ) );
 
 	// --------------------------------------------
@@ -1058,17 +1058,7 @@
 						</table>
 						</div><!--infinity23-email-log-table-wrap-->
 
-						<?php if( $infinity23_email_log_total_pages > 1 ) { ?>
-							<p>
-								<?php if( $infinity23_email_log_page > 1 ) { ?>
-									<a class="infinity23-email-log-action-btn" href="<?php echo esc_url( add_query_arg( 'log_page', $infinity23_email_log_page - 1 ) ); ?>">&larr; Newer</a>
-								<?php } // if( $infinity23_email_log_page > 1 ) { ?>
-								Page <?php echo esc_html( $infinity23_email_log_page ); ?> of <?php echo esc_html( $infinity23_email_log_total_pages ); ?> (<?php echo esc_html( $infinity23_email_log_total_rows ); ?> total)
-								<?php if( $infinity23_email_log_page < $infinity23_email_log_total_pages ) { ?>
-									<a class="infinity23-email-log-action-btn" href="<?php echo esc_url( add_query_arg( 'log_page', $infinity23_email_log_page + 1 ) ); ?>">Older &rarr;</a>
-								<?php } // if( $infinity23_email_log_page < $infinity23_email_log_total_pages ) { ?>
-							</p>
-						<?php } // if( $infinity23_email_log_total_pages > 1 ) { ?>
+						<?php infinity23_log_pagination( $infinity23_email_log_page, $infinity23_email_log_total_pages, 'infinity23-email-log-action-btn', $infinity23_email_log_total_rows ); ?>
 
 					<?php } // if( empty( $infinity23_email_log_rows ) ) { ?>
 

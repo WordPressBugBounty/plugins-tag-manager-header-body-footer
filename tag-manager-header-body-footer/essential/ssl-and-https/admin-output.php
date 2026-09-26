@@ -214,7 +214,7 @@
 						<div class="data-help-content">
 							Redirects any HTTP request to HTTPS with a 301 redirect, including the WordPress admin area, the login page, and REST API requests.
 							<br /><br />
-							The Detection Mode and Localhost / Development Environment options below control exactly how and where this applies.
+							The Detection Mode and Development Environment (Localhost) options below control exactly how and where this applies.
 							<br /><br />
 							WP-CLI commands and Let's Encrypt validation requests are never redirected.
 						</div>
@@ -245,38 +245,38 @@
 						</div><!--backtest-field-help-icon-->
 					</div><!--form-line-->
 
+					<div class="form-line checkbox-line">
+						<input type="checkbox" id="fix_mixed_content_checkbox" name="fix_mixed_content_checkbox" value="1" <?php if( $infinity23_fix_mixed_content_checkbox == 1 ) { echo 'checked'; } ?> />
+						<label for="fix_mixed_content_checkbox">Rewrite leftover http:// links in the page output to https://</label>
+
+						<div class="backtest-field-help-icon">
+							<div class="data-help-content">
+								Fixes mixed-content warnings by rewriting your site's home URL and src="http://" attributes to https:// in the rendered page.
+								<br /><br />
+								This does not run in wp-admin, and skips XML output such as feeds and sitemaps.
+							</div>
+							?
+						</div><!--backtest-field-help-icon-->
+					</div><!--form-line-->
+
 					<div class="form-line">
-						<label for="force_ssl_localhost_mode">Localhost / Development Environment Behavior: </label>
+						<label for="force_ssl_localhost_mode">Development Environment (Localhost) Behavior: </label>
 						<select id="force_ssl_localhost_mode" name="force_ssl_localhost_mode">
-							<option value="exclude" <?php if( $infinity23_force_ssl_localhost_mode === 'exclude' ) { echo 'selected'; } ?>>Exclude Localhost &amp; Development Environments (Recommended)</option>
-							<option value="force" <?php if( $infinity23_force_ssl_localhost_mode === 'force' ) { echo 'selected'; } ?>>Force On Every Server</option>
+							<option value="exclude" <?php if( $infinity23_force_ssl_localhost_mode === 'exclude' ) { echo 'selected'; } ?>>Exclude Development Environments (Localhost) (Recommended)</option>
+							<option value="force" <?php if( $infinity23_force_ssl_localhost_mode === 'force' ) { echo 'selected'; } ?>>Force On Every Server + Development Environment (Localhost)</option>
 						</select>
 
 						<div class="backtest-field-help-icon">
 							<div class="data-help-content">
-								<strong>Exclude Localhost &amp; Development Environments</strong> will not redirect to HTTPS if the site is detected as a local or development environment (localhost, 127.0.0.1, common local domains such as .local / .test / .localhost, or a private/internal IP address). This prevents redirect loops on local sites that do not have a valid SSL certificate installed.
+								<strong>Exclude Development Environments (Localhost)</strong> will not redirect to HTTPS if the site is detected as a development environment (localhost, 127.0.0.1, common local domains such as .local / .test / .localhost, or a private/internal IP address). This prevents redirect loops on local sites that do not have a valid SSL certificate installed.
 								<br /><br />
-								<strong>Force On Every Server</strong> applies the HTTPS redirect everywhere, including localhost and development environments - only use this if that environment has a valid SSL certificate.
+								<strong>Force On Every Server</strong> applies the HTTPS redirect everywhere, including development environments (localhost) - only use this if that environment has a valid SSL certificate.
 							</div>
 							?
 						</div><!--backtest-field-help-icon-->
 					</div><!--form-line-->
 
 				</div><!--infinity23-toggle-fields-->
-
-				<div class="form-line checkbox-line">
-					<input type="checkbox" id="fix_mixed_content_checkbox" name="fix_mixed_content_checkbox" value="1" <?php if( $infinity23_fix_mixed_content_checkbox == 1 ) { echo 'checked'; } ?> />
-					<label for="fix_mixed_content_checkbox">Rewrite leftover http:// links in the page output to https://</label>
-
-					<div class="backtest-field-help-icon">
-						<div class="data-help-content">
-							Fixes mixed-content warnings by rewriting your site's home URL and src="http://" attributes to https:// in the rendered page.
-							<br /><br />
-							This does not run in wp-admin, and skips XML output such as feeds and sitemaps.
-						</div>
-						?
-					</div><!--backtest-field-help-icon-->
-				</div><!--form-line-->
 
 				<?php } // if( $infinity23_ssl_certificate_detected ) { ?>
 

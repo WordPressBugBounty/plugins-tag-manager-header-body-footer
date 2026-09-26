@@ -4,7 +4,7 @@
 Plugin Name: Infinity23 (Formerly Tag Manager) - One Plugin That Replaces All The Rest
 Plugin URI:  https://infinity23.com/
 Description: All in one that replace all the rest. Infinity23 combines accessibility, page & post notes, tag manager, floating contact buttons, back to top, phone button, WhatsApp button, mobile contact line, privacy policy cookie bar, show all pages and more into a single plugin.
-Version:     4.0.0
+Version:     4.1.2
 Requires at least: 5.3
 Requires PHP: 7.1
 Author:      YYDevelopment
@@ -94,6 +94,22 @@ Domain Path: /languages
 		return $links;
 
 	} ); // add_filter( 'plugin_action_links_'
+
+	// ==================================================
+	// Show a short plugin name on the Plugins page
+	// ==================================================
+
+	add_filter( 'all_plugins', function( $plugins ) {
+
+		$infinity23_plugin_basename = plugin_basename( __FILE__ );
+
+		if( isset( $plugins[ $infinity23_plugin_basename ] ) ) {
+			$plugins[ $infinity23_plugin_basename ]['Name'] = 'Infinity23 (Formerly Tag Manager)';
+		} // if( isset( $plugins[ $infinity23_plugin_basename ] ) ) {
+
+		return $plugins;
+
+	} ); // add_filter( 'all_plugins'
 
 	// ==================================================
 	// Load the Essential loader file
